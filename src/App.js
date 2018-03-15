@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Profile from './components/Profile'; 
+import Footer from './footer/footer'
 import './App.css';
 
 class App extends Component {
@@ -12,7 +14,8 @@ class App extends Component {
         <p className="App-intro">
           Hello World
         </p>
-        <footer> <h1>  Here is footer</h1></footer>
+        <Profile/>
+        <Footer/>
       </div>
     );
   }
