@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Profile from './components/Profile'; 
 import Footer from './footer/footer'
 import './App.css';
@@ -7,15 +6,20 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
+      <div className="wrapper">
+        <header className="app-header">
+          <h1 className="app-title">Demando Admin</h1>
         </header>
-        <p className="App-intro">
-          Hello World
-        </p>
+        <div className="profile">
         <Profile/>
-        <Footer/>
+        </div>
+        <div className="appbody">
+          <h1> Application Body</h1>
+        </div>
+        <div className="footer"> 
+            <Footer/>   
+        </div>
+      
       </div>
     );
   }
