@@ -1,7 +1,7 @@
 
 .wrapper{
   display: grid;
-  grid-gap: 10px;
+ grid-row-gap: 0;
   grid-template-columns: 250px 250px;
   grid-auto-rows: minmax(100px, auto);
 }
@@ -9,30 +9,33 @@
 
 
 .app-header {
-  background-color: rgb(77, 130, 255);
-  grid-column: 1/4;
+  grid-column: 2/4;
   grid-row: 1;
   color: white;
 }
 
 .wrapper > div {
   border: 2px solid rgb(90, 80, 110);
-  border-radius: 5px;
   padding: 1em;
   color: #4f10c5;
 }
 
-.appbody{
-  grid-column: 2 / 4;
-  grid-row: 2/7;
+.logo{
+  grid-column: 1;
+  grid-row: 1; 
 }
 
-.profile{
+.mainbody{
+  grid-column: 2 / 4;
+  grid-row: 2/8;
+}
+
+.sidebar{
   grid-column: 1;
-  grid-row: 2 / 7;
+  grid-row: 2 / 8;
 }
 
 .footer{
   grid-column: 1/4;
-  grid-row: 7;
+  grid-row: 8/10;
 }
