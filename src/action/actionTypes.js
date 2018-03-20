@@ -1,0 +1,2 @@
+
+export const RETURN_PROFILE = 'RETURN_PROFILE'
