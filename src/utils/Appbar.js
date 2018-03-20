@@ -3,13 +3,26 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import List, { ListItem} from 'material-ui/List';
+import { ListItem} from 'material-ui/List';
 import { Link} from 'react-router-dom';
+import classNames from 'classnames';
 
 
-const Appbar =() =>{
+const styles = {
+  list: {
+    width: 20,
+    color: "#5486ff",
+  },
+  fullList: {
+    width: 'auto',
+  },
+};
+
+
+const Appbar =(props) =>{
+  const { classes} = props;
     return(
-        <AppBar position="static" color="default">
+        <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="title" color="inherit">
             Demendo

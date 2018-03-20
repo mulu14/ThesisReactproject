@@ -11,7 +11,7 @@ import Grid from 'material-ui/Grid';
 const Footer =(props) =>{
 
   return(
-    <Grid xs="12"> 
+    <Grid  item xs={12}> 
     <BottomNavigation>
         <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
