@@ -1,69 +1,99 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
-import Profile from './Candidates/Profile'; 
+import { Link} from 'react-router-dom';
 import Footer from './../footer/Footer'
-import Candidates from './Candidates/Candidates'
-import Companies from './Companies/Companies.js'
-import Offers from './Offers/Offers'
-import Invitations from './Invitations/Invitations'
-import Bonses from './Boneses/Bonses'
-import Logout from './../utils/Logout'; 
-import './Home.css';
+import Sidebar from './../utils/Sidebar'
+import Appbar from './../utils/Appbar'
+import  ConfigRoute from './../utils/Routing'
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import purple from 'material-ui/colors/purple';
+import Button from 'material-ui/Button';
+import Grid from 'material-ui/Grid';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
+import Drawer from 'material-ui/Drawer';
+import classNames from 'classnames';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Divider from 'material-ui/Divider';
 
+
+const drawerWidth = 240;
+
+const styles = theme => ({
+  base: {
+    flexGrow: 1,
+  },
+  drawerPaper: {
+    position: 'relative',
+    width: drawerWidth,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3,
+  },
+});
 
 class Home extends Component {
   render() {
-    return (
-    <div className="wrapper">
-    <div className="app-header">
-      <ul className="nav">     
-        <li class="nav-item "><Link to="/profile">Profile</Link></li> 
-        <li class="nav-item"><Link to="/logout">Logout</Link></li>
-      </ul>
-    </div>
-    <div className="logo">Logo</div>
+     const { classes, theme } = this.props;
+     return (
+     <div lassName={classes.base}>
+     <Grid container spacing={8}> 
 
-    {/*
-      link each component to the links
-      routing path and link to path has to be the same 
-    */}
-    <div className="sidebar">
-      <ul ul class="nav flex-column">
-        <li class="nav-item"><Link to="/">Home</Link></li>   
-        <li class="nav-item"><Link to="/companies">Companies</Link></li>   
-        <li class="nav-item"><Link to="/candidates">Candidates</Link></li>   
-        <li class="nav-item"><Link to="/offers">Offers</Link></li> 
-        <li class="nav-item"><Link to="/bones">Boneses</Link></li>   
-        <li class="nav-item"><Link to="/invitation">Invitations</Link></li>
-        </ul>
-     </div>
+           {/*
+            Logo and navigation bar
+            */}
 
-{/*
- creating Routing for the page
- declaring routing path 
-*/}
-    <div className="mainbody"> 
-     <Switch>
-      <Route exact={true} path="/" component={Profile}/>
-      <Route path="/companies" component={Companies}/>
-      <Route path="/candidates" component={Candidates}/>
-      <Route path="/offers" component={Offers}/>
-      <Route path="/bones" component={Bonses}/>
-      <Route path="/logout" component={Logout}/>
-      <Route path="/profile" component={Profile}/>
-      <Route path="/invitation" component={Invitations}/>
-    </Switch>
-     </div>
-    
-    <div className="footer">
-        <h1> Footer </h1>
-     </div>
+     <Grid item xs={2}>
+     <div className="logo">Logo</div>
+     </Grid>  
+      <Grid item xs={10}>
+      <Appbar/>
+      </Grid>  
+
+        {/*
+             sidebar 
+            */}
+      <Grid item xs="3">
+      <Drawer
+       variant="permanent"
+        classes={{
+          paper: classes.drawerPaper,
+        }} >
+      <Divider/>
+        <Sidebar/>
+      </Drawer> 
+      </Grid>
+          {/*
+            creating main content area
+            */}
+       <Grid xs="9">
+       <main className={classes.content}>
+       <ConfigRoute/>
+       </main>
+       </Grid>
+        
+        {/*
+           footer, imported from footer folder, 
+            */}
+        
+        <Footer/>
+
+  </Grid>
  </div>
-
-
       
     );
   }
 }
 
-export default Home;
+
+
+Home.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Home);
+

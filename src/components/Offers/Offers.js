@@ -8,6 +8,7 @@ export default class Offeres extends Component {
     return (
       <div className="offeres">
         <h1> Here is the Offere page</h1>
+  
         
       </div>
     )
