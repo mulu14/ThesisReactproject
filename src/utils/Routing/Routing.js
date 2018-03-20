@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Profile from './../components/Candidates/Profile'; 
-import Candidates from './../components/Candidates/Candidates'
-import Companies from './../components/Companies/Companies.js'
-import Offers from './../components/Offers/Offers'
-import Invitations from './../components/Invitations/Invitations'
-import Bonses from './../components/Boneses/Bonses'
-import Logout from './Logout';
+import Profile from './../../components/Candidates/Profile'; 
+import Candidates from './../../components/Candidates/Candidates'
+import Companies from './../../components/Companies/Companies.js'
+import Offers from './../../components/Offers/Offers'
+import Invitations from './../../components/Invitations/Invitations'
+import Bonses from './../../components/Boneses/Bonses'
+import Logout from './../Logout/Logout';
 
 
   const ConfigRoute = () => (

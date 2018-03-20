@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Footer from './../footer/Footer'
-import Sidebar from './../utils/Sidebar'
-import Appbar from './../utils/Appbar'
-import  ConfigRoute from './../utils/Routing'
+import Sidebar from './../utils/Sidebar/Sidebar'
+import Appbar from './../utils/Appbar/Appbar'
+import  ConfigRoute from './../utils/Routing/Routing'
 import Grid from 'material-ui/Grid';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
