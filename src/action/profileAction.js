@@ -3,8 +3,8 @@ import userApi from './../readApi/userApi';
 
 export function loadProfiles() {  
   return function(dispatch) {
-    return userApi.getAllProfile().then(profiles => {
-      dispatch(loadUserSuccess(profiles));
+    return userApi.getProfile().then(profile => {
+      dispatch(loadProfileSuccess(profile));
     }).catch(error => {
       throw(error);
     });

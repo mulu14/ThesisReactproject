@@ -3,8 +3,8 @@ import {RETURN_PROFILE}  from './../actionTypes'
 
 
 
-export function Readprofile(text) {
+export function Readprofile(profile) {
     return { 
         type: RETURN_PROFILE, 
-        text }
+        profile }
   }
