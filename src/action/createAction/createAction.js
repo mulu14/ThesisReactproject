@@ -1,10 +1,10 @@
 
-import {RETURN_PROFILE}  from './../actionTypes'
+import {REQUEST_PROFILE}  from './../actionTypes'
 
 
 
-export function Readprofile(profile) {
+export function Requestprofile(candidate) {
     return { 
-        type: RETURN_PROFILE, 
-        profile }
+        type: REQUEST_PROFILE, 
+        payloade: candidate}
   }

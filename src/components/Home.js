@@ -11,6 +11,7 @@ import classNames from 'classnames';
 import Divider from 'material-ui/Divider';
 
 
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -20,6 +21,7 @@ const styles = theme => ({
   drawerPaper: {
     position: 'relative',
     width: drawerWidth,
+    backgroundColor: "#5486ff"
   },
 
   content: {
@@ -29,6 +31,12 @@ const styles = theme => ({
 });
 
 class Home extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {};
+  }
+
   render() {
      const { classes} = this.props;
      return (

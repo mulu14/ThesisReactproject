@@ -1,6 +1,8 @@
 
-export default {  
-    profile: [],
-    company: [], 
+const initialState = {  
+    andidate: [],
+    companies: [], 
     Offers: [], 
   }
+
+  export default initialState;

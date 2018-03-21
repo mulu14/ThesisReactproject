@@ -2,15 +2,16 @@
 import React from 'react'
 import { Link} from 'react-router-dom';
 import List, { ListItem } from 'material-ui/List';
+import classNames from 'classnames';
 
 
 const flexContainer = {
     color:"#2c3345", 
-    backgroundcolor: "#5486ff"
+    backgroundColor: "#5486ff"
   };
   
 
-const SideBar =() =>{
+const SideBar =(props) =>{
     return(
         <div> 
         <List  style={flexContainer}>

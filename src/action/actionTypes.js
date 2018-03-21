@@ -1,2 +1,2 @@
 
-export const RETURN_PROFILE = 'RETURN_PROFILE'
+export const REQUEST_PROFILE = 'REQUEST_PROFILE'

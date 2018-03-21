@@ -9,10 +9,11 @@ import Grid from 'material-ui/Grid';
 
 
 const Footer =(props) =>{
-
   return(
     <Grid  item xs={12}> 
-    <BottomNavigation>
+    <BottomNavigation style={{
+      backgroundColor: "#2C395A"
+    }}>
         <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
         <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
