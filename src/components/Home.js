@@ -13,14 +13,6 @@ import Divider from 'material-ui/Divider';
 
 
 
-
-const styles = theme => ({
-  base: {
-    flexGrow: 1,
-  },
-  
-});
-
 class Home extends Component {
 
   constructor(props){
@@ -31,11 +23,14 @@ class Home extends Component {
   render() {
      const { classes} = this.props;
      return (
-     <div className={classes.base}>
-      <Header/>
-      <Sidebar/>
-      <ConfigRoute/>
-      <Footer/>
+     <div>
+     <Grid container spacing={8}> 
+         <Header/>
+          <Sidebar/>
+          <ConfigRoute/>
+          {this.props.children}
+        <Footer/>
+   </Grid>
  </div>
       
     );
@@ -44,9 +39,6 @@ class Home extends Component {
 
 
 
-Home.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(Home);
+export default Home;
 
