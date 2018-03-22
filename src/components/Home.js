@@ -25,7 +25,7 @@ class Home extends Component {
      return (
      <div>
      <Grid container spacing={8}> 
-         <Header/>
+          <Header/>
           <Sidebar/>
           <ConfigRoute/>
           {this.props.children}
@@ -36,9 +36,6 @@ class Home extends Component {
     );
   }
 }
-
-
-
 
 export default Home;
 

@@ -1,6 +1,6 @@
 
 const initialState = {  
-    andidate: [],
+    candidate: [],
     companies: [], 
     Offers: [], 
   }

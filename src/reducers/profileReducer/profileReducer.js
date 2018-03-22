@@ -6,7 +6,7 @@ export default function profileReducer(state = initialState, action) {
       
       case REQUEST_PROFILE:
 
-      return { ...state, candidate: [...state.candidate, action.payload] };
+      return { ...state, candidate: action.payload };
       default: 
         return state;
     }
