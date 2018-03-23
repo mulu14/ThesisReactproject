@@ -3,16 +3,15 @@ import {REQUEST_PROFILE, RECEIVE_PROFILE}  from './../actionTypes'
 
 
 
-export function requestProfile(profile){
+export const requestProfile =()=>{
     return { 
         type: REQUEST_PROFILE, 
-        profile
         }
   }
 
- export function receiveProfile(json){
+ export const receiveProfile =(json)=>{
      return{
         type: RECEIVE_PROFILE, 
-        profile: json.data.children.map(child => child.data)
+        json
      }
  }

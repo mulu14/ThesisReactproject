@@ -1,30 +1,40 @@
 
-import React,{Component, PropTypes}  from 'react';
-import { connect } from 'react-redux';
+import React,{Component}  from 'react'
+import { connect } from 'react-redux'
 import {userApi} from './../../readApi/userApi'
-import {REQUEST_PROFILE} from './../../action/actionTypes'
+import {feachProfiles} from './../../action/action'
+import { bindActionCreators } from 'redux'
 
 
 class Candidates extends Component {
 
     constructor (props){
         super (props)
+        this.handleClick = this.handleClick.bind(this); 
       }
 
-    componentDidMount() {
+    state = {
+        diplay: ''
     }
 
+
+    componentDidMount() {
+            //this.props.feachProfiles(); 
+            console.log(this.props.state); 
+        }
+
     handleClick() {
-        this.props.userApi.userApi(); 
+        this.props.feachProfiles(); 
       }
 
     render() {
-        const { records } = this.props;
+        //console.log('this.props', feachProfiles); 
+        //console.log(typeof feachProfiles);
         return (
             <div>
                 <h4>This is the dashboard</h4>
-                <button onClick={this.props.OnrequestProfile}>Knock Knock</button>
-                {console.log(this.props.profile.length)}
+                <button onClick={this.handleClick}>Knock Knock</button>
+                
               
             </div>
         );
@@ -32,15 +42,15 @@ class Candidates extends Component {
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
       profile: state.profile
       }
     }
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
         return {
-          OnrequestProfile: () => dispatch()
-          }
+            feachProfiles: bindActionCreators(feachProfiles, dispatch)
         }
+    }
       
   export default connect(mapStateToProps, mapDispatchToProps)(Candidates);  
