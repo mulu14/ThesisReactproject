@@ -1,0 +1,104 @@
+{
+    "account":{
+        "firstName": "Robert",
+        "lasttName": "Areno",
+        "email": "robert.areno@demando.se",
+        "phone": "0739972281"
+    },
+    "userId": 3147,
+    "candidateId": 2903,
+    "expectedSalary": 47000,
+    "headline": "Frontend Lead Developer",
+    "topSkills": [
+      {
+        "experience": 5,
+        "id": 4167,
+        "title": "AngularJS"
+      },
+      {
+        "experience": 5,
+        "id": 3077,
+        "title": "Scrum"
+      },
+      {
+        "experience": 6,
+        "id": 1740,
+        "title": "jQuery"
+      },
+      {
+        "experience": 5,
+        "id": 4380,
+        "title": "UX design"
+      },
+      {
+        "experience": 6,
+        "id": 1107,
+        "title": "Front-end",
+        "userId": 3147
+      }
+    ],
+    "skills": [
+     {
+        "id": 4380,
+        "title": "UX design"
+      },
+      {
+        "id": 1107,
+        "title": "Front-end",
+        "userId": 3147
+      }
+    ],
+    "benefits": [
+      {
+        "id": 24,
+        "title" : "Work from home"
+      },
+      {
+        "id": 23,
+        "title" : "Work from home"
+      },
+      {
+        "id": 3,
+        "title" : "Work from home"
+      },
+      {
+        "id": 32,
+        "title" : "Work from home"
+      },
+      {
+        "id": 21,
+        "title" : "Work from home"
+      }
+    ],
+    "publishInfo": [
+      {
+        "auctionId": 1536,
+        "status": "1",
+        "userId": 3147
+      }
+    ],
+    "workExperiences": [
+      {
+        "id": 0,
+        "userId": 3147,
+        "title": "Frontend/systemutvecklare",
+        "experience": 0
+      },
+      {
+        "id": 0,
+        "userId": 3147,
+        "title": "Senior frontend developer / scrum master",
+        "experience": 0
+      }
+    ],
+    "projectExperiences": [
+
+    ],
+    "educations": [
+      {
+        "id": 0,
+        "fieldOfStudy": "Medieteknik",
+        "userId": 3147
+      }
+    ]
+  }

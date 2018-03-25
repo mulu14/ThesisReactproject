@@ -5,7 +5,8 @@ import profileReducer from './profileReducer/profileReducer';
 
 
 const rootReducer =  combineReducers({
-  profile: profileReducer
+  profiles: profileReducer
 })
+
 
 export default rootReducer; 

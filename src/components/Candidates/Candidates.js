@@ -1,6 +1,8 @@
 
 import React,{Component}  from 'react'
+import CandidateDetail from './CandidateDetail'
 import { connect } from 'react-redux'
+import data from './../../store/store.json'
 import {userApi} from './../../readApi/userApi'
 import {feachProfiles} from './../../action/action'
 import { bindActionCreators } from 'redux'
@@ -18,24 +20,40 @@ class Candidates extends Component {
     }
 
 
-    componentDidMount() {
-            //this.props.feachProfiles(); 
-            console.log(this.props.state); 
+    componentWillMount() {
+            this.props.feachProfiles(); 
+        
         }
 
     handleClick() {
-        this.props.feachProfiles(); 
       }
 
+
+
+      componentWillUnmount() {
+       // this.feachProfiles.abort();
+      }
+      
+
     render() {
-        //console.log('this.props', feachProfiles); 
-        //console.log(typeof feachProfiles);
+       // console.log(this.props.profile);
+       var x = this.props.profiles.topSkills; 
+       console.log(x);     
+    
+    
         return (
             <div>
-                <h4>This is the dashboard</h4>
-                <button onClick={this.handleClick}>Knock Knock</button>
-                
-              
+                 <CandidateDetail
+                 profile ={this.props.profile}
+                 //account= {this.props.profile.account}
+                // topSkills = {this.props.profile.topSkills}
+                // skills = {this.props.profile.skills}
+                // benefits = {this.props.profile.benefits}
+                // publishInfo = {this.props.profile.publishInfo}
+                // workExperiences = {this.props.profile.workExperiences}
+                // projectExperiences = {this.props.profile.projectExperiences}
+                // educations = {this.props.profile.educations}
+                 />
             </div>
         );
     }
@@ -44,7 +62,7 @@ class Candidates extends Component {
 
 const mapStateToProps = state => {
     return {
-      profile: state.profile
+      profiles: state.profiles.candidate
       }
     }
 const mapDispatchToProps = (dispatch) => {

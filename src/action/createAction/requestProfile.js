@@ -1,5 +1,5 @@
 
-import {REQUEST_PROFILE, RECEIVE_PROFILE}  from './../actionTypes'
+import {REQUEST_PROFILE, RECEIVE_PROFILE, ERROR_MESSAGE}  from './../actionTypes'
 
 
 
@@ -9,9 +9,16 @@ export const requestProfile =()=>{
         }
   }
 
- export const receiveProfile =(json)=>{
+ export const receiveProfile =(data)=>{
      return{
         type: RECEIVE_PROFILE, 
-        json
+        paylode: data
+     }
+ }
+
+ export const displayErrorMessage =(msg) =>{
+     return{
+         type: ERROR_MESSAGE, 
+         text: msg
      }
  }

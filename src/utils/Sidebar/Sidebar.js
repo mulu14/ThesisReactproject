@@ -150,7 +150,7 @@ class SideDrawer extends React.Component {
           </IconButton>
         </div>
         <Divider />
-        <List>{}</List>
+        <List><ListItem >Dashbord</ListItem></List>
         <Divider />
         <div> 
         <List  style={flexContainer}>
