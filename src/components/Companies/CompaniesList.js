@@ -2,7 +2,7 @@
 import React,{Component} from 'react';
 
 
-export default class Companies extends Component {
+export default class CompaniesList extends Component {
 
     render() {
         return (

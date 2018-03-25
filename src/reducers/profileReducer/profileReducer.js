@@ -6,7 +6,7 @@ export default function profileReducer(state = initialState, action) {
       case RECEIVE_PROFILE:
       return {
         ...state, 
-        candidate: action.paylode
+        candidate: action.data
       }
       default: 
         return state;

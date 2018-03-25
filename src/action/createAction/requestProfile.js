@@ -12,7 +12,7 @@ export const requestProfile =()=>{
  export const receiveProfile =(data)=>{
      return{
         type: RECEIVE_PROFILE, 
-        paylode: data
+        data: data
      }
  }
 

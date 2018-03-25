@@ -1,6 +1,6 @@
 
 import React,{Component}  from 'react'
-import CandidateDetail from './CandidateDetail'
+import ViewCandidate from './ViewCandidate'
 import { connect } from 'react-redux'
 import data from './../../store/store.json'
 import {userApi} from './../../readApi/userApi'
@@ -8,7 +8,7 @@ import {feachProfiles} from './../../action/action'
 import { bindActionCreators } from 'redux'
 
 
-class Candidates extends Component {
+class CandidatesList extends Component {
 
     constructor (props){
         super (props)
@@ -19,7 +19,6 @@ class Candidates extends Component {
         diplay: ''
     }
 
-
     componentWillMount() {
             this.props.feachProfiles(); 
         
@@ -29,9 +28,8 @@ class Candidates extends Component {
       }
 
 
-
       componentWillUnmount() {
-       // this.feachProfiles.abort();
+       //this.feachProfiles.abort();
       }
       
 
@@ -43,7 +41,7 @@ class Candidates extends Component {
     
         return (
             <div>
-                 <CandidateDetail
+                 <ViewCandidate
                  profile ={this.props.profile}
                  //account= {this.props.profile.account}
                 // topSkills = {this.props.profile.topSkills}
@@ -62,7 +60,7 @@ class Candidates extends Component {
 
 const mapStateToProps = state => {
     return {
-      profiles: state.profiles.candidate
+      profiles: state.profiles.candidate || {}
       }
     }
 const mapDispatchToProps = (dispatch) => {
@@ -71,4 +69,4 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
       
-  export default connect(mapStateToProps, mapDispatchToProps)(Candidates);  
+  export default connect(mapStateToProps, mapDispatchToProps)(CandidatesList);  

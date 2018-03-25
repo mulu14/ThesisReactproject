@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-const CandidateDetail = (props) => {
+const ViewCandidate = (props) => {
   const { classes } = props;
   return (
     <div>
@@ -57,8 +57,8 @@ const CandidateDetail = (props) => {
                 // projectExperiences = {this.props.profile.projectExperiences}
                 // educations = {this.props.profile.educations}
 
-CandidateDetail.propTypes = {
+ViewCandidate.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CandidateDetail);
+export default withStyles(styles)(ViewCandidate);

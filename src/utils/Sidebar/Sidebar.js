@@ -155,8 +155,8 @@ class SideDrawer extends React.Component {
         <div> 
         <List  style={flexContainer}>
         <ListItem button component={Link}  to="/">Home</ListItem>  
-        <ListItem button component={Link}  to="/companies">Companies</ListItem>  
-        <ListItem button component={Link}  to="/candidates">Candidates</ListItem>  
+        <ListItem button component={Link}  to="/companieslist">Companies</ListItem>  
+        <ListItem button component={Link}  to="/candidateslist">Candidates</ListItem>  
         <ListItem button component={Link}  to="/offers">Offers</ListItem>   
         <ListItem button component={Link}  to="/bones">Boneses</ListItem>  
       <ListItem button component={Link}  to="/invitation">Invitations</ListItem> 
