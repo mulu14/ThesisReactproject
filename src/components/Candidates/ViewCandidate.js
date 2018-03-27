@@ -1,31 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
 import { withStyles } from 'material-ui/styles';
+import {feachSingleCandidate} from './../../action/action'
 import List, { ListItem } from 'material-ui/List'
+import { bindActionCreators } from 'redux'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
+import './view.css'
 
-const styles = {
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 200,
-  },
-};
 
-const ViewCandidate = (props) => {
-  const { classes } = props;
+class ViewCandidate extends Component{
+ 
+  constructor(props){
+    super(props);
+    this.state = {};
+  }
+
+  componentWillMount(){
+    this.props.feachSingleCandidate(); 
+  }
+
+  render(){
+    const { classes } = this.props;
+
+
+  
   return (
     <div>
-      <Card className={classes.card}>
+      <Card className="card">
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
             Profile
-          </Typography>
-
-          
+          </Typography>  
          <List>
         <ListItem>Account</ListItem>  
         <ListItem>Educations</ListItem>  
@@ -47,18 +55,19 @@ const ViewCandidate = (props) => {
     </div>
   );
 }
+}
 
-  //account= {this.props.profile.account}
-                // topSkills = {this.props.profile.topSkills}
-                // skills = {this.props.profile.skills}
-                // benefits = {this.props.profile.benefits}
-                // publishInfo = {this.props.profile.publishInfo}
-                // workExperiences = {this.props.profile.workExperiences}
-                // projectExperiences = {this.props.profile.projectExperiences}
-                // educations = {this.props.profile.educations}
 
-ViewCandidate.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(ViewCandidate);
+const mapStateToProps = state => {
+  return {
+    singleProfile: state.singleProfile.singleCandidate || []
+    }
+  }
+const mapDispatchToProps = (dispatch) => {
+      return {
+        feachSingleCandidate: ()=>dispatch(feachSingleCandidate)
+      }
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(ViewCandidate);  

@@ -17,9 +17,8 @@ class Home extends Component {
      return (
      <div>
      <Grid container spacing={8}> 
- 
           <SideDrawer/> 
-        <Footer/>
+          <Footer/>
    </Grid>
  </div>
       

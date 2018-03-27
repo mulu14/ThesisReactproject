@@ -8,7 +8,6 @@ import classNames from 'classnames';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import { MenuItem } from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
@@ -33,13 +32,12 @@ const styleHeader = {
   color:"#2c3345"
 };
 
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
   },
   appFrame: {
-    height: 900,
+    //height: 900,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -115,6 +113,7 @@ class SideDrawer extends React.Component {
   state = {
     open: false,
     anchor: 'left',
+    signin: false,
   };
 
   handleDrawerOpen = () => {
@@ -156,7 +155,7 @@ class SideDrawer extends React.Component {
         <List  style={flexContainer}>
         <ListItem button component={Link}  to="/">Home</ListItem>  
         <ListItem button component={Link}  to="/companieslist">Companies</ListItem>  
-        <ListItem button component={Link}  to="/candidateslist">Candidates</ListItem>  
+        <ListItem button component={Link}  to="/candidate">Candidates</ListItem>  
         <ListItem button component={Link}  to="/offers">Offers</ListItem>   
         <ListItem button component={Link}  to="/bones">Boneses</ListItem>  
       <ListItem button component={Link}  to="/invitation">Invitations</ListItem> 
@@ -198,7 +197,7 @@ class SideDrawer extends React.Component {
 
               <List style={styleHeader}>
               <ListItem button component={Link} to='/profile'>Profile</ListItem>  
-              <ListItem button component={Link} to='/logout'>Logout</ListItem>  
+              <ListItem button component={Link} to='/login'>Login</ListItem>  
           </List>
             </Toolbar>
           </AppBar>

@@ -1,0 +1,8 @@
+
+.listDandidate{
+    list-style: none;
+}
+
+.listDandidate, .editAddCandidate {
+    display: inline-block
+}

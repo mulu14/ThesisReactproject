@@ -1,11 +1,13 @@
 
 import {combineReducers} from 'redux';  
-import profileReducer from './profileReducer/profileReducer';
+import candidateReducer from './profileReducer/candidateReducer';
+import singleCandidateReducer from './profileReducer/singleCandidateReducer'
 
 
 
 const rootReducer =  combineReducers({
-  profiles: profileReducer
+  profiles: candidateReducer, 
+  singleProfile: singleCandidateReducer
 })
 
 
