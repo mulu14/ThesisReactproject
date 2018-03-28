@@ -6,6 +6,9 @@ import Grid from 'material-ui/Grid';
 import List,{ ListItem} from 'material-ui/List';
 import {feachProfiles} from './../../action/action'
 import CandidateList from './CandidateList'
+import './candidate.css'
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Paper from 'material-ui/Paper';
 
 
 class Candidate extends Component {
@@ -33,8 +36,13 @@ class Candidate extends Component {
     render() {
         if (this.props.profiles.length === 0) return null;
         return (
-            <Grid> 
-                <ul>
+        <Grid> 
+            <Paper className="root">
+            <Table className="table">
+                <TableHead>
+                    <h1> Candidate List </h1>
+                    </TableHead>
+                <TableBody>
                 {
                 this.props.profiles.map((profile)=>{
                    return(
@@ -47,8 +55,10 @@ class Candidate extends Component {
                     />)
                 })  
                 }
-                </ul>
-            </Grid>
+          </TableBody>
+        </Table>
+        </Paper>
+    </Grid>
         );
     }
 }

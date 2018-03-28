@@ -1,8 +1,10 @@
 
-.listDandidate{
+.listDandidate li{
     list-style: none;
+    display:inline-block
 }
 
-.listDandidate, .editAddCandidate {
-    display: inline-block
+.editAddCandidate {
+    margin-left: 500px
 }
+
