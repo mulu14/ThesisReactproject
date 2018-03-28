@@ -1,13 +1,40 @@
-import React,{Component} from 'react';
+
+import React, { Component } from 'react';
+import Grid from 'material-ui/Grid';
+
+class CreateCandidate extends Component {
+
+  constructor (props){
+    super (props)
+  }
 
 
-export default class CreateCandidate extends Component {
+  state = {
+    redirect: false
+  }
 
-    render() {
-        return (
-            <div className="candidateClass">
-              
-            </div>
-        );
-    }
+  componentDidMount(){
+
+  }
+
+  render() {
+    return (
+      <Grid>
+
+      <form>
+        <label>
+          Title:
+          <input type="text" name="name" />
+        </label>
+        <label>
+        body:
+          <input type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>  
+      </Grid>
+    )
+  }
 }
+
+export default CreateCandidate;

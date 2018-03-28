@@ -12,11 +12,10 @@ function CandidateList(props) {
                 <TableCell><Button onClick={props.editCandiadte}>Edit</Button></TableCell>
                 <TableCell><Button onClick={props.editCandiadte}>Add</Button></TableCell>
                 <TableCell><Button onClick={props.editCandiadte}>View</Button></TableCell>
-                <TableCell><Button onClick={props.editCandiadte}>Delete</Button></TableCell>
+                <TableCell><Button onClick={props.editCandiadte}>Deactivate</Button></TableCell>
               </TableRow>
   );
 }
-
 
 export default CandidateList;
 

@@ -1,9 +1,10 @@
 
 const initialState = {  
-    candidate: [],
+    candidates: [],
     companies: [], 
     offers: [], 
     singleCandidate: [],
+    createNewCandidate: {}, 
     isFetching: false,
     didInvalidate: false,
     candidateWaitingApproval: null, 

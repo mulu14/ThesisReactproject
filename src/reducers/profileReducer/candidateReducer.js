@@ -1,5 +1,5 @@
 import initialState from './../../state/initialState'
-import {REQUEST_PROFILE, RECEIVE_PROFILE, ERROR_MESSAGE, FETCH_POSTS_FAILURE } from './../../action/actionTypes'
+import {REQUEST_PROFILE, RECEIVE_PROFILE, ERROR_MESSAGE, FETCH_POSTS_FAILURE, CREATE_NEW_CANDIDATE , UPDATE_CANDIDATE} from './../../action/actionTypes'
 
 
 export default function candidateReducer(state = initialState, action) {  
@@ -19,7 +19,18 @@ export default function candidateReducer(state = initialState, action) {
       case RECEIVE_PROFILE:
       return {
         ...state, 
-        candidate: action.data
+        candidates: action.data
+      }
+
+      CREATE_NEW_CANDIDATE: 
+      return{
+        ...state, 
+        createNewCandidate: action.data
+      }
+      UPDATE_CANDIDATE: 
+      return {
+          ... state,
+          candidates: state.candidate.map(candidate => candidate.id === action.data.id ? candidate : action.data),  
       }
 
       default: 
