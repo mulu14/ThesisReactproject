@@ -7,7 +7,7 @@ export default function singleCandidateReducer(state = initialState, action) {
       case  FETCH_SINGLE_PROFILE:
       return {
         ...state, 
-        singleCandidate: action.data
+        singleCandidate: action.profile
       }
 
       default: 

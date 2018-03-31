@@ -4,36 +4,30 @@ import ViewCandidate from './ViewCandidate'
 import { connect } from 'react-redux'
 import Grid from 'material-ui/Grid';
 import List,{ ListItem} from 'material-ui/List';
-import {feachProfiles} from './../../action/action'
+import {feachProfiles, deleteCandidate} from './../../action/action'
 import {feachSingleCandidate} from './../../action/action'
 import CandidateList from './CandidateList'
 import CreateCandidate from './CreateCandidate'
-import './candidate.css'
+import './style/candidate.css'
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+import { withRouter, Route } from 'react-router-dom';
+
+
 
 
 class Candidate extends Component {
     constructor (props){
         super (props)
       }
+      
     componentWillMount() {
-            this.props.feachProfiles(); 
-           }
+        this.props.feachProfiles(); 
+    }
 
-    handleClick() {
-      }
-      componentWillUnmount() {
-      }
 
-      editCandiadte =(id) =>{
-
-      }
-      addCandidate =(Candidate) =>{
-
-      }
-      viewCandidate =(id) => {
-
+      deleteCandidate(id){
+          deleteCandidate(id)
       }
       
     render() {
@@ -52,10 +46,9 @@ class Candidate extends Component {
                        return(
                        <CandidateList
                         key={profile.id}
-                        editCandiadte = {this.editCandiadte.bind(this, profile.id)} 
-                        addCandidate = {this.addCandidate.bind(this)}
                         title={profile.title}
                         id= {profile.id}
+                       // deleteCandidate={this.props.deleteCandidate}
                         />)
                     })  
                     }
@@ -69,7 +62,8 @@ class Candidate extends Component {
 
         return (
         <Grid> 
-            {listcandidate()}     
+            {listcandidate()}  
+       
         </Grid>
         );
     }
@@ -83,9 +77,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
         return {
             feachProfiles: () =>dispatch(feachProfiles()),
-            feachSingleCandidate: (id) => dispatch(feachSingleCandidate(id))
+            deleteCandidateAction:(id) => dispatch(deleteCandidate(id))
 
         }
     }
       
-  export default connect(mapStateToProps, mapDispatchToProps)(Candidate);  
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Candidate));  

@@ -1,13 +1,12 @@
-import React from 'react';
-import ConfigRoute from './../Routing/Routing'
-import { Link} from 'react-router-dom';
-import List, { ListItem } from 'material-ui/List'
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
+import List from 'material-ui/List';
+import { MenuItem } from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
@@ -15,30 +14,15 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
 import ChevronRightIcon from 'material-ui-icons/ChevronRight';
-import Grid from 'material-ui/Grid';
-
 
 const drawerWidth = 240;
-
-
-const flexContainer = {
-  color:"#2c3345", 
-  backgroundColor: "#5486ff"
-};
-
-const styleHeader = {
-  display: 'flex',
-  flexDirection: 'row',
-  padding: 0,
-  color:"#2c3345"
-};
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
   },
   appFrame: {
-    //height: 900,
+    height: 430,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -65,13 +49,16 @@ const styles = theme => ({
   'appBarShift-right': {
     marginRight: drawerWidth,
   },
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 20,
+  },
   hide: {
     display: 'none',
   },
   drawerPaper: {
     position: 'relative',
     width: drawerWidth,
-    backgroundColor: "#5486ff"
   },
   drawerHeader: {
     display: 'flex',
@@ -109,12 +96,10 @@ const styles = theme => ({
   },
 });
 
-class SideDrawer extends React.Component {
-  
+class DrawerLayout extends React.Component {
   state = {
     open: false,
     anchor: 'left',
-    signin: false,
   };
 
   handleDrawerOpen = () => {
@@ -150,18 +135,9 @@ class SideDrawer extends React.Component {
           </IconButton>
         </div>
         <Divider />
-        <List><ListItem >Dashbord</ListItem></List>
+        <List>{}</List>
         <Divider />
-        <div> 
-        <List  style={flexContainer}>
-        <ListItem button component={Link}  to="/">Home</ListItem>  
-        <ListItem button component={Link}  to="/companieslist">Companies</ListItem>  
-        <ListItem button component={Link}  to="/candidate">Candidates</ListItem>  
-        <ListItem button component={Link}  to="/offers">Offers</ListItem>   
-        <ListItem button component={Link}  to="/bones">Boneses</ListItem>  
-      <ListItem button component={Link}  to="/invitation">Invitations</ListItem> 
-      </List>
-    </div>
+        <List>{}</List>
       </Drawer>
     );
 
@@ -173,8 +149,20 @@ class SideDrawer extends React.Component {
     } else {
       after = drawer;
     }
+
     return (
       <div className={classes.root}>
+        <TextField
+          id="persistent-anchor"
+          select
+          label="Anchor"
+          value={anchor}
+          onChange={this.handleChangeAnchor}
+          margin="normal"
+        >
+          <MenuItem value="left">left</MenuItem>
+          <MenuItem value="right">right</MenuItem>
+        </TextField>
         <div className={classes.appFrame}>
           <AppBar
             className={classNames(classes.appBar, {
@@ -192,30 +180,20 @@ class SideDrawer extends React.Component {
                 <MenuIcon />
               </IconButton>
               <Typography variant="title" color="inherit" noWrap>
-                Demendo
-                
+                Persistent drawer
               </Typography>
-
-              <List style={styleHeader}>
-              <ListItem button component={Link} to='/profile'>Profile</ListItem>  
-              <ListItem button component={Link} to='/login'>Login</ListItem>  
-          </List>
             </Toolbar>
           </AppBar>
           {before}
-          <Grid
+          <main
             className={classNames(classes.content, classes[`content-${anchor}`], {
               [classes.contentShift]: open,
               [classes[`contentShift-${anchor}`]]: open,
             })}
           >
             <div className={classes.drawerHeader} />
-            <Grid>
-            <ConfigRoute/>
-              {this.props.children}
-              </Grid>
-
-          </Grid>
+            <Typography>{'You think water moves fast? You should see ice.'}</Typography>
+          </main>
           {after}
         </div>
       </div>
@@ -223,12 +201,9 @@ class SideDrawer extends React.Component {
   }
 }
 
-
-
-SideDrawer.propTypes = {
+DrawerLayout.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(SideDrawer);
-
+export default withStyles(styles, { withTheme: true })(DrawerLayout);

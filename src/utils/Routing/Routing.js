@@ -9,6 +9,7 @@ import Bonses from './../../components/Boneses/Bonses'
 import Login from './../Logout/Login';
 import Home  from './../../components/Home'
 import ViewCandidate  from './../../components/Candidates/ViewCandidate'
+import CreateCandidate  from './../../components/Candidates/CreateCandidate'
 
 
   const ConfigRoute = (props) => {
@@ -16,8 +17,9 @@ import ViewCandidate  from './../../components/Candidates/ViewCandidate'
     <Switch>
                   <Route exact={true} path="/" component={Profile}/>
                   <Route path="/companieslist" component={CompaniesList}/>
-                  <Route path="/candidate" component={Candidate}/> 
-                  <Route path="/candidate:/id" component={ViewCandidate}/>
+                  <Route exact path="/candidate" component={Candidate}/> 
+                  <Route path="/candidate/view/:id" component={ViewCandidate}/>
+                  <Route path="/candidate/edit/:id" component={CreateCandidate}/>
                   <Route path="/offers" component={Offers}/>    
                   <Route path="/bones" component={Bonses}/>
                   <Route path="/login" component={Login}/>

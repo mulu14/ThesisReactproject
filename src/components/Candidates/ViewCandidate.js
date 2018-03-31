@@ -8,48 +8,43 @@ import { bindActionCreators } from 'redux'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import './view.css'
+import './style/view.css'
 
 
 class ViewCandidate extends Component{
- 
   constructor(props){
     super(props);
     this.state = {};
   }
 
   componentWillMount(){
-    this.props.feachSingleCandidate(); 
+    if(this.props.match.params){
+      const { id } = this.props.match.params;
+      this.props.feachSingleCandidate(id); 
+    }
+   
   }
 
   render(){
-    const { classes } = this.props;
-
-
-  
   return (
     <div>
       <Card className="card">
         <CardContent>
-          <Typography gutterBottom variant="headline" component="h2">
+          <Typography gutterBottom variant="headline" component="h1">
             Profile
           </Typography>  
          <List>
-        <ListItem>Account</ListItem>  
-        <ListItem>Educations</ListItem>  
-        <ListItem> Work Experiences</ListItem>  
-        <ListItem> Project Experiences </ListItem>   
-        <ListItem> Top Skills </ListItem>  
-        <ListItem>Benefits</ListItem> 
+        <ListItem>{this.props.singleProfile.id}</ListItem>  
+        <ListItem>{this.props.singleProfile.userId}</ListItem>  
+        <ListItem>{this.props.singleProfile.title}</ListItem>  
+        <ListItem>{this.props.singleProfile.title}</ListItem>   
       </List>
         </CardContent>
         <CardActions>
           <Button size="small" color="primary">
            View 
           </Button>
-          <Button size="small" color="primary">
-            Edit
-          </Button>
+          <Button size="small" color="primary">Edit</Button>
         </CardActions>
       </Card>
     </div>
@@ -57,16 +52,14 @@ class ViewCandidate extends Component{
 }
 }
 
-
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     singleProfile: state.singleProfile.singleCandidate || []
     }
   }
 const mapDispatchToProps = (dispatch) => {
       return {
-        feachSingleCandidate: ()=>dispatch(feachSingleCandidate)
+        feachSingleCandidate: (id)=>dispatch(feachSingleCandidate(id))
       }
   }
 

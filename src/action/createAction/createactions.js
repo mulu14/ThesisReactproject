@@ -1,5 +1,5 @@
 
-import {REQUEST_PROFILE, RECEIVE_PROFILE, FETCH_POSTS_FAILURE, FETCH_SINGLE_PROFILE, CREATE_NEW_CANDIDATE, UPDATE_CANDIDATE}  from './../actionTypes'
+import {REQUEST_PROFILE,DELETE_CANDIDATE, RECEIVE_PROFILE, FETCH_POSTS_FAILURE, FETCH_SINGLE_PROFILE, CREATE_NEW_CANDIDATE, UPDATE_CANDIDATE}  from './../actionTypes'
 
 
 
@@ -16,31 +16,32 @@ export const requestProfile =()=>{
      }
  }
 
- export const displayErrorMessage =(error) =>{
-     return{
-         type: FETCH_POSTS_FAILURE, 
-         text: error
-     }
- }
 
- export const requestIndividualCandidate =(searchId) =>{
+ export const requestIndividualCandidate =(data) =>{
      return{
          type: FETCH_SINGLE_PROFILE, 
-         id: searchId
+         profile: data
      }
  }
 
- export const createnewCandidate =(newcandidate) => {
+ export const createnewCandidate =(data) => {
      return{
          type: CREATE_NEW_CANDIDATE,
-         candidate: newcandidate
+         candidate: data
      }
  }
 
  export const updateCandidat =(data) =>{
      return{
          type: UPDATE_CANDIDATE,
-         candidate: data
+         data: data
      }
 
+ }
+
+ export const deleteCandidateAction =(data) =>{
+     return {
+         type: DELETE_CANDIDATE, 
+         id: data
+     }
  }

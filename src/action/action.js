@@ -1,13 +1,10 @@
-import {requestProfile, receiveProfile, displayErrorMessage, requestIndividualCandidate, createnewCandidate}  from './createAction/createactions'
+import {requestProfile, receiveProfile, updateCandidat, requestIndividualCandidate, createnewCandidate,deleteCandidateAction}  from './createAction/createactions'
 import axios from 'axios'; 
 import fetch from 'cross-fetch' 
 import data from './../store/candidate.json'
 //const API_URL = 'https://api.myjson.com/bins/10ubtz';   
 const API_URL ='https://jsonplaceholder.typicode.com/posts'; 
-const API_SINGLE ='https://jsonplaceholder.typicode.com/posts/'; 
-const UPDATE_ITEM = 'https://jsonplaceholder.typicode.com/posts/'; 
-const CREATE_CANDIDATE = 'https://jsonplaceholder.typicode.com/posts'
-
+const API_SINGLE = ''; 
 
 
 var httpHeaders = { 'Content-Type' : 'application/json', 'Accept-Charset' : 'utf-8'};
@@ -30,7 +27,7 @@ export function feachProfiles() {
 
 export function feachSingleCandidate(id){
   return function (dispatch){
-    return fetch(API_SINGLE + id)
+    return fetch(API_URL +'/'+ id)
     .then(
       response => response.json(),
     )
@@ -41,7 +38,7 @@ export function feachSingleCandidate(id){
 
 export function createNewCandidate(newCandidate){
   return function (dispatch){
-    return fetch(CREATE_CANDIDATE, {
+    return fetch(API_URL, {
       method: 'POST',
       body: JSON.stringify(newCandidate),
       headers: createHeaders
@@ -55,14 +52,30 @@ export function createNewCandidate(newCandidate){
 }
 
 
+export function updateCandidate(newCandidate){
+  return function (dispatch){
+    return fetch(API_URL, {
+      method: 'PUT',
+      body: JSON.stringify(newCandidate),
+      headers: createHeaders
+    })
+    .then(
+      response => response.json(),
+    )
+    .then(data=>
+    dispatch(updateCandidat(data)))
+  }
+}
 
-export function updateCandidate(candidate, id){
-  fetch(UPDATE_ITEM + id, {
-    method: 'PUT',
-    body: JSON.stringify(candidate),
-    headers: createHeaders
-  })
-  .then(response => response.json())
-  .then(json => console.log(json))
-
+export function deleteCandidate(id){
+  return function (dispatch){
+    return fetch(API_URL + '/' +id, {
+      method: 'DELETE'
+    })
+    .then(
+      response => response.json(),
+    )
+    .then(data=>
+    dispatch(deleteCandidateAction(data)))
+  }
 }

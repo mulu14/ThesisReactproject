@@ -4,7 +4,11 @@ const initialState = {
     companies: [], 
     offers: [], 
     singleCandidate: [],
-    createNewCandidate: {}, 
+    createNewCandidate: {
+      id: '',
+      title: '',
+      body: ''
+    }, 
     isFetching: false,
     didInvalidate: false,
     candidateWaitingApproval: null, 
