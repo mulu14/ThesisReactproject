@@ -1,21 +1,104 @@
 
 import React from 'react';
-import {ul } from 'react-bootstrap';
+import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import StarBorderIcon from 'material-ui-icons/StarBorder';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
+import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+
+
+
+const stylesMedia ={
+    height: 194,
+}
 
 export default class  Profile extends React.Component {
+  constructor(props){
+    super(props)
+
+  this.state = { expanded: false };
+  }
+
+  handleExpandClick = () => {
+    this.setState({ expanded: !this.state.expanded });
+  };
+
   render() {
     return (
       <div className="profileUser">
-        <h1>User profile {this.props.name}</h1>
-       <div className="profileHeader">
-        <ul className="list-group">
-          <li className="list-group-item">My profile</li>
-          <li className="list-group-item">Contact information</li>
-          <li className="list-group-item">Experiance</li>
-          <li className="list-group-item">Skill</li>
-          <li className="list-group-item">WishList</li>
-        </ul>
-         </div>
+      <Grid container spacing={8}>
+      <Grid item xs={4}> 
+       <Card> 
+         <CardHeader> </CardHeader>
+         <CardMedia style={stylesMedia}> </CardMedia>
+         <CardContent> </CardContent>
+       </Card>
+      
+      </Grid>
+      <Grid item xs={4}> 
+      <Card> 
+         <CardHeader> </CardHeader>
+         <CardMedia style={stylesMedia}> </CardMedia>
+         <CardContent> </CardContent>
+       </Card>
+      
+      </Grid>
+      <Grid item xs={4}> 
+      <Card> 
+         <CardHeader> </CardHeader>
+         <CardMedia  style={stylesMedia}> </CardMedia>
+         <CardContent> </CardContent>
+       </Card>
+      
+      </Grid>
+     
+       <Grid item xs={6}> 
+       <Card>
+           <Card> 
+         <CardHeader> </CardHeader>
+         <CardMedia style={stylesMedia}> </CardMedia>
+         <CardContent> </CardContent>
+       </Card>
+      
+       </Card>
+       </Grid>
+       <Grid item xs={6}>
+       
+       <Card>
+           <Card> 
+         <CardHeader> </CardHeader>
+         <CardMedia style={stylesMedia}> </CardMedia>
+         <CardContent> </CardContent>
+       </Card>
+      
+       </Card>
+       
+        </Grid>
+        <Grid item xs={6}>
+       
+       <Card>
+           <Card> 
+         <CardHeader> </CardHeader>
+         <CardMedia style={stylesMedia}> </CardMedia>
+         <CardContent> </CardContent>
+       </Card>
+      
+       </Card>
+       
+        </Grid>
+        <Grid item xs={6}>
+       
+       <Card>
+           <Card> 
+         <CardHeader> </CardHeader>
+         <CardMedia style={stylesMedia}> </CardMedia>
+         <CardContent> </CardContent>
+       </Card>
+      
+       </Card> 
+        </Grid>
+         </Grid>
       </div>
     );
   }

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Footer from './../footer/Footer'
-import Layout from './../utils/layout/layout'
-import DrawerLayout from './../utils/layout/drawer'
 import  SideDrawer from './../utils/Sidebar/Sidebar'
+import Layout from './../utils/Layout/layout'
 import Grid from 'material-ui/Grid';
 
 
@@ -18,11 +16,8 @@ class Home extends Component {
      const { classes} = this.props;
      return (
      <div>
-     <Grid> 
-          <SideDrawer/> 
-          <Footer/>
-   </Grid>
- </div>
+          <Layout/> 
+    </div>
       
     );
   }

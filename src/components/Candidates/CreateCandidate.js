@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 import {Test} from './../../model/test'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
 import { withRouter, Route } from 'react-router-dom';
 import {createNewCandidate,feachSingleCandidate,  updateCandidate} from './../../action/action'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
@@ -13,6 +14,7 @@ import Button from 'material-ui/Button';
 import './style/create.css'
 import Typography from 'material-ui/Typography';
 import { Field, reduxForm, initialize } from 'redux-form';  
+import './style/create.css'
 
 
 class CreateCandidate extends Component {
@@ -44,7 +46,7 @@ class CreateCandidate extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.candidate.id != nextProps.candidate.id) {
       this.setState(
-        {userId: nextProps.candidate.id, 
+        {userId: nextProps.candidate.userId, 
         id: nextProps.candidate.id, 
         title: nextProps.candidate.title,
         body: nextProps.candidate.body});
@@ -60,7 +62,7 @@ class CreateCandidate extends Component {
 
   handleChange(event) {
     this.setState(
-      {userId: event.target.UserId, 
+      {userId: event.target.userId, 
       id:event.target.id, 
      title:event.target.title,
      body:event.target.body
@@ -68,56 +70,61 @@ class CreateCandidate extends Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.profile);
+    alert('A name was submitted: ' + this.state);
     event.preventDefault();
   }
 
 
 
   render() {
-    console.log(this.state);
+    //console.log(this.state);
     return (
       <Grid>
       <Grid item xs={8}> 
         <Card>
+        <form>
         <CardContent>
         <Typography  variant="headline" component="h1">
             Edit Candidate
         </Typography>
-        <TextField
-          label="UserId"
+       
+        <input
+          label="userId"
           floatinglabeltext="User Id"
-          value={this.state.userId}
-          onChange={this.props.handleChange}/>
+          value={this.state.userId || ''}
+          onChange={this.handleChange}/>
          <br/>
          <TextField
           label="Id"
           floatinglabeltext="Id"
-          value={this.state.id}
-          onChange={this.props.handleChange}/>
+          value={this.state.id || ''}
+          onChange={this.handleChange}
+          />
 
          <br/>
          <TextField
           label="Title"
           type="text"
           floatinglabeltext="Title"
-          value={this.state.title}
-          onChange={this.props.handleChange}/>
+          value={this.state.title || ''}
+          onChange={this.handleChange}/>
         
          <br/>
            <TextField
             label="Body"
              type="text"
              floatinglabeltext="Body"
-             value={this.state.body}
-             onChange={this.props.handleChange}/>
+             value={this.state.body || ''}
+             onChange={this.handleChange}/>
             
            <br/>
            </CardContent>
            <CardActions>
-           <Button label="Submit" primary="true" className="style" onClick={(event) => this.handleClick(event)}> Submit</Button>
+           <Button label="Submit" primary="true" className="style"> Submit</Button>
+           <Link to="/candidate" className="backtoList"><Button> Back to List Page </Button></Link>
+                     
           </CardActions>
-          
+          </form>
        </Card>
        </Grid>
        

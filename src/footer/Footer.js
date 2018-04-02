@@ -12,7 +12,8 @@ const Footer =(props) =>{
   return(
     <Grid  item xs={12}> 
     <BottomNavigation style={{
-      backgroundColor: "#2C395A"
+      backgroundColor: "#2C395A", 
+      marginBottom: 0,
     }}>
         <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />

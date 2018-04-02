@@ -7,7 +7,7 @@ export default function candidateReducer(state = initialState, action) {
       case RECEIVE_PROFILE:
       return {
         ...state, 
-        candidates: action.data
+        candidates: action.data.slice(0, 12)
       }
       CREATE_NEW_CANDIDATE: 
       return{

@@ -6,7 +6,6 @@ import data from './../store/candidate.json'
 const API_URL ='https://jsonplaceholder.typicode.com/posts'; 
 const API_SINGLE = ''; 
 
-
 var httpHeaders = { 'Content-Type' : 'application/json', 'Accept-Charset' : 'utf-8'};
 var createHeaders = new Headers(httpHeaders);
 

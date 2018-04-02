@@ -5,6 +5,8 @@ import Button from 'material-ui/Button';
 import './style/profile.css'
 import {TableCell,TableRow } from 'material-ui/Table';
 import { withRouter } from 'react-router-dom'
+import {Delete, Add, Edit, ViewModule} from 'material-ui-icons'
+
 
 
 
@@ -13,10 +15,10 @@ function CandidateList(props) {
   return (
               <TableRow>
                 <TableCell>{props.title}</TableCell>
-                <TableCell><Link to={`/candidate/edit/${props.id}`} ><Button> Edit </Button></Link></TableCell>
-                <TableCell><Button>Add</Button></TableCell>
-                <TableCell> <Link to={`/candidate/view/${props.id}`} ><Button> View </Button></Link></TableCell>
-                <TableCell><Button onClick={props.handleClick}>Delete</Button></TableCell>
+                <TableCell><Link to={`/candidate/edit/${props.id}`} ><Button>{<Edit/>} </Button></Link></TableCell>
+                <TableCell><Button></Button>{<Add/>}</TableCell>
+                <TableCell> <Link to={`/candidate/view/${props.id}`} ><Button>{<ViewModule/>} </Button></Link></TableCell>
+                <TableCell><Button onClick={props.handleClick}>{<Delete/>}</Button></TableCell>
               </TableRow>
   );
 }

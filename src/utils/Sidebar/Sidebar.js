@@ -38,7 +38,6 @@ const styles = theme => ({
     flexGrow: 1,
   },
   appFrame: {
-    //height: 900,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -199,7 +198,7 @@ class SideDrawer extends React.Component {
               <List style={styleHeader}>
               <ListItem button component={Link} to='/profile'>Profile</ListItem>  
               <ListItem button component={Link} to='/login'>Login</ListItem>  
-          </List>
+            </List>
             </Toolbar>
           </AppBar>
           {before}
@@ -214,7 +213,7 @@ class SideDrawer extends React.Component {
             <ConfigRoute/>
               {this.props.children}
               </Grid>
-
+  
           </Grid>
           {after}
         </div>
