@@ -4,6 +4,7 @@ import Grid from 'material-ui/Grid';
 import {Test} from './../../model/test'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
+import classnames from 'classnames'; 
 import { withRouter, Route } from 'react-router-dom';
 import {createNewCandidate,feachSingleCandidate,  updateCandidate} from './../../action/action'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
@@ -22,18 +23,19 @@ class CreateCandidate extends Component {
   constructor (props){
     super (props)
 
-    this.state={
+    this.state ={
       userId: '',
       id: '', 
       title: '', 
-      body: ''
+      body: '', 
+      errors: {
+
+      }
       }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-
 
   componentWillMount(){
     if(this.props.match.params){
@@ -45,11 +47,11 @@ class CreateCandidate extends Component {
   
   componentWillReceiveProps(nextProps) {
     if (this.props.candidate.id != nextProps.candidate.id) {
-      this.setState(
-        {userId: nextProps.candidate.userId, 
+      this.setState({userId: nextProps.candidate.userId, 
         id: nextProps.candidate.id, 
         title: nextProps.candidate.title,
-        body: nextProps.candidate.body});
+        body: nextProps.candidate.body}
+      );
     }
   }
 
@@ -60,76 +62,73 @@ class CreateCandidate extends Component {
     return this.setState({candidate: candidate});
   }
 
-  handleChange(event) {
-    this.setState(
-      {userId: event.target.userId, 
-      id:event.target.id, 
-     title:event.target.title,
-     body:event.target.body
-    });
+  handleChange(e) {
+    this.setState({[e.target.name] : e.target.value})
   }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state);
-    event.preventDefault();
+  handleSubmit(e) {
+    console.log('A name was submitted: ' + this.state.title);
+    e.preventDefault();
+
+    let errors = {}; 
+    if(this.state.title =='')errors.title ="Title can not to be empty"; 
+    if(this.state.userId =='')errors.title ="userId can not to be empty"; 
+    if(this.state.id =='')errors.title ="Id can not to be empty"; 
+    if(this.state.body =='')errors.title ="Body can not to be empty"; 
+
+    this.setState({errors})
   }
-
-
 
   render() {
-    //console.log(this.state);
     return (
-      <Grid>
+      <div>
+      <Grid container spacing={8}>
       <Grid item xs={8}> 
-        <Card>
-        <form>
-        <CardContent>
-        <Typography  variant="headline" component="h1">
-            Edit Candidate
-        </Typography>
-       
+      <div className="container">
+      <form className="form" onSubmit={this.handleSubmit}>
+       <div className={classnames('field', {error: this.state.errors.userId})}>
+        <label htmlFor="userId">UserId</label>
         <input
-          label="userId"
-          floatinglabeltext="User Id"
+          name="userId"
           value={this.state.userId || ''}
           onChange={this.handleChange}/>
-         <br/>
-         <TextField
-          label="Id"
-          floatinglabeltext="Id"
+           <span>{this.state.errors.userId} </span>
+         </div>
+         <div className={classnames('field', {error: !!this.state.errors.id})}>
+         <label htmlFor="id">Id</label>
+         <input
+          name="id"
           value={this.state.id || ''}
           onChange={this.handleChange}
           />
-
-         <br/>
-         <TextField
-          label="Title"
+          <span>{this.state.errors.id} </span>
+         </div>
+         <div className={classnames('field', {error: !!this.state.errors.title})}>
+         <label htmlFor="title">Title</label>
+         <input
+          name="title"
           type="text"
-          floatinglabeltext="Title"
           value={this.state.title || ''}
           onChange={this.handleChange}/>
-        
-         <br/>
-           <TextField
-            label="Body"
+           <span>{this.state.errors.title} </span>
+         </div>
+         <div className={classnames('field', {error: !!this.state.errors.body})}>
+         <label htmlFor="body">Body</label>
+           <input
+             name="body"
              type="text"
-             floatinglabeltext="Body"
              value={this.state.body || ''}
              onChange={this.handleChange}/>
-            
-           <br/>
-           </CardContent>
-           <CardActions>
-           <Button label="Submit" primary="true" className="style"> Submit</Button>
-           <Link to="/candidate" className="backtoList"><Button> Back to List Page </Button></Link>
-                     
-          </CardActions>
+              <span>{this.state.errors.body} </span>
+           </div>
+           <button label="Submit" primary="true"> Submit</button>
+           <Link to="/candidate" className="backtoList"><Button> Back to List Page </Button></Link>          
           </form>
-       </Card>
+          </div>
        </Grid>
        
     </Grid>
-   
+    </div>
     )
   }
 }

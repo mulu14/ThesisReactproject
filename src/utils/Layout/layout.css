@@ -7,6 +7,14 @@
       height:100%;
     }
 
+
+.styleHeader {
+  display: 'flex';
+  padding: 0;
+  color:"#2c3345"; 
+  flex-direction: row; 
+}
+
     .flexContainer{
       color:"#2c3345";
       background-color: "#5486ff"; 
@@ -23,6 +31,9 @@
         padding: 0;
         color:"#2c3345"; 
     }
+    .styleHeader button{
+     border: none; 
+  }
 
     .container{
       min-height:100%;
@@ -38,6 +49,34 @@
   .Site-content {
     flex: 1;
   }
+
   .notification{
-    margin-left: 100px; 
+    margin-left: 300px; 
   }
+  
+
+
+  .notification li{
+    list-style: none; 
+    display: inline-block;
+    padding: 1em; 
+
+  }
+
+  .search{
+    margin-left: 400px; 
+    
+  }
+  .search li{
+    list-style: none; 
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center
+ }

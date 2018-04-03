@@ -1,34 +1,17 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import { Link} from 'react-router-dom';
 import List, { ListItem, ListItemIcon, ListItemText} from 'material-ui/List'
-import Chip from 'material-ui/Chip';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
 import Footer from './../../footer/Footer'
 import ConfigRoute from './../Routing/Routing'
 import Divider from 'material-ui/Divider';
-import {Add, Home, Dashboard, Notifications, AccountBox, LocalOffer, InsertInvitation, People, Business, Payment, KeyboardArrowRight} from 'material-ui-icons'
+import {Add, Home, Dashboard, Notifications, AccountCircle, LocalOffer, InsertInvitation, 
+  People, Business, Payment, KeyboardArrowRight, Search} from 'material-ui-icons'
 import './layout.css'
-
-
-
-const styleHeader = {
-  display: 'flex',
-  flexDirection: 'row',
-  padding: 0,
-  color:"#2c3345", 
-};
-
-
-
 class Layout extends Component {
 
   constructor(props){
@@ -44,26 +27,32 @@ class Layout extends Component {
   render(){
   return (
     <div className="root">
+
+    <div className="header">
       <Grid container spacing={8}>
         <Grid item xs={2}></Grid>
         <Grid item xs={10}>
         <AppBar position="static">
         <Toolbar>
-          <List style={styleHeader}>
-              <ListItem button component={Link} to='/profile'>
-              <ListItemIcon>{<AccountBox/>}</ListItemIcon>
-              <ListItemText primary="Account" />
-              </ListItem>  
-              <ListItem button component={Link} to='/login'>Login</ListItem>  
-            </List>
-           <List className="notification"> 
-             <ListItem> {<Notifications/>}</ListItem>
-           </List>
+           <ul className="styleHeader">
+              <Button component={Link} to='/profile'>{<AccountCircle />} Account</Button>  
+              <Button component={Link} to='/login'>Login</Button>  
+            </ul>
+            <ul className="search">
+            <li><input type="text"/>{<Search/>}</li>
+            </ul>
+           <ul className="notification"> 
+             <li> {<Notifications/>}</li>
+           </ul> 
         </Toolbar>
       
       </AppBar>
         </Grid>
-        <Grid item xs={2} children>
+        </Grid>
+        </div>
+        <div className="body">
+        <Grid container spacing={8}>
+        <Grid item xs={2} >
         <List  className="flexContainer">
           <ListItem  button component={Link} to="/" onClick={this.handleExpandClick}>
               <ListItemIcon>{<Dashboard/> }</ListItemIcon>
@@ -101,13 +90,16 @@ class Layout extends Component {
      
         </Grid>
 
-        <Grid item  xs={10} className="container" children>
+        <Grid item  xs={10} className="container">
         <ConfigRoute/>
         </Grid>
-        <Grid item  xs={12} className="footer" children>
+        </Grid>
+        </div>
+        <div className="footer">
+        <Grid item  xs={12} className="footer" >
          <Footer/>
         </Grid>
-      </Grid>
+        </div>
     </div>
   );
 }
