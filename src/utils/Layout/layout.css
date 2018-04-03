@@ -20,11 +20,7 @@
       background-color: "#5486ff"; 
     };
 
-    .footer {
-      position: fixed;
-      bottom: 0;
-      width: 25%;
-    }
+    
 
     .styleHeader{
         display: inline-block; 
@@ -40,18 +36,10 @@
       position:relative;
    }
 
-   .Site {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
   
-  .Site-content {
-    flex: 1;
-  }
 
   .notification{
-    margin-left: 300px; 
+    margin-left: 100px; 
   }
   
 

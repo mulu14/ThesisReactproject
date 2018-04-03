@@ -10,21 +10,28 @@ import Footer from './../../footer/Footer'
 import ConfigRoute from './../Routing/Routing'
 import Divider from 'material-ui/Divider';
 import {Add, Home, Dashboard, Notifications, AccountCircle, LocalOffer, InsertInvitation, 
-  People, Business, Payment, KeyboardArrowRight, Search} from 'material-ui-icons'
+  People, Business, Payment, KeyboardArrowRight, Search, KeyboardArrowDown} from 'material-ui-icons'
 import './layout.css'
 class Layout extends Component {
 
   constructor(props){
     super(props)
 
-  this.state = { expanded: false };
+  this.state = { isexpanded:
+     false };
   }
 
   handleExpandClick = () => {
-    this.setState({ expanded: !this.state.expanded });
+    this.setState({ isexpanded: !this.state.isexpanded });
   };
 
+
+
   render(){
+    const isexpanded = this.state.isexpanded
+
+    const buttonExpand = isexpanded? <KeyboardArrowRight/>: <KeyboardArrowDown/>
+    
   return (
     <div className="root">
 
@@ -56,7 +63,7 @@ class Layout extends Component {
         <List  className="flexContainer">
           <ListItem  button component={Link} to="/" onClick={this.handleExpandClick}>
               <ListItemIcon>{<Dashboard/> }</ListItemIcon>
-              <ListItemText primary="Dashbord" />
+              <ListItemText primary="Dashbord" />{buttonExpand}
           </ListItem>  
         <Divider />
           <ListItem button component={Link}  to="/">

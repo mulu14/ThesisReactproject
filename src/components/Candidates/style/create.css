@@ -1,17 +1,6 @@
-.container{
-    display: 'flex';
-    flex-wrap: 'wrap',
-}
 
-
-textField{
-    margin-left: 1em; 
-    margin-right: 1em; 
-    width: 150px; 
-}
-
-.style{
-    margin: 15; 
+.wrapper{
+    margin: 2em;
 }
 
 .form input {
@@ -25,8 +14,52 @@ textField{
     resize: vertical 
   }
 
-  .container {
+
+.container {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+}
+
+
+.colm-1 li{
+ list-style: none;
+ padding: 0.5em;
+}
+
+.colm-1 label {
+margin-left: .5em;
+padding-left: 2em;
+}
+
+.benifits div{
+    display: inline-block; 
+    width: 33%; 
+}
+
+.benifits li{
+    width: 300px; 
+}
+
+
+.colm-2 li{
+    list-style: none;
+    padding: 0.5em;
+   }
+
+
+.colm-2 label {
+    margin-left: .5em;
+    padding-left: 2em;
+}
+
+
+.colm-3 li{
+    list-style: none;
+    padding: 0.5em;
+   }
+
+.colm-3 label {
+    margin-left: .5em;
+    padding-left: 2em;
 }

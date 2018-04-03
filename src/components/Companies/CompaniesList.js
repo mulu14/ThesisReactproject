@@ -15,6 +15,7 @@ import Footer from './../../footer/Footer'
 import Divider from 'material-ui/Divider';
 import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import './style/company.css'
+import CreateCompany from './CreateCompany'
 
 
 export default class CompaniesList extends Component {
@@ -29,11 +30,8 @@ export default class CompaniesList extends Component {
              </div>
 		   <div className="content">
            <Grid container spacing={8}> 
-
-                <form>
-                
-                </form>
-                </Grid>
+                <CreateCompany/>
+            </Grid>
            </div>
 		    <div>
             <Grid container spacing={8}>
