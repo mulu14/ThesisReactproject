@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
+import {FileUpload} from 'material-ui-icons'
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import './style/create.css'
+import image1 from './../../images/image1.jpg'
+import image2 from './../../images/image2.jpg'
+import image3 from './../../images/image3.jpg'
+import image4 from './../../images/image4.jpg'
+
+
+
+
 
 
 class CreateCompany extends Component{
@@ -20,7 +30,7 @@ class CreateCompany extends Component{
             return(
 
              <div className="wrapper">
-	        	<div id="header">
+	        	<div className="header">
                 <Grid container spacing={8}> 
                 </Grid>
              </div>
@@ -28,26 +38,32 @@ class CreateCompany extends Component{
            <Grid container spacing={8}> 
            <div>
             <form>
+          
                 <div className="form">  
                     <div>
-                        <label> First name: </label>
-                        <input type="text" name="name" />
+                    <div>
+                        <label>Company name</label>
+                        <input type="email" name="companyname" />
+                    </div>
+                        <label> First name</label>
+                        <input type="text" name="firstname" />
                         </div>
                     <div>
-                        <label>Last name:</label>
-                        <input type="text" name="name" />
+                        <label>Last name</label>
+                        <input type="text" name="lastname" />
                     </div>
                     <div>
-                        <label>Email:</label>
-                        <input type="email" name="name" />
+                        <label>Email</label>
+                        <input type="email" name="email" />
                     </div>
                     <div>
-                        <label>Phone:</label>
-                        <input type="number" name="name" />
+                        <label>Phone</label>
+                        <input type="number" name="phonennumber" />
                     </div>
                     <div>
                     </div>   
                     </div>
+             
                     <div className="benifits">
                         <p> What kinds of benefits do you offers?</p>
                      <div>
@@ -89,9 +105,49 @@ class CreateCompany extends Component{
                         </div>
                                             
                      <div> 
-                       <button type="submit">Subscribe</button>
-                       </div>
+                         <div> 
+                             <p> Indicate other benefits that may arise intrest from Candidates </p>
+                          <textarea rows="10" cols="100">
+                    
+                           </textarea>
+                         </div>
+                         <div> 
+                             <ul className="officeLayout">
+                                
+                                <div>
+                                 <Card>
+                                 <img  src={image1} alt="Working enviroment"/>    
+                                 <li>  <FileUpload/></li>
+                                 </Card>
+                                 </div>
+                                 <div>
+                                 <Card>
+                                 <img src={image2} alt="Working enviroment"/>
+                                 <li>  <FileUpload/></li>
+                                 </Card>
+                                 </div>
+                                 <div>
+                                 <Card>
+                                 <img  src={image3} alt="Working enviroment"/>
+                                 <li> <FileUpload/></li>
+                                 </Card>
+                                 </div>
+                                 <div>
+                                 <Card>
+                                 <img src={image4} alt="Working enviroment"/>
+                                 <li><FileUpload/> </li>
+                                 </Card>
+                                 </div>                                     
+                            </ul>
+                         </div>
+                         <div> 
+                         
+                         <button type="submit">Create Account</button>
+                         </div>
+                       
+                    </div>
             </form>
+           
             </div>
                 </Grid>
            </div>

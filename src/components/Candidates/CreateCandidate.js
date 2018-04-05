@@ -24,10 +24,13 @@ class CreateCandidate extends Component {
     super (props)
 
     this.state ={
-      userId: '',
-      id: '', 
-      title: '', 
-      body: '', 
+      profile: {
+        id: '', 
+        title: '', 
+        body: '',
+        userId: ''
+      },
+      
       errors: {
 
       }
@@ -47,36 +50,33 @@ class CreateCandidate extends Component {
   
   componentWillReceiveProps(nextProps) {
     if (this.props.candidate.id != nextProps.candidate.id) {
-      this.setState({userId: nextProps.candidate.userId, 
-        id: nextProps.candidate.id, 
-        title: nextProps.candidate.title,
-        body: nextProps.candidate.body}
+      this.setState({profile: nextProps.candidate}
       );
     }
   }
 
-  updateCatState(event) {
-    const field = event.target.name;
-    const candidate = this.state.candidate;
-    candidate[field] = event.target.value;
-    return this.setState({candidate: candidate});
-  }
 
-  handleChange(e) {
-    this.setState({[e.target.name] : e.target.value})
-  }
+
+ handleChange(e) {
+  let inputName = e.target.name;
+  let inputValue = e.target.value;
+  let copyState = Object.assign({}, this.state);
+  copyState.profile[inputName] = inputValue;
+  this.setState(copyState);
+}
+
 
   handleSubmit(e) {
-    console.log('A name was submitted: ' + this.state.title);
+    console.log('A name was submitted: ' + this.state.profile.title);
     e.preventDefault();
 
     let errors = {}; 
-    if(this.state.title =='')errors.title ="Title can not to be empty"; 
-    if(this.state.userId =='')errors.title ="userId can not to be empty"; 
-    if(this.state.id =='')errors.title ="Id can not to be empty"; 
-    if(this.state.body =='')errors.title ="Body can not to be empty"; 
-
+    if(this.state.profile.title =='')errors.title ="Title can not to be empty"; 
+    if(this.state.profile.userId =='')errors.title ="userId can not to be empty"; 
+    if(this.state.profile.id =='')errors.title ="Id can not to be empty"; 
+    if(this.state.profile.body =='')errors.title ="Body can not to be empty"; 
     this.setState({errors})
+    return this.props.updateCandidate(this.state.profile);  
   }
 
   render() {
@@ -90,7 +90,7 @@ class CreateCandidate extends Component {
         <label htmlFor="userId">UserId</label>
         <input
           name="userId"
-          value={this.state.userId || ''}
+          value={this.state.profile.userId || ''}
           onChange={this.handleChange}/>
            <span>{this.state.errors.userId} </span>
          </div>
@@ -98,7 +98,7 @@ class CreateCandidate extends Component {
          <label htmlFor="id">Id</label>
          <input
           name="id"
-          value={this.state.id || ''}
+          value={this.state.profile.id || ''}
           onChange={this.handleChange}
           />
           <span>{this.state.errors.id} </span>
@@ -108,7 +108,7 @@ class CreateCandidate extends Component {
          <input
           name="title"
           type="text"
-          value={this.state.title || ''}
+          value={this.state.profile.title || ''}
           onChange={this.handleChange}/>
            <span>{this.state.errors.title} </span>
          </div>
@@ -117,7 +117,7 @@ class CreateCandidate extends Component {
            <input
              name="body"
              type="text"
-             value={this.state.body || ''}
+             value={this.state.profile.body || ''}
              onChange={this.handleChange}/>
               <span>{this.state.errors.body} </span>
            </div>

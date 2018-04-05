@@ -1,11 +1,11 @@
 
-    .root{
-      flex-grow: 1; 
-      margin-top: 0;
-      margin:0;
-      padding:0;
-      height:100%;
-    }
+.root{
+  flex-grow: 1; 
+  margin-top: 0;
+  margin:0;
+  padding:0;
+  height:100%;
+}
 
 
 .styleHeader {
@@ -15,30 +15,31 @@
   flex-direction: row; 
 }
 
-    .flexContainer{
-      color:"#2c3345";
-      background-color: "#5486ff"; 
-    };
+
+.flexContainer{
+  color:"#2c3345";
+  background-color: "#5486ff"; 
+};
 
     
-
-    .styleHeader{
-        display: inline-block; 
-        padding: 0;
-        color:"#2c3345"; 
+.styleHeader{
+  display: inline-block; 
+  padding: 0;
+  color:"#2c3345"; 
     }
-    .styleHeader button{
-     border: none; 
+
+ .styleHeader button{
+    border: none; 
   }
 
-    .container{
-      min-height:100%;
-      position:relative;
+ .body{
+    min-height:100%;
+    position:relative;
    }
 
   
 
-  .notification{
+ .notification{
     margin-left: 100px; 
   }
   
@@ -57,14 +58,18 @@
   }
   .search li{
     list-style: none; 
+    display: inline-block
   }
 
   .footer {
-    position: fixed;
+    position: relative;
+    clear: both; 
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center
+    height: 180px;
+ }
+ 
+ .loginform li{
+  list-style: none; 
  }

@@ -16,9 +16,9 @@ function CandidateList(props) {
               <TableRow>
                 <TableCell>{props.title}</TableCell>
                 <TableCell><Link to={`/candidate/edit/${props.id}`} ><Button>{<Edit/>} </Button></Link></TableCell>
-                <TableCell><Button onClick={props.handleClick}>></Button>{<Add/>}</TableCell>
+                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)}></Button>{<Add/>}</TableCell>
                 <TableCell> <Link to={`/candidate/view/${props.id}`} ><Button>{<ViewModule/>} </Button></Link></TableCell>
-                <TableCell><Button onClick={props.handleClick}>{<Delete/>}</Button></TableCell>
+                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)}>{<Delete/>}</Button></TableCell>
               </TableRow>
   );
 }

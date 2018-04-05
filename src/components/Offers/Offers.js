@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 
 
 
@@ -6,11 +7,16 @@ import React, { Component } from 'react'
 export default class Offeres extends Component {
   render() {
     return (
-      <div className="offeres">
-        <h1> Here is the Offere page</h1>
-  
-        
-      </div>
+      <div className="root">
+                <div  className="header"> </div>
+                <div className="body">
+                 <Card className="placeholder"> </Card>
+                 </div>
+
+                <div className="footer"> </div>
+
+
+            </div>
     )
   }
 }

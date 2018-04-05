@@ -11,13 +11,13 @@ export default function candidateReducer(state = initialState, action) {
       }
       CREATE_NEW_CANDIDATE: 
       return{
-        ...state, 
+        ...state,
         createNewCandidate: action.candidate
       }
       UPDATE_CANDIDATE: 
       return {
           ... state,
-          candidates: state.candidates.map(candidate => candidate.id === action.data.id ? candidate : action.data),  
+          candidates: state.candidates.map(candidate => candidate.id === action.data.id ? candidate : action.data)  
       }
       DELETE_CANDIDATE: 
       return{

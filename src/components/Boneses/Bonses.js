@@ -1,5 +1,5 @@
 import React, {Component}from 'react'
-
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 
 
 
@@ -7,9 +7,17 @@ export default class Bonses extends Component{
     render(){
 
         return(
-            <div className="bones-class"> 
-                <h1> Bones Page </h1>
-            </div>
+            <div className="root">
+            <div  className="header"> </div>
+            <div className="body">
+             <Card className="placeholder"> </Card>
+             </div>
+
+            <div className="footer"> </div>
+
+
+        </div>
+            
         )
     }
 

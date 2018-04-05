@@ -14,6 +14,7 @@ const Footer =(props) =>{
     <BottomNavigation style={{
       backgroundColor: "#2C395A", 
       marginBottom: 0,
+      height: 180
     }}>
         <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />

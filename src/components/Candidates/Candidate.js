@@ -26,7 +26,7 @@ class Candidate extends Component {
     }
 
 
-      deleteCandidate(id){
+    deleteCandidateAction =(id)=>{
           deleteCandidate(id)
       }
       
@@ -48,7 +48,7 @@ class Candidate extends Component {
                         key={profile.id}
                         title={profile.title}
                         id= {profile.id}
-                       // deleteCandidate={this.props.deleteCandidate}
+                        deleteCandidateAction={this.props.deleteCandidateAction}
                         />)
                     })  
                     }

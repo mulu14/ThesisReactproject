@@ -53,7 +53,7 @@ export function createNewCandidate(newCandidate){
 
 export function updateCandidate(newCandidate){
   return function (dispatch){
-    return fetch(API_URL, {
+    return fetch(API_URL + '/' + newCandidate.id, {
       method: 'PUT',
       body: JSON.stringify(newCandidate),
       headers: createHeaders

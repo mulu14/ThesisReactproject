@@ -10,43 +10,68 @@ import Footer from './../../footer/Footer'
 import ConfigRoute from './../Routing/Routing'
 import Divider from 'material-ui/Divider';
 import {Add, Home, Dashboard, Notifications, AccountCircle, LocalOffer, InsertInvitation, 
-  People, Business, Payment, KeyboardArrowRight, Search, KeyboardArrowDown} from 'material-ui-icons'
+  People, Business, Payment, KeyboardArrowRight, Search, KeyboardArrowDown} from 'material-ui-icons'; 
 import './layout.css'
 class Layout extends Component {
 
   constructor(props){
     super(props)
 
-  this.state = { isexpanded:
-     false };
+  this.state = { 
+    closedDashbord:true, 
+    closedHome: true,
+    closedCandidates: true,
+    closedOffers: true, 
+    closedBonses: true, 
+    closedInviation: true, 
+  
+  };
   }
 
   handleExpandClick = () => {
-    this.setState({ isexpanded: !this.state.isexpanded });
+    this.setState({ closedDashbord: !this.state.closedDashbord });
   };
 
 
 
-  render(){
-    const isexpanded = this.state.isexpanded
 
-    const buttonExpand = isexpanded? <KeyboardArrowRight/>: <KeyboardArrowDown/>
+/* <Button component={Link} to='/login'>Login</Button> */
+
+  render(){
+    const isclosed = this.state.closedDashbord
+
+    const buttonExpand = isclosed?  <KeyboardArrowRight/> : <KeyboardArrowDown/> 
+    
+    const showDashcontent = isclosed? null:  
+    <List> 
+       <ListItem> Link to page </ListItem>
+       <ListItem> Link to Offer </ListItem>
+       <ListItem> Link to Service </ListItem>
+    </List> 
+
+    const isopenDialog = this.state.opendialog; 
+  
+  
+
     
   return (
     <div className="root">
-
     <div className="header">
       <Grid container spacing={8}>
-        <Grid item xs={2}></Grid>
+        <Grid item xs={2}>
+        
+        </Grid>
         <Grid item xs={10}>
-        <AppBar position="static">
+        <AppBar position="static" className="appBar">
         <Toolbar>
            <ul className="styleHeader">
               <Button component={Link} to='/profile'>{<AccountCircle />} Account</Button>  
-              <Button component={Link} to='/login'>Login</Button>  
+              <Button component={Link} to='/login'>Login</Button> 
+            
             </ul>
             <ul className="search">
-            <li><input type="text"/>{<Search/>}</li>
+            <li><input type="text"/></li>
+            <li>{<Search/>}</li>
             </ul>
            <ul className="notification"> 
              <li> {<Notifications/>}</li>
@@ -64,7 +89,10 @@ class Layout extends Component {
           <ListItem  button component={Link} to="/" onClick={this.handleExpandClick}>
               <ListItemIcon>{<Dashboard/> }</ListItemIcon>
               <ListItemText primary="Dashbord" />{buttonExpand}
-          </ListItem>  
+          </ListItem> 
+
+          {showDashcontent}
+
         <Divider />
           <ListItem button component={Link}  to="/">
               <ListItemIcon>{<Home/>}</ListItemIcon>
@@ -96,6 +124,7 @@ class Layout extends Component {
       </List>
      
         </Grid>
+       
 
         <Grid item  xs={10} className="container">
         <ConfigRoute/>
