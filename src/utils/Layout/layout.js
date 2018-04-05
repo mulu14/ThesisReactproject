@@ -70,8 +70,7 @@ class Layout extends Component {
             
             </ul>
             <ul className="search">
-            <li><input type="text"/></li>
-            <li>{<Search/>}</li>
+            <li><input type="text"/><i class="material-icons">search</i></li>
             </ul>
            <ul className="notification"> 
              <li> {<Notifications/>}</li>

@@ -14,8 +14,6 @@ import Paper from 'material-ui/Paper';
 import { withRouter, Route } from 'react-router-dom';
 
 
-
-
 class Candidate extends Component {
     constructor (props){
         super (props)
@@ -57,13 +55,11 @@ class Candidate extends Component {
             </Paper>
                 
             )
-
         }
 
         return (
-        <Grid> 
+        <Grid container spacing={8}> 
             {listcandidate()}  
-       
         </Grid>
         );
     }

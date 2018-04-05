@@ -1,10 +1,8 @@
 import {requestProfile, receiveProfile, updateCandidat, requestIndividualCandidate, createnewCandidate,deleteCandidateAction}  from './createAction/createactions'
 import axios from 'axios'; 
 import fetch from 'cross-fetch' 
-import data from './../store/candidate.json'
-//const API_URL = 'https://api.myjson.com/bins/10ubtz';   
+import data from './../store/candidate.json' 
 const API_URL ='https://jsonplaceholder.typicode.com/posts'; 
-const API_SINGLE = ''; 
 
 var httpHeaders = { 'Content-Type' : 'application/json', 'Accept-Charset' : 'utf-8'};
 var createHeaders = new Headers(httpHeaders);

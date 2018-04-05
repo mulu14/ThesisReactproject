@@ -21,13 +21,13 @@ class ViewCandidate extends Component{
     if(this.props.match.params){
       const { id } = this.props.match.params;
       this.props.feachSingleCandidate(id); 
-    }
-   
+    } 
   }
 
   render(){
   return (
     <div>
+      <div>
       <Card className="card">
         <CardContent>
           <Typography gutterBottom variant="headline" component="h1">
@@ -47,6 +47,10 @@ class ViewCandidate extends Component{
           <Button size="small" color="primary">Edit</Button>
         </CardActions>
       </Card>
+      </div>
+      <div>
+        <Card className="placeholder"> </Card>
+      </div>
     </div>
   );
 }
