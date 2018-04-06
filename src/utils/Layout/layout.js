@@ -9,8 +9,9 @@ import Button from 'material-ui/Button';
 import Footer from './../../footer/Footer'
 import ConfigRoute from './../Routing/Routing'
 import Divider from 'material-ui/Divider';
+import Badge from 'material-ui/Badge';
 import {Add, Home, Dashboard, Notifications, AccountCircle, LocalOffer, InsertInvitation, 
-  People, Business, Payment, KeyboardArrowRight, Search, KeyboardArrowDown} from 'material-ui-icons'; 
+  People, Business, Payment, KeyboardArrowRight, Search, KeyboardArrowDown, Email} from 'material-ui-icons'; 
 import './layout.css'
 class Layout extends Component {
 
@@ -24,6 +25,9 @@ class Layout extends Component {
     closedOffers: true, 
     closedBonses: true, 
     closedInviation: true, 
+    notification: 10, 
+    emailnotification: 5, 
+    notificationUrgent : 4
   
   };
   }
@@ -73,7 +77,9 @@ class Layout extends Component {
             <li><input type="text"/><i class="material-icons">search</i></li>
             </ul>
            <ul className="notification"> 
-             <li> {<Notifications/>}</li>
+             <li> <Button size="small"> <Badge  badgeContent={this.state.notificationUrgent } color="secondary"> {<Notifications/>} </Badge></Button></li>
+             <li> <Button size="small"><Badge badgeContent={this.state.notification} color="error"> {<Notifications/>} </Badge></Button></li>
+             <li> <Button size="small"><Badge badgeContent={this.state.emailnotification}  color="secondary"> {<Email/>} </Badge></Button></li>
            </ul> 
         </Toolbar>
       
