@@ -19,7 +19,7 @@ export const success =(user) => {
 export const failure =(error) =>{
      return { 
          type: LOGIN_FAILURE, 
-         error: error
+         error: 'Invalid email or password'
         } 
 }
 

@@ -16,6 +16,9 @@ const initialState = {
     candidateNotPublished: null, 
     companyPublished: null, 
     companyWaitingApproval: null, 
+    loggingIn: '',
+    error: ''
+
     
 
   }

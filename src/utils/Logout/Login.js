@@ -26,6 +26,16 @@ class Login extends Component {
 
     }
 
+    errorMessage() {
+        if (this.props.errorMessage) {
+          return (
+            <div className="info-red">
+              {this.props.errorMessage}
+            </div>
+          );
+        }
+      }
+
     render() {
         return(
             <div className="root">

@@ -50,6 +50,9 @@
   .notification li:hover{
     cursor: pointer;
   }
+  .notificationButton{
+    border: none; 
+  }
 
   .search{
     margin-left: 400px; 
@@ -58,9 +61,24 @@
   .search li{
     list-style: none; 
     display:inline-block; 
-    border: dotted;
-    margin-bottom: 5px
+   
+
   }
+  .searchInput{
+    width: 250px; 
+    border: white
+  }
+  .icon {
+    position: relative;
+    top: 8px;
+    margin-bottom: 1px;
+    border: white; 
+    left: 0px;
+    color: black; 
+    background: white; 
+    height: 23px; 
+    cursor: pointer; 
+   }
  
 
   .footer {
@@ -75,3 +93,4 @@
  .loginform li{
   list-style: none; 
  }
+ 

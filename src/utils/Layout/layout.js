@@ -74,10 +74,11 @@ class Layout extends Component {
             
             </ul>
             <ul className="search">
-            <li><input type="text"/><i class="material-icons">search</i></li>
+            <li><input type="text" name="search" placeholder="Search...." className="searchInput"/></li>
+            <li className="icon">{<Search/>} </li>
             </ul>
            <ul className="notification"> 
-             <li> <Button size="small"> <Badge  badgeContent={this.state.notificationUrgent } color="secondary"> {<Notifications/>} </Badge></Button></li>
+             <li> <Button disableFocusRipple className="notificationButton" size="small"> <Badge  badgeContent={this.state.notificationUrgent } color="secondary"> {<Notifications/>} </Badge></Button></li>
              <li> <Button size="small"><Badge badgeContent={this.state.notification} color="error"> {<Notifications/>} </Badge></Button></li>
              <li> <Button size="small"><Badge badgeContent={this.state.emailnotification}  color="secondary"> {<Email/>} </Badge></Button></li>
            </ul> 
