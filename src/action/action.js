@@ -2,7 +2,8 @@ import {requestProfile, receiveProfile, updateCandidat, requestIndividualCandida
 import axios from 'axios'; 
 import fetch from 'cross-fetch' 
 import data from './../store/candidate.json' 
-const API_URL ='https://jsonplaceholder.typicode.com/posts'; 
+//const API_URL ='https://jsonplaceholder.typicode.com/posts'; 
+const API_URL = "https://5acee7894e5b600014a101b3.mockapi.io/api/candidates"; 
 
 var httpHeaders = { 'Content-Type' : 'application/json', 'Accept-Charset' : 'utf-8'};
 var createHeaders = new Headers(httpHeaders);

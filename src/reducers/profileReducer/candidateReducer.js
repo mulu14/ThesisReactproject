@@ -1,13 +1,13 @@
-import initialState from './../../state/initialState'
+
 import { RECEIVE_PROFILE, CREATE_NEW_CANDIDATE , UPDATE_CANDIDATE,  DELETE_CANDIDATE} from './../../action/actionTypes'
 
 
-export default function candidateReducer(state = initialState, action) {  
+export default function candidateReducer(state = {}, action) {  
     switch(action.type) {
       case RECEIVE_PROFILE:
       return {
         ...state, 
-        candidates: action.data.slice(0, 12)
+        candidates: action.data.items
       }
       CREATE_NEW_CANDIDATE: 
       return{

@@ -3,7 +3,7 @@ import initialState from './../../state/initialState'
 
 
 
-export function authentication(state = initialState, action) {
+export function authentication(state = {}, action) {
     switch (action.type) {
       case LOGIN_REQUEST:
         return {

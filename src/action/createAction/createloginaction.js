@@ -1,22 +1,21 @@
-import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE }  from './../actionTypes'
+import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT }  from './../actionTypes'
 
 
-
-export  const request =(user) => { 
+export  const loginrequest =(user) => { 
     return { 
     type: LOGIN_REQUEST, 
     user: user
     } 
 }
     
-export const success =(user) => {
+export const loginsuccess =(user) => {
      return {
         type: LOGIN_SUCCESS,
         user: user
     } 
 }
 
-export const failure =(error) =>{
+export const loginfailure =(error) =>{
      return { 
          type: LOGIN_FAILURE, 
          error: 'Invalid email or password'

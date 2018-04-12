@@ -10,6 +10,7 @@ import Login from './../Logout/Login';
 import Home  from './../../components/Home'
 import ViewCandidate  from './../../components/Candidates/ViewCandidate'
 import CreateCandidate  from './../../components/Candidates/CreateCandidate'
+import  RegisterUser  from './../../utils/RegisterUser/userRegister'
 
 
   const ConfigRoute = (props) => {
@@ -24,6 +25,7 @@ import CreateCandidate  from './../../components/Candidates/CreateCandidate'
                   <Route path="/bones" component={Bonses}/>
                   <Route path="/login" component={Login}/>
                   <Route path="/profile" component={Profile}/>
+                  <Route path="/signin" component={RegisterUser}/>
                   <Route path="/invitation" component={Invitations}/>
         </Switch>
 

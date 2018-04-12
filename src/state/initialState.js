@@ -9,6 +9,7 @@ const initialState = {
       title: '',
       body: ''
     }, 
+    
     isFetching: false,
     didInvalidate: false,
     candidateWaitingApproval: null, 
@@ -17,8 +18,14 @@ const initialState = {
     companyPublished: null, 
     companyWaitingApproval: null, 
     loggingIn: '',
-    error: ''
-
+    error: '',
+     user: {
+     email: '',
+     password: ''
+     }, 
+     message :'',
+     loading: '',
+     logout : '',
     
 
   }

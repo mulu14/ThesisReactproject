@@ -67,7 +67,7 @@ class CreateCandidate extends Component {
 
 
   handleSubmit(e) {
-    console.log('A name was submitted: ' + this.state.profile.title);
+    //console.log('A name was submitted: ' + this.state.profile.title);
     e.preventDefault();
 
     let errors = {}; 

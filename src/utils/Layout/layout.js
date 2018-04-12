@@ -27,7 +27,7 @@ class Layout extends Component {
     closedInviation: true, 
     notification: 10, 
     emailnotification: 5, 
-    notificationUrgent : 4
+    notificationUrgent : 4, 
   
   };
   }
@@ -38,12 +38,13 @@ class Layout extends Component {
 
 
 
-
-/* <Button component={Link} to='/login'>Login</Button> */
-
   render(){
-    const isclosed = this.state.closedDashbord
 
+    let user = JSON.parse(localStorage.getItem('user'));
+   
+    console.log(user); 
+    const isclosed = this.state.closedDashbord
+     
     const buttonExpand = isclosed?  <KeyboardArrowRight/> : <KeyboardArrowDown/> 
     
     const showDashcontent = isclosed? null:  
@@ -54,9 +55,9 @@ class Layout extends Component {
     </List> 
 
     const isopenDialog = this.state.opendialog; 
-  
-  
 
+    const islogin = user != null?  <Button component={Link} to='/login'>Login</Button> : <Button component={Link} to='/signin'>Sign in</Button> 
+  
     
   return (
     <div className="root">
@@ -70,7 +71,7 @@ class Layout extends Component {
         <Toolbar>
            <ul className="styleHeader">
               <Button component={Link} to='/profile'>{<AccountCircle />} Account</Button>  
-              <Button component={Link} to='/login'>Login</Button> 
+               {islogin}
             
             </ul>
             <ul className="search">

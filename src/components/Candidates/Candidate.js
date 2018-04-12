@@ -44,7 +44,7 @@ class Candidate extends Component {
                        return(
                        <CandidateList
                         key={profile.id}
-                        title={profile.title}
+                        firstName={profile.account.firstName}
                         id= {profile.id}
                         deleteCandidateAction={this.props.deleteCandidateAction}
                         />)

@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
-
+import { connect } from 'react-redux'
+import { withRouter} from 'react-router-dom';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import { Field, reduxForm } from 'redux-form';
+import {login} from './../../action/logaction'
 import './login.css'
 
 
@@ -13,17 +15,37 @@ class Login extends Component {
         super(props)
 
         this.state ={
-
+          user:{
+            email: '', 
+            password: ''
+          }
+         
         }
+
         this.handleSubmit = this.handleSubmit.bind(this); 
     }
 
     submit = (values) => {
         console.log(values);
       }
-      
-    handleSubmit =()=>{
 
+      handleChange(e) {
+        let inputName = e.target.name;
+        let inputValue = e.target.value;
+        let copyState = Object.assign({}, this.state);
+        copyState.user[inputName] = inputValue;
+        this.setState(copyState);
+    }
+
+      
+      handleSubmit(e) {
+        e.preventDefault();
+ 
+        this.setState({ submitted: true });
+        const { email, password } = this.state;
+        if (email && password) {
+           this.props.login(email, password); 
+        }
     }
 
     errorMessage() {
@@ -48,18 +70,18 @@ class Login extends Component {
            <form className="formlogin" onSubmit={this.handleSubmit}>
               <ul>
                 <div>
-                <Field name="email"
-                  component="input"
+                <input name="email"
                   type="text"
-                  placeholder="Email" 
+                  placeholder="Email"
+                  onChange={this.handleChange} 
                  />
                 </div>
                 <div> 
-                <Field name="password" 
-                  component="input"
+                <input name="password" 
                   type="password" 
                   placeholder="Password" 
-                 />
+                  onChange={this.handleChange}
+                  />
                 </div>
                 <CardActions>
                 <div className="loginButton"> 
@@ -84,8 +106,15 @@ class Login extends Component {
     
 }
 const mapStateToProps = (state)=>{
-    return { errorMessage: state.auth.error };
+    return { 
+      user : state.auth.user,
+      errorMessage: state.alertNotification.error 
+    };
   }
-export default reduxForm({
-    form: 'signin'
-  })(Login);
+
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      login:(email, password) =>dispatch(login(email, password))
+    }
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Login));  

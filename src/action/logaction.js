@@ -1,27 +1,44 @@
-import { request,  success, failure } from './createAction/createloginaction'
+import { loginrequest,  loginsuccess, loginfailure } from './createAction/createloginaction'
+import {signinrequest,  signinsuccess, signinfailure } from './createAction/signinaction'
+import {messagesuccess, messaageerror, messageclear}  from './createAction/alertaction'
+import {userService}  from './../services/logservice'
 
 
 
-const URL = 'http://www.sample-website.com';
 
-function login(username, password) {
+export function login(email, password) {
     return dispatch => {
-        dispatch(request({ username }));
-        return  fetch(URL, {
-                method: 'post',
-                body: JSON.stringify({username: username, password: password})
-            })
+        dispatch(loginrequest({ email }));
+        userService.login(email, password)
             .then(
                 user => {
-                    dispatch(success(user));
-                    localStorage.setItem('user', res.data.token);
-                    history.push('/');
+                    dispatch(loginsuccess(user));
+                    localStorage.setItem('user', user.data.token);
+                   // history.push('/');
                 },
                 error => {
-                    dispatch(failure(error));
-                    dispatch(alertActions.error(error));
+                    dispatch(loginfailure(error));
+                    dispatch(messaageerror(error));
                 }
             );
     };
 }
 
+export function register(user) {
+    return dispatch => {
+        dispatch(signinrequest(user));
+        userService.register(user)
+            .then(
+                user => {
+                    dispatch(signinsuccess());
+                   // history.push('/login');
+                    dispatch(messagesuccess('Registration successful'));
+                },
+                error => {
+                    dispatch(signinfailure(error));
+                    dispatch(messaageerror(error));
+                }
+            );
+    };
+ 
+}
