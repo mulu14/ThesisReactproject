@@ -69,20 +69,26 @@ class Layout extends Component {
         <Grid item xs={10}>
         <AppBar position="static" className="appBar">
         <Toolbar>
+          <div className="layoutheader">
            <ul className="styleHeader">
               <Button component={Link} to='/profile'>{<AccountCircle />} Account</Button>  
                {islogin}
             
             </ul>
+            </div>
+            <div className="layoutheader">
             <ul className="search">
-            <li><input type="text" name="search" placeholder="Search...." className="searchInput"/></li>
-            <li className="icon">{<Search/>} </li>
+            <li><input type="text" name="search" placeholder="Search...." className="searchInput"/>
+            <button className="material-icons">search</button></li>
             </ul>
+            </div>
+            <div className="layoutheader">
            <ul className="notification"> 
              <li> <Button disableFocusRipple className="notificationButton" size="small"> <Badge  badgeContent={this.state.notificationUrgent } color="secondary"> {<Notifications/>} </Badge></Button></li>
              <li> <Button size="small"><Badge badgeContent={this.state.notification} color="error"> {<Notifications/>} </Badge></Button></li>
              <li> <Button size="small"><Badge badgeContent={this.state.emailnotification}  color="secondary"> {<Email/>} </Badge></Button></li>
            </ul> 
+           </div>
         </Toolbar>
       
       </AppBar>

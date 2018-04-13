@@ -24,13 +24,88 @@ class CreateCandidate extends Component {
     super (props)
 
     this.state ={
-      profile: {
-        id: '', 
-        title: '', 
-        body: '',
-        userId: ''
+      account: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '', 
+        },
+      expectedSalary: '', 
+      headline: '',
+      topSkills: [ 
+        {
+        experience: '', 
+        title: ''
+      }, 
+      {
+        experience: '', 
+        title: ''
       },
-      
+      {
+        experience: '', 
+        title: ''
+      },
+      {
+        experience: '', 
+        title: ''
+      },
+      {
+        experience: '', 
+        title: ''
+      }
+    ],
+    skills: [
+      {
+        title: ''
+      }, 
+      {
+        title: ''
+      }, 
+    ], 
+    benefits: [
+        {
+          title: '', 
+        }, 
+        {
+          title: '', 
+        },
+        {
+          title: '', 
+        },
+        {
+          title: '', 
+        },
+        {
+          title: '', 
+        }
+
+    ],
+    workExperiences: [
+
+          {
+            title: '', 
+            experience: '', 
+          },
+          {
+            title: '', 
+            experience: '', 
+          },
+        
+    ],
+
+    projectExperiences: [
+      {
+
+      },
+      {
+
+      }
+    ],
+    educations: [
+      {
+        fieldOfStudy:  ''
+      }
+    ], 
       errors: {
 
       }
@@ -61,7 +136,7 @@ class CreateCandidate extends Component {
   let inputName = e.target.name;
   let inputValue = e.target.value;
   let copyState = Object.assign({}, this.state);
-  copyState.profile[inputName] = inputValue;
+  copyState.account[inputName] = inputValue;
   this.setState(copyState);
 }
 
@@ -71,63 +146,284 @@ class CreateCandidate extends Component {
     e.preventDefault();
 
     let errors = {}; 
-    if(this.state.profile.title =='')errors.title ="Title can not to be empty"; 
-    if(this.state.profile.userId =='')errors.title ="userId can not to be empty"; 
-    if(this.state.profile.id =='')errors.title ="Id can not to be empty"; 
-    if(this.state.profile.body =='')errors.title ="Body can not to be empty"; 
+    if(this.state.account.firstName =='')errors.firstName ="Title can not to be empty"; 
+    if(this.state.account.lastName =='')errors.lastName ="userId can not to be empty"; 
+    if(this.state.account.email =='')errors.email ="Id can not to be empty"; 
+    if(this.state.account.phone =='')errors.phone ="Body can not to be empty"; 
     this.setState({errors})
     return this.props.updateCandidate(this.state.profile);  
   }
-
   render() {
     return (
       <div>
-      <Grid container spacing={8}>
-      <Grid item xs={8}> 
-      <div className="container">
-      <form className="form" onSubmit={this.handleSubmit}>
-       <div className={classnames('field', {error: this.state.errors.userId})}>
-        <label htmlFor="userId">UserId</label>
-        <input
-          name="userId"
-          value={this.state.profile.userId || ''}
-          onChange={this.handleChange}/>
-           <span>{this.state.errors.userId} </span>
-         </div>
-         <div className={classnames('field', {error: !!this.state.errors.id})}>
-         <label htmlFor="id">Id</label>
-         <input
-          name="id"
-          value={this.state.profile.id || ''}
-          onChange={this.handleChange}
-          />
-          <span>{this.state.errors.id} </span>
-         </div>
-         <div className={classnames('field', {error: !!this.state.errors.title})}>
-         <label htmlFor="title">Title</label>
-         <input
-          name="title"
-          type="text"
-          value={this.state.profile.title || ''}
-          onChange={this.handleChange}/>
-           <span>{this.state.errors.title} </span>
-         </div>
-         <div className={classnames('field', {error: !!this.state.errors.body})}>
-         <label htmlFor="body">Body</label>
-           <input
-             name="body"
-             type="text"
-             value={this.state.profile.body || ''}
-             onChange={this.handleChange}/>
-              <span>{this.state.errors.body} </span>
+      
+      
+       <div className="container">
+       <form className="formCandidate" onSubmit={this.handleSubmit}>
+        <div className="userform">
+        <Grid container spacing={8}>
+          <Grid item xs={6}>
+          <div className="basicinformation">
+                <div className={classnames('field', {error: this.state.errors.firstName})}>
+                      <h4> Personal Information </h4>
+                      <label htmlFor="firstName">First Name</label>
+                        <input
+                        name="firstName"
+                        value={this.state.account.firstName || ''}
+                        onChange={this.handleChange}/>
+                        <span>{this.state.errors.firstName} </span>
+                </div>
+                      <div className={classnames('field', {error: !!this.state.errors.lastName})}>
+                      <label htmlFor="lastName">Last Name</label>
+                      <input
+                        name="lastName"
+                        value={this.state.account.lastName || ''}
+                        onChange={this.handleChange}
+                        />
+                        <span>{this.state.errors.lastName} </span>
+                            </div>
+                  <div className={classnames('field', {error: !!this.state.errors.email})}>
+                          <label htmlFor="email">Email</label>
+                          <input
+                            name="email"
+                            type="text"
+                            value={this.state.account.email || ''}
+                            onChange={this.handleChange}/>
+                            <span>{this.state.errors.email} </span>
+                  </div>
+                  <div className={classnames('field', {error: !!this.state.errors.phone})}>
+                        <label htmlFor="phone">Phone</label>
+                        <input
+                          name="phone"
+                          type="number"
+                          value={this.state.account.phone || ''}
+                          onChange={this.handleChange}/>
+                          <span>{this.state.errors.phone} </span>
+                  </div>
            </div>
+           </Grid>
+           <Grid item xs={3}>
+                    <br/>
+           <div>
+                  <h4> Expected Salary </h4>
+                    <div className={classnames('field', {error: !!this.state.errors.expectedSalary})}>
+                      <input
+                        name="expectedSalary"
+                        type="number"
+                        value={this.state.expectedSalary || ''}
+                        onChange={this.handleChange}/>
+                          <span>{this.state.errors.expectedSalary} </span>
+                      </div>
+            </div>
+                     <br/>
+            <div>
+                   <h4> Headline</h4>
+                    <div className={classnames('field', {error: !!this.state.errors.expectedSalary})}>
+                       
+                          <input
+                            name="headline"
+                            type="text"
+                            value={this.state.headline || ''}
+                            onChange={this.handleChange}/>
+                              <span>{this.state.errors.headline} </span>
+                    </div>
+             </div>
+             </Grid>
+                     <br/>
+           <Grid  item xs={6}>
+          <div>
+                  <h4> Top skills</h4>
+                        <div className="">
+                            <input
+                              name="headline"
+                              type="text"
+                              value=""
+                              onChange={this.handleChange}/>
+                              <span> </span>
+                        </div>
+                        <div className="">
+                          <input
+                            name="headline"
+                            type="text"
+                            value=""
+                            onChange={this.handleChange}/>
+                            <span> </span>
+                        </div>
+                        <div className="">
+                            <input
+                              name="headline"
+                              type="text"
+                              value=""
+                              onChange={this.handleChange}/>
+                              <span> </span>
+                        </div>
+                        <div className="">
+                          <input
+                            name="headline"
+                            type="text"
+                            value=""
+                            onChange={this.handleChange}/>
+                            <span> </span>
+                        </div>
+                        <div className="">
+                          <input
+                            name="headline"
+                            type="text"
+                            value=""
+                            onChange={this.handleChange}/>
+                          <span> </span>
+                        </div> 
+            </div>
+            </Grid>
+            <Grid xs={6}>
+                    <br/>
+            <div>
+                  <h4> Skills</h4>
+                        <div className="">
+                          <input
+                            name="headline"
+                            type="text"
+                            value=""
+                            onChange={this.handleChange}/>
+                            <span> </span>
+                      </div>
+                        <div className="">
+                          <input
+                            name="headline"
+                            type="text"
+                            value=""
+                            onChange={this.handleChange}/>
+                              <span> </span>
+                      </div>
+              </div>
+              </Grid>
+                      <br/>
+         
+                    <br/>
+            <Grid item xs={4}>
+            <div>
+                    <h4>  Project Experiences</h4>
+                    <div className="">
+                        <input
+                          name="headline"
+                          type="text"
+                          value=""
+                          onChange={this.handleChange}/>
+                        <span> </span>
+                    </div>
+            
+                    <div className="">
+                        <input
+                          name="headline"
+                          type="text"
+                          value=""
+                          onChange={this.handleChange}/>
+                        <span> </span>
+                   </div>
+          </div>
+          </Grid>
+                   <br/>
+          <Grid item xs={4}>
+          <div>
+                  <h4> Educations</h4>
+                  <div className="">
+                      <input
+                        name="headline"
+                        type="text"
+                        value=""
+                        onChange={this.handleChange}/>
+                      <span> </span>
+                  </div>
+                  <div className="">
+                      <input
+                        name="headline"
+                        type="text"
+                        value=""
+                        onChange={this.handleChange}/>
+                      <span> </span>
+                  </div>
+            </div>
+            </Grid>
+            <br/>
+           
+            <Grid  item xs={4}>
+           <div>
+                    <h4> Work Experiance</h4>
+                    <div className="">
+                        <input
+                          name="headline"
+                          type="text"
+                          value=""
+                          onChange={this.handleChange}/>
+                        <span> </span>
+                    </div>
+                    <div className="">
+                        <input
+                          name="headline"
+                          type="text"
+                          value=""
+                          onChange={this.handleChange}/>
+                        <span> </span>
+                    </div>
+            </div>
+            </Grid>
+            <Grid  item xs={6}>
+           <div>
+                    <h4> Benefits</h4>
+                        <div className="">
+                        <input
+                          name="headline"
+                          type="text"
+                          value=""
+                          onChange={this.handleChange}/>
+                            <span> </span>
+                        </div>
+                    <div className="">
+                        <input
+                          name="headline"
+                          type="text"
+                          value=""
+                          onChange={this.handleChange}/>
+                          <span> </span>
+                    </div>
+                    <div className="">
+                        <input
+                          name="headline"
+                          type="text"
+                          value=""
+                          onChange={this.handleChange}/>
+                          <span> </span>
+                    </div>
+                    <div className="">
+                        <input
+                          name="headline"
+                          type="text"
+                          value=""
+                          onChange={this.handleChange}/>
+                          <span> </span>
+                    </div>
+                    <div className="">
+                        <input
+                          name="headline"
+                          type="text"
+                          value=""
+                          onChange={this.handleChange}/>
+                        <span> </span>
+                    </div>
+           </div>
+           </Grid>
+            <Grid item xs={12}>
+
            <button label="Submit" primary="true"> Submit</button>
-           <Link to="/candidate" className="backtoList"><Button> Back to List Page </Button></Link>          
+           <Link to="/candidate" className="backtoList"><Button> Back to List Page </Button></Link> 
+           </Grid>
+           </Grid>
+           </div>         
           </form>
           </div>
-       </Grid>
+      
        
-    </Grid>
+   
     </div>
     )
   }

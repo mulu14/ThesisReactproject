@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 import {FileUpload} from 'material-ui-icons'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Chip from 'material-ui/Chip';
+import Avatar from 'material-ui/Avatar';
+
 import './style/create.css'
 import image1 from './../../images/image1.jpg'
 import image2 from './../../images/image2.jpg'
@@ -107,12 +110,11 @@ class CreateCompany extends Component{
                      <div> 
                          <div> 
                              <p> Indicate other benefits that may arise intrest from Candidates </p>
-                          <textarea rows="10" cols="100">
+                          <textarea rows="10" cols="152">
                     
                            </textarea>
                          </div>
-                         <div> 
-                             <ul className="officeLayout">
+                         <div className="officeLayout">
                                 
                                 <div>
                                  <Card>
@@ -120,28 +122,77 @@ class CreateCompany extends Component{
                                  <li>  <FileUpload/></li>
                                  </Card>
                                  </div>
-                                 <div>
+                                 <div className="marginfromLeft">
                                  <Card>
                                  <img src={image2} alt="Working enviroment"/>
                                  <li>  <FileUpload/></li>
                                  </Card>
                                  </div>
-                                 <div>
+                                 <div className="marginfromLeft">
                                  <Card>
                                  <img  src={image3} alt="Working enviroment"/>
                                  <li> <FileUpload/></li>
                                  </Card>
                                  </div>
-                                 <div>
+                                 <div className="marginfromLeft">
                                  <Card>
                                  <img src={image4} alt="Working enviroment"/>
                                  <li><FileUpload/> </li>
                                  </Card>
                                  </div>                                     
-                            </ul>
                          </div>
+                         <br/>
+                            <div> 
+                                <Card> 
+                                <CardContent>
+                                    <ul className="organizationInfo">
+                                       <div className="infoline"> 
+                                        <label> Organization nummber </label>
+                                        <input type="text"/>
+                                        </div>
+                                        <div className="infoline">
+                                        <label> Number of Employee</label>
+                                        <input type="number"/> 
+                                        </div>
+                                        <div>
+                                        <label> Company Official web </label>
+                                        <input  type="url"/>   
+                                        </div>                                                                           
+                                    </ul>
+                                    </CardContent>
+                                </Card>
+
+                            </div>
+                             <br/>
+                            <div> 
+                                <Card> 
+                                    <CardContent>
+                                        <label> Company Logo</label>
+                                        <input type="text"/>
+                                     </CardContent>
+                                </Card>
+
+                            </div>
+                        
                          <div> 
+                             <p> Company Description</p>
+                          <textarea rows="10" cols="152">
+                    
+                           </textarea>
+                         </div>
+                         <br/>
+                         <div>
+                             <p> What is included in teck Stack</p>
+                                <Chip label ={ 'Angular 2' }/> 
+                                <Chip label ={ 'Java' }/> 
+                                <Chip label ={ 'C' }/> 
+                                <Chip label ={ 'React' }/>   
+                                <Chip label ={ 'PHP' }/> 
+                             
+                        </div>
                          
+                         <div> 
+                         <br/>
                          <button type="submit">Create Account</button>
                          </div>
                        
