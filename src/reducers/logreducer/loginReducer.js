@@ -9,13 +9,14 @@ export function authentication(state = {}, action) {
         return {
           ...state,
           loggingIn: true,
-          user: action.user
+          user: action.user.message
         };
       case LOGIN_SUCCESS:
         return {
           ...state,
           loggedIn: true,
-          user: action.user
+          user: action.user.id, 
+          token: action.user.token
         };
       case LOGIN_FAILURE:
         return {

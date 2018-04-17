@@ -2,7 +2,7 @@
 export class CandidateModel {
     
     account =  {
-        firstName: '', 
+        firstName: 'Mulugeta', 
         lasttName: '',
         email: '',
         phone: '',

@@ -1,9 +1,10 @@
 import {requestProfile, receiveProfile, updateCandidat, requestIndividualCandidate, createnewCandidate,deleteCandidateAction}  from './createAction/createactions'
 import axios from 'axios'; 
 import fetch from 'cross-fetch' 
-import data from './../store/candidate.json' 
 //const API_URL ='https://jsonplaceholder.typicode.com/posts'; 
 const API_URL = "https://5acee7894e5b600014a101b3.mockapi.io/api/candidates"; 
+//const API_URL = "http://localhost:8080/candidates"; 
+
 
 var httpHeaders = { 'Content-Type' : 'application/json', 'Accept-Charset' : 'utf-8'};
 var createHeaders = new Headers(httpHeaders);
@@ -48,6 +49,7 @@ export function createNewCandidate(newCandidate){
     dispatch(createnewCandidate(data)))
   }
 }
+
 
 
 export function updateCandidate(newCandidate){

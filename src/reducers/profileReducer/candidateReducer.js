@@ -8,6 +8,7 @@ export default function candidateReducer(state = {}, action) {
       return {
         ...state, 
         candidates: action.data.items
+        //      candidates: action.data.items
       }
       CREATE_NEW_CANDIDATE: 
       return{

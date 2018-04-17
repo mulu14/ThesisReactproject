@@ -29,12 +29,13 @@ class RegisterUser extends Component {
     }
  
     handleSubmit(e) {
-        console.log(e.target.value)
+       
         e.preventDefault();
+        console.log(this.state.user); 
     
         if (this.state.user.email&& this.state.user.password) {
-            return this.props.register(this.state.user.email, this.state.user.password);
-        }
+            return this.props.register(this.state.user);
+        } 
     }
  
     render() {

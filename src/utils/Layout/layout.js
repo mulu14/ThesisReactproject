@@ -40,9 +40,10 @@ class Layout extends Component {
 
   render(){
 
-    let user = JSON.parse(localStorage.getItem('user'));
+    const user = localStorage.getItem('user'); 
    
     console.log(user); 
+    console.log(user!=null); 
     const isclosed = this.state.closedDashbord
      
     const buttonExpand = isclosed?  <KeyboardArrowRight/> : <KeyboardArrowDown/> 
@@ -56,8 +57,8 @@ class Layout extends Component {
 
     const isopenDialog = this.state.opendialog; 
 
-    const islogin = user != null?  <Button component={Link} to='/login'>Login</Button> : <Button component={Link} to='/signin'>Sign in</Button> 
-  
+    const islogin = user != null? <Button onClick={localStorage.removeItem('user')}> Logout </Button>: <Button component={Link} to='/login'>Login</Button> 
+    const isloginTrue = user != null? '':  <Button component={Link} to='/signin'>Sign in</Button> 
     
   return (
     <div className="root">
@@ -71,8 +72,10 @@ class Layout extends Component {
         <Toolbar>
           <div className="layoutheader">
            <ul className="styleHeader">
-              <Button component={Link} to='/profile'>{<AccountCircle />} Account</Button>  
-               {islogin}
+              <li> <Button component={Link} to='/profile'>{<AccountCircle />} Account</Button> </li>
+              <li>{islogin}</li>
+              <li> {isloginTrue} </li>
+   
             
             </ul>
             </div>

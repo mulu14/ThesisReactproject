@@ -6,11 +6,12 @@ import CompaniesList from './../../components/Companies/CompaniesList.js'
 import Offers from './../../components/Offers/Offers'
 import Invitations from './../../components/Invitations/Invitations'
 import Bonses from './../../components/Boneses/Bonses'
-import Login from './../Logout/Login';
+import Login from './../Login/Login';
 import Home  from './../../components/Home'
 import ViewCandidate  from './../../components/Candidates/ViewCandidate'
 import CreateCandidate  from './../../components/Candidates/CreateCandidate'
 import  RegisterUser  from './../../utils/RegisterUser/userRegister'
+import  {PrivateRoute} from './privateRoute'
 
 
   const ConfigRoute = (props) => {

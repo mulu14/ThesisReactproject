@@ -8,10 +8,10 @@ export  const loginrequest =(user) => {
     } 
 }
     
-export const loginsuccess =(user) => {
+export const loginsuccess =(data) => {
      return {
         type: LOGIN_SUCCESS,
-        user: user
+        user: data
     } 
 }
 

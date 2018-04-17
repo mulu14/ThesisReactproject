@@ -1,4 +1,4 @@
-import {authHeader} from './../helper/helper'
+import {authHeader} from './../helper/auth'
 export const userService = {
     login,
     logout,
@@ -6,6 +6,9 @@ export const userService = {
     register,
 };
 
+const URL_SIGNIN = 'http://localhost:8080/users/signup'; 
+const URL_LOGIN = 'http://localhost:8080/users/login'; 
+const URL_SINGL_USER = 'http://localhost:8080/users/'
  
 function login(email, password) {
     const requestOptions = {
@@ -14,20 +17,20 @@ function login(email, password) {
         body: JSON.stringify({ email, password })
     };
  
-    return fetch('/users/login', requestOptions)
+    return fetch(URL_LOGIN, requestOptions)
         .then(response => {
             if (!response.ok) {
                 return Promise.reject(response.statusText);
             }
- 
-            return response.json();
+          return response.json();
         })
         .then(user => {
             if (user && user.token) {
               
-                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('user', user.token);
+                console.log(user.token); 
              }
- 
+            
             return user;
         });
 }
@@ -46,7 +49,7 @@ function getById(id) {
         headers: authHeader()
     };
  
-    return fetch('/users/' + id, requestOptions).then(handleResponse);
+    return fetch(URL_SINGL_USER + id, requestOptions).then(handleResponse);
 }
 
 
@@ -57,7 +60,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
  
-    return fetch('/users/register', requestOptions).then(handleResponse);
+    return fetch(URL_SIGNIN, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

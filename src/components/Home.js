@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import  SideDrawer from './../utils/Sidebar/Sidebar'
 import Layout from './../utils/Layout/layout'
 import Grid from 'material-ui/Grid';
 

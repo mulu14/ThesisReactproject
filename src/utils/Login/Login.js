@@ -23,6 +23,7 @@ class Login extends Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this); 
+        this.handleChange = this.handleChange.bind(this); 
     }
 
     submit = (values) => {
@@ -40,11 +41,10 @@ class Login extends Component {
       
       handleSubmit(e) {
         e.preventDefault();
- 
-        this.setState({ submitted: true });
-        const { email, password } = this.state;
-        if (email && password) {
-           this.props.login(email, password); 
+       // console.log(this.state.user); 
+      
+        if (this.state.user.email && this.state.user.password) {
+           this.props.login(this.state.user.email, this.state.user.password); 
         }
     }
 
@@ -70,15 +70,19 @@ class Login extends Component {
            <form className="formlogin" onSubmit={this.handleSubmit}>
               <ul>
                 <div>
-                <input name="email"
+                <input 
+                  name="email"
                   type="text"
+                  value = {this.state.user.email}
                   placeholder="Email"
                   onChange={this.handleChange} 
                  />
                 </div>
                 <div> 
-                <input name="password" 
+                <input
+                   name="password" 
                   type="password" 
+                  value={this.state.user.password}
                   placeholder="Password" 
                   onChange={this.handleChange}
                   />
@@ -107,7 +111,6 @@ class Login extends Component {
 }
 const mapStateToProps = (state)=>{
     return { 
-      user : state.auth.user,
       errorMessage: state.alertNotification.error 
     };
   }

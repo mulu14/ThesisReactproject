@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
-import {Test} from './../../model/test'
+import {CandidateModel} from './../../model/candifateModel'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import classnames from 'classnames'; 
@@ -14,7 +14,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Button from 'material-ui/Button';
 import './style/create.css'
 import Typography from 'material-ui/Typography';
-import { Field, reduxForm, initialize } from 'redux-form';  
+import { Field, reduxForm, initialize } from 'redux-form'; 
+import Divider from 'material-ui/Divider'; 
 import './style/create.css'
 
 
@@ -24,71 +25,77 @@ class CreateCandidate extends Component {
     super (props)
 
     this.state ={
+      candidate: {
       account: {
         firstName: '',
         lastName: '',
         email: '',
         phone: '', 
         },
-      expectedSalary: '', 
-      headline: '',
+
+      salary:  '',
+
+
+      headline: '', 
+  
+
       topSkills: [ 
         {
-        experience: '', 
-        title: ''
+        experience1: '', 
+        title1: ''
       }, 
       {
-        experience: '', 
-        title: ''
+        experience2: '', 
+        title2: ''
       },
       {
-        experience: '', 
-        title: ''
+        experience3: '', 
+        title3: ''
       },
       {
-        experience: '', 
-        title: ''
+        experience4: '', 
+        title4: ''
       },
       {
-        experience: '', 
-        title: ''
+        experience5: '', 
+        title5: ''
       }
     ],
     skills: [
       {
-        title: ''
+        title1: ''
       }, 
       {
-        title: ''
+        title1: ''
       }, 
     ], 
     benefits: [
         {
-          title: '', 
+          title1: '', 
         }, 
         {
-          title: '', 
+          title2: '', 
         },
         {
-          title: '', 
+          title3: '', 
         },
         {
-          title: '', 
+          title4: '', 
         },
         {
-          title: '', 
+          title5: '', 
         }
 
     ],
     workExperiences: [
 
           {
-            title: '', 
-            experience: '', 
+            title1: '', 
+            experience2: '', 
           },
           {
-            title: '', 
-            experience: '', 
+            title2: '', 
+            experience2: '', 
           },
         
     ],
@@ -106,6 +113,7 @@ class CreateCandidate extends Component {
         fieldOfStudy:  ''
       }
     ], 
+  },
       errors: {
 
       }
@@ -132,52 +140,98 @@ class CreateCandidate extends Component {
 
 
 
- handleChange(e) {
-  let inputName = e.target.name;
-  let inputValue = e.target.value;
-  let copyState = Object.assign({}, this.state);
-  copyState.account[inputName] = inputValue;
-  this.setState(copyState);
-}
 
+  handleChange = e => {
+    const candidateClone = Object.assign({}, this.state.candidate);// Shallow clone.
+    const accountClone = Object.assign({}, this.state.candidate.account);// Deep clone.
+    const topSkillsClone = Object.assign({}, this.state.candidate.topSkills);// Deep clone.
+    // below (let): Persists the last entered value (required).
+    let myHeadline = candidateClone.headline;
+    let myFirstName = candidateClone.account.firstName;
+    let myLastName = candidateClone.account.lastName;
+    let myEmail = candidateClone.account.email;
+    let myphone = candidateClone.account.phone; 
+    let mySalary = candidateClone.salary;
+    let myTopSkillsTitle = candidateClone.topSkills[0].title;
+    switch (e.target.name) {
+        
+        case "firstNameInput":
+            myFirstName = e.target.value;
+            break;
+        case "lastNameInput": 
+             myLastName = e.target.value; 
+             break;
+        case "emailInput": 
+              myEmail = e.target.value; 
+              break;
+        case "phoneInput": 
+             myphone = e.target.value; 
+             break;
+        case "headlineInput":
+            myHeadline = e.target.value;
+            break;
+        case "salaryInput":
+            mySalary = e.target.value;
+            break;
+        case "topSkillsTitleInput":
+            myTopSkillsTitle = e.target.value;
+            break;
+        default:
+            console.log("Switch statement error");
+    }
+    accountClone.firstName = myFirstName;// Place the property value inside the deep cloned embedded object.
+    accountClone.lastName = myLastName; 
+    accountClone.email = myEmail; 
+    accountClone.phone = myphone; 
+    topSkillsClone[0].title = myTopSkillsTitle;// Place the property value inside the deep cloned embedded array.
+    candidateClone["account"] = accountClone;// Place the deep cloned embedded object inside the shallow cloned main object.
+    candidateClone["salary"] = mySalary;// Place the property inside the shallow cloned main object.
+    candidateClone["headline"] = myHeadline;// Place the property inside the shallow cloned main object.
+    candidateClone["topSkills"] = topSkillsClone;// Place the deep cloned embedded array inside the shallow cloned main object.
+    this.setState({candidate:candidateClone});
+};
 
   handleSubmit(e) {
-    //console.log('A name was submitted: ' + this.state.profile.title);
+   
     e.preventDefault();
+    console.log('A name was submitted: ' + this.state.candidate);
 
     let errors = {}; 
+    /*
     if(this.state.account.firstName =='')errors.firstName ="Title can not to be empty"; 
     if(this.state.account.lastName =='')errors.lastName ="userId can not to be empty"; 
     if(this.state.account.email =='')errors.email ="Id can not to be empty"; 
     if(this.state.account.phone =='')errors.phone ="Body can not to be empty"; 
     this.setState({errors})
-    return this.props.updateCandidate(this.state.profile);  
+    return this.props.updateCandidate(this.state.profile);  */
   }
   render() {
+
     return (
-      <div>
+ 
       
       
        <div className="container">
        <form className="formCandidate" onSubmit={this.handleSubmit}>
         <div className="userform">
         <Grid container spacing={8}>
-          <Grid item xs={6}>
-          <div className="basicinformation">
+          <Grid item xs={12}>
+          <Card className="card">
+            <CardContent className="cardcontent">
                 <div className={classnames('field', {error: this.state.errors.firstName})}>
                       <h4> Personal Information </h4>
                       <label htmlFor="firstName">First Name</label>
                         <input
-                        name="firstName"
-                        value={this.state.account.firstName || ''}
+                        name="firstNameInput"
+                        value={this.state.candidate.account.firstName || ''}
                         onChange={this.handleChange}/>
                         <span>{this.state.errors.firstName} </span>
                 </div>
                       <div className={classnames('field', {error: !!this.state.errors.lastName})}>
                       <label htmlFor="lastName">Last Name</label>
                       <input
-                        name="lastName"
-                        value={this.state.account.lastName || ''}
+                        name="lastNameInput"
+                        value={this.state.candidate.account.lastName || ''}
                         onChange={this.handleChange}
                         />
                         <span>{this.state.errors.lastName} </span>
@@ -185,129 +239,134 @@ class CreateCandidate extends Component {
                   <div className={classnames('field', {error: !!this.state.errors.email})}>
                           <label htmlFor="email">Email</label>
                           <input
-                            name="email"
+                            name="emailInput"
                             type="text"
-                            value={this.state.account.email || ''}
+                            value={this.state.candidate.account.email || ''}
                             onChange={this.handleChange}/>
                             <span>{this.state.errors.email} </span>
                   </div>
                   <div className={classnames('field', {error: !!this.state.errors.phone})}>
                         <label htmlFor="phone">Phone</label>
                         <input
-                          name="phone"
+                          name="phoneInput"
                           type="number"
-                          value={this.state.account.phone || ''}
+                          value={this.state.candidate.account.phone || ''}
                           onChange={this.handleChange}/>
                           <span>{this.state.errors.phone} </span>
                   </div>
-           </div>
+                  </CardContent>
+           </Card>
            </Grid>
-           <Grid item xs={3}>
-                    <br/>
-           <div>
+           <Grid item xs={12}>
+            <Card className="card">
+              <CardContent className="cardcontent">
                   <h4> Expected Salary </h4>
-                    <div className={classnames('field', {error: !!this.state.errors.expectedSalary})}>
+                    <div className={classnames('field', {error: !!this.state.errors.salary})}>
                       <input
-                        name="expectedSalary"
+                        name="salaryInput"
                         type="number"
-                        value={this.state.expectedSalary || ''}
+                        value={this.state.candidate.salary|| ''}
                         onChange={this.handleChange}/>
-                          <span>{this.state.errors.expectedSalary} </span>
+                         <span>{this.state.errors.expectedSalary} </span>
                       </div>
-            </div>
-                     <br/>
-            <div>
+          
+                    <Divider  light/>
+           
                    <h4> Headline</h4>
-                    <div className={classnames('field', {error: !!this.state.errors.expectedSalary})}>
+                    <div className={classnames('field', {error: !!this.state.errors.headline})}>
                        
                           <input
-                            name="headline"
+                            name="headlineInput"
                             type="text"
-                            value={this.state.headline || ''}
+                            value={this.state.candidate.headline || ''}
                             onChange={this.handleChange}/>
-                              <span>{this.state.errors.headline} </span>
+                             <span>{this.state.errors.headline} </span>
                     </div>
-             </div>
+            
+             </CardContent>
+             </Card>
              </Grid>
-                     <br/>
-           <Grid  item xs={6}>
-          <div>
+           <Grid  item xs={12}>
+           <Card className="card">
+             <CardContent className="cardcontent">
                   <h4> Top skills</h4>
-                        <div className="">
+                        <div className="field">
                             <input
-                              name="headline"
+                              name="experience1"
                               type="text"
-                              value=""
+                              value={this.state.candidate.topSkills.experience1}
                               onChange={this.handleChange}/>
                               <span> </span>
                         </div>
-                        <div className="">
+                        <div className="field">
                           <input
-                            name="headline"
+                            name="experience2"
                             type="text"
-                            value=""
+                            value={this.state.candidate.topSkills.experience2}
                             onChange={this.handleChange}/>
                             <span> </span>
                         </div>
-                        <div className="">
+                        <div className="field">
                             <input
-                              name="headline"
+                              name="experience3"
                               type="text"
-                              value=""
+                              value={this.state.candidate.topSkills.experience3}
                               onChange={this.handleChange}/>
                               <span> </span>
                         </div>
-                        <div className="">
+                        <div className="field">
                           <input
-                            name="headline"
+                            name="experience4"
                             type="text"
-                            value=""
+                            value={this.state.candidate.topSkills.experience4}
                             onChange={this.handleChange}/>
                             <span> </span>
                         </div>
-                        <div className="">
+                        <div className="field">
                           <input
-                            name="headline"
+                            name="experience5"
                             type="text"
-                            value=""
+                            value={this.state.candidate.topSkills.experience5}
                             onChange={this.handleChange}/>
                           <span> </span>
                         </div> 
-            </div>
+              </CardContent>
+            </Card>
             </Grid>
-            <Grid xs={6}>
-                    <br/>
-            <div>
+            <Grid  item xs={12}>
+              
+            <Card className="card">
+              <CardContent className="cardcontent">
                   <h4> Skills</h4>
-                        <div className="">
+                        <div className="field">
                           <input
-                            name="headline"
+                            name="title1"
                             type="text"
-                            value=""
+                            value={this.state.candidate.skills.title1}
                             onChange={this.handleChange}/>
                             <span> </span>
                       </div>
-                        <div className="">
+                        <div className="field">
                           <input
-                            name="headline"
+                            name="title2"
                             type="text"
-                            value=""
+                            value={this.state.candidate.skills.title2}
                             onChange={this.handleChange}/>
                               <span> </span>
                       </div>
-              </div>
+                </CardContent>
+              </Card>
               </Grid>
-                      <br/>
-         
-                    <br/>
-            <Grid item xs={4}>
-            <div>
+              
+            <Grid item xs={12}>
+            <Card className="card">
+              <CardContent className="cardcontent">
                     <h4>  Project Experiences</h4>
-                    <div className="">
+                    <div className="field">
                         <input
                           name="headline"
                           type="text"
-                          value=""
+                          value={this.state.candidate.projectExperiences.title1}
                           onChange={this.handleChange}/>
                         <span> </span>
                     </div>
@@ -316,21 +375,23 @@ class CreateCandidate extends Component {
                         <input
                           name="headline"
                           type="text"
-                          value=""
+                          value={this.state.candidate.projectExperiences.title2}
                           onChange={this.handleChange}/>
                         <span> </span>
                    </div>
-          </div>
+                 </CardContent>
+          </Card>
           </Grid>
-                   <br/>
-          <Grid item xs={4}>
-          <div>
+          <Grid item xs={12}>
+        
+          <Card className="card">
+            <CardContent className="cardcontent">
                   <h4> Educations</h4>
-                  <div className="">
+                  <div className="field">
                       <input
                         name="headline"
                         type="text"
-                        value=""
+                        value={this.state.candidate.educations.title2}
                         onChange={this.handleChange}/>
                       <span> </span>
                   </div>
@@ -338,100 +399,105 @@ class CreateCandidate extends Component {
                       <input
                         name="headline"
                         type="text"
-                        value=""
+                        value={this.state.candidate.educations.title2}
                         onChange={this.handleChange}/>
                       <span> </span>
                   </div>
-            </div>
+                  </CardContent>
+            </Card>
             </Grid>
-            <br/>
            
-            <Grid  item xs={4}>
-           <div>
+            <Grid  item xs={12}>
+           <Card className="card">
+             <CardContent className="cardcontent">
                     <h4> Work Experiance</h4>
-                    <div className="">
+                    <div className="field">
                         <input
-                          name="headline"
+                          name="title1"
                           type="text"
-                          value=""
+                          value={this.state.candidate.workExperiences.title1}
                           onChange={this.handleChange}/>
                         <span> </span>
                     </div>
                     <div className="">
                         <input
-                          name="headline"
+                          name="title2"
                           type="text"
-                          value=""
+                          value={this.state.candidate.workExperiences.title2}
                           onChange={this.handleChange}/>
                         <span> </span>
                     </div>
-            </div>
+                    </CardContent>
+            </Card>
             </Grid>
-            <Grid  item xs={6}>
-           <div>
+            <Grid  item xs={12}>
+           <Card className="card">
+             <CardContent className="cardcontent">
                     <h4> Benefits</h4>
-                        <div className="">
+                        <div className="field">
                         <input
-                          name="headline"
+                          name="title1"
                           type="text"
-                          value=""
+                          value={this.state.candidate.benefits.title1}
                           onChange={this.handleChange}/>
                             <span> </span>
                         </div>
-                    <div className="">
+                    <div className="field">
                         <input
-                          name="headline"
+                          name="title2"
                           type="text"
-                          value=""
+                          value={this.state.candidate.benefits.title2}
                           onChange={this.handleChange}/>
                           <span> </span>
                     </div>
-                    <div className="">
+                    <div className="field">
                         <input
-                          name="headline"
+                          name="title3"
                           type="text"
-                          value=""
+                          value={this.state.candidate.benefits.title3}
                           onChange={this.handleChange}/>
                           <span> </span>
                     </div>
-                    <div className="">
+                    <div className="field">
                         <input
-                          name="headline"
+                          name="title4"
                           type="text"
-                          value=""
+                          value={this.state.candidate.benefits.title4}
                           onChange={this.handleChange}/>
                           <span> </span>
                     </div>
-                    <div className="">
+                    <div className="field">
                         <input
-                          name="headline"
+                          name="title5"
                           type="text"
-                          value=""
+                          value={this.state.candidate.workExperiences.title5}
                           onChange={this.handleChange}/>
                         <span> </span>
                     </div>
-           </div>
+                </CardContent>
+           </Card>
            </Grid>
             <Grid item xs={12}>
-
-           <button label="Submit" primary="true"> Submit</button>
-           <Link to="/candidate" className="backtoList"><Button> Back to List Page </Button></Link> 
+            <Card className="card">
+              <CardContent className="cardcontent">
+                <button label="Submit" primary="true"> Submit</button>
+                <Link to="/candidate" className="backtoList"><Button> Back to List Page </Button></Link> 
+           </CardContent>
+           </Card>
            </Grid>
            </Grid>
            </div>         
           </form>
           </div>
       
-       
-   
-    </div>
+    
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    candidate: state.singleProfile.singleCandidate || []
+    candidate: state.singleProfile.singleCandidate || [], 
    
     }
   }

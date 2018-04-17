@@ -14,6 +14,7 @@ import Paper from 'material-ui/Paper';
 import { withRouter, Route } from 'react-router-dom';
 
 
+
 class Candidate extends Component {
     constructor (props){
         super (props)
@@ -43,7 +44,7 @@ class Candidate extends Component {
                     this.props.profiles.map((profile)=>{
                        return(
                        <CandidateList
-                        key={profile.id}
+                        key={profile.account.id}
                         firstName={profile.account.firstName}
                         id= {profile.id}
                         deleteCandidateAction={this.props.deleteCandidateAction}
@@ -78,4 +79,6 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
       
-  export default withRouter(connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Candidate));  
+  export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Candidate);  
+
+  //export default withRouter(connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Candidate));  
