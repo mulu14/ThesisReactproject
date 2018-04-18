@@ -2,8 +2,8 @@ import {requestProfile, receiveProfile, updateCandidat, requestIndividualCandida
 import axios from 'axios'; 
 import fetch from 'cross-fetch' 
 //const API_URL ='https://jsonplaceholder.typicode.com/posts'; 
-const API_URL = "https://5acee7894e5b600014a101b3.mockapi.io/api/candidates"; 
-//const API_URL = "http://localhost:8080/candidates"; 
+//const API_URL = "https://5acee7894e5b600014a101b3.mockapi.io/api/candidates"; 
+const API_URL = "http://localhost:8080/candidates"; 
 
 
 var httpHeaders = { 'Content-Type' : 'application/json', 'Accept-Charset' : 'utf-8'};
@@ -29,6 +29,7 @@ export function feachSingleCandidate(id){
     return fetch(API_URL +'/'+ id)
     .then(
       response => response.json(),
+      response  => console.log(response)
     )
     .then(data=>
     dispatch(requestIndividualCandidate(data)))

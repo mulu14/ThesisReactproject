@@ -478,7 +478,7 @@ class CreateCandidate extends Component {
            </Card>
            </Grid>
             <Grid item xs={12}>
-            <Card className="card">
+            <Card className="card" raised="true">
               <CardContent className="cardcontent">
                 <button label="Submit" primary="true"> Submit</button>
                 <Link to="/candidate" className="backtoList"><Button> Back to List Page </Button></Link> 

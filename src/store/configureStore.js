@@ -25,7 +25,7 @@ export default function configureStore() {
       loggerMiddleware))
   );
   store.subscribe(() =>{
-    saveState(store.getState())
+    //saveState(); 
   })
   return store; 
 }

@@ -44,9 +44,9 @@ class Candidate extends Component {
                     this.props.profiles.map((profile)=>{
                        return(
                        <CandidateList
-                        key={profile.account.id}
-                        firstName={profile.account.firstName}
-                        id= {profile.id}
+                        key={profile._id}
+                        firstname={profile.account.firstname}
+                        id= {profile._id}
                         deleteCandidateAction={this.props.deleteCandidateAction}
                         />)
                     })  

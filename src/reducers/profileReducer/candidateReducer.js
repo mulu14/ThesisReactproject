@@ -7,8 +7,7 @@ export default function candidateReducer(state = {}, action) {
       case RECEIVE_PROFILE:
       return {
         ...state, 
-        candidates: action.data.items
-        //      candidates: action.data.items
+        candidates: action.data.candidates
       }
       CREATE_NEW_CANDIDATE: 
       return{

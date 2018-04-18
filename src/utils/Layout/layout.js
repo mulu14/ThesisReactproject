@@ -10,6 +10,7 @@ import Footer from './../../footer/Footer'
 import ConfigRoute from './../Routing/Routing'
 import Divider from 'material-ui/Divider';
 import Badge from 'material-ui/Badge';
+import {history} from './../../helper/history'
 import {Add, Home, Dashboard, Notifications, AccountCircle, LocalOffer, InsertInvitation, 
   People, Business, Payment, KeyboardArrowRight, Search, KeyboardArrowDown, Email} from 'material-ui-icons'; 
 import './layout.css'
@@ -30,6 +31,7 @@ class Layout extends Component {
     notificationUrgent : 4, 
   
   };
+  this.logout = this.logout.bind(this);
   }
 
   handleExpandClick = () => {
@@ -37,6 +39,11 @@ class Layout extends Component {
   };
 
 
+  
+logout =() => {
+  localStorage.removeItem('user');
+  history.push('/'); 
+}
 
   render(){
 
@@ -57,7 +64,7 @@ class Layout extends Component {
 
     const isopenDialog = this.state.opendialog; 
 
-    const islogin = user != null? <Button onClick={localStorage.removeItem('user')}> Logout </Button>: <Button component={Link} to='/login'>Login</Button> 
+    const islogin = user != null? <Button onClick={this.logout}> Logout </Button>: <Button component={Link} to='/login'>Login</Button> 
     const isloginTrue = user != null? '':  <Button component={Link} to='/signin'>Sign in</Button> 
     
   return (

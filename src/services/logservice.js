@@ -1,7 +1,6 @@
 import {authHeader} from './../helper/auth'
 export const userService = {
     login,
-    logout,
     getById,
     register,
 };
@@ -37,10 +36,6 @@ function login(email, password) {
 
 
 
-function logout() {
-
-    localStorage.removeItem('user');
-}
 
 
 function getById(id) {
