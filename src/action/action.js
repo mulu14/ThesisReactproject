@@ -1,7 +1,6 @@
-import {requestProfile, receiveProfile, updateCandidat, requestIndividualCandidate, createnewCandidate,deleteCandidateAction}  from './createAction/createactions'
-import axios from 'axios'; 
+import {requestProfile, receiveProfile, updateCandidat, 
+       requestIndividualCandidate, createnewCandidate,deleteCandidateAction}  from './createAction/createactions'
 import fetch from 'cross-fetch' 
-//const API_URL ='https://jsonplaceholder.typicode.com/posts'; 
 //const API_URL = "https://5acee7894e5b600014a101b3.mockapi.io/api/candidates"; 
 const API_URL = "http://localhost:8080/candidates"; 
 

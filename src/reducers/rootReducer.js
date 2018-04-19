@@ -7,6 +7,7 @@ import {reducer as FormReducer} from 'redux-form'
 import {authentication} from './logreducer/loginReducer'
 import {alert} from './alertReducer/alertreducer'
 import {users} from './registerReducer/registerreducer'
+import reduceCompany from './companyreducer/companyreducer'
 
 
 
@@ -17,6 +18,7 @@ const rootReducer =  combineReducers({
   registerReducer: users,
   router: routerReducer,
   form: FormReducer, 
+  companydata: reduceCompany, 
   auth: authentication
 })
 

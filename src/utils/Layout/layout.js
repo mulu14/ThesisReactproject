@@ -49,8 +49,7 @@ logout =() => {
 
     const user = localStorage.getItem('user'); 
    
-    console.log(user); 
-    console.log(user!=null); 
+
     const isclosed = this.state.closedDashbord
      
     const buttonExpand = isclosed?  <KeyboardArrowRight/> : <KeyboardArrowDown/> 
@@ -122,7 +121,7 @@ logout =() => {
               <ListItemText primary="Home" />
               {<KeyboardArrowRight/>}
           </ListItem>  
-          <ListItem button component={Link}  to="/companieslist">
+          <ListItem button component={Link}  to="/company">
               <ListItemIcon>{<Business/>}</ListItemIcon>
               <ListItemText primary="Companies" />{<KeyboardArrowRight/>}
           </ListItem>  

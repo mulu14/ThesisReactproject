@@ -32,15 +32,22 @@ class ViewCandidate extends Component{
   return (
       <Grid container space={8}>
         <Grid item xs={4}>
+        
           <Card>
+          <Typography gutterBottom variant="headline" component="h1">
+            HeadLine
+          </Typography>  
             <CardContent>
-          <ListItem> Head Line:{this.props.singleProfile.headline}</ListItem> 
+          <ListItem>{this.props.singleProfile.headline}</ListItem> 
           </CardContent>
           </Card>
           <Divider/>
           <Card>
+          <Typography gutterBottom variant="headline" component="h1">
+          Expected Salary
+          </Typography>  
             <CardContent>
-          <ListItem>Expected Salary:{this.props.singleProfile.salary}</ListItem> 
+          <ListItem>{this.props.singleProfile.salary}</ListItem> 
           </CardContent>
           </Card>
         <Divider/>
