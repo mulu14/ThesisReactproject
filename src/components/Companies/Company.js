@@ -35,7 +35,7 @@ class Company extends Component {
                        return(
                        <CompaniesList
                        id={company._id}
-                       companyname = {company.intrestfromCandidates}
+                       companyname = {company.nameOfCompany}
                         />)
                     })  
                     }

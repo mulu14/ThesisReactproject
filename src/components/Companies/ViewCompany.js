@@ -27,7 +27,7 @@ class ViewCompany extends Component{
 
   render(){
     if (this.props.companyprofile === 0) return null;
-    console.log(this.props.singleProfile)
+    console.log( this.props.companyprofile);
   return (
       <Grid container space={8}>
         <Grid item xs={4}>
@@ -37,7 +37,7 @@ class ViewCompany extends Component{
             Company Name
           </Typography>  
             <CardContent>
-          <ListItem>{}</ListItem> 
+          <ListItem>{this.props.companyprofile.nameOfCompany}</ListItem> 
           </CardContent>
           </Card>
           <Divider/>
@@ -53,9 +53,10 @@ class ViewCompany extends Component{
         <Card className="card">
         <CardContent>
         <Typography gutterBottom variant="headline" component="h1">
+          Company Logo
           </Typography>  
          <List>
-        <ListItem>{}</ListItem>  
+        <ListItem>{this.props.companyprofile.companylogo}</ListItem>  
        
       </List>
         </CardContent>
@@ -76,10 +77,10 @@ class ViewCompany extends Component{
         <Card className="card">
         <CardContent>
           <Typography gutterBottom variant="headline" component="h1">
-           Benefits
+           Number of Employees
           </Typography>  
          <List>
-        <ListItem>{}</ListItem>  
+        <ListItem>{this.props.companyprofile.numberOfEmployee}</ListItem>  
         
       </List>
         </CardContent>
@@ -89,7 +90,7 @@ class ViewCompany extends Component{
       <Card className="card">
         <CardContent>
           <Typography gutterBottom variant="headline" component="h1">
-          Skills
+          Benefits Offers
           </Typography>  
          <List>
         <ListItem>{}</ListItem>

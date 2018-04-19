@@ -19,7 +19,7 @@ import {REQUEST_COMPANY, RECEIVE_COMPANY,
             case FETCH_SINGLE_COMPANY:
               return {
                 ...state, 
-               company: action.company
+               company: action.company.data
               };
             case CREATE_NEW_COMPANY:
               return {
