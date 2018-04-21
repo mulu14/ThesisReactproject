@@ -22,15 +22,17 @@ import  Pagination from './../../services/pagination'
 class Candidate extends Component {
     constructor (props){
         super (props)
-        let pageArray = [...this.props.profiles.keys()].map(i => ({ id: (i+1), name: 'page ' + (i+1) }));
- 
+    
         this.state= {
             close: true, 
             sorted: false,
-            pageArray : pageArray,
-            pageOfcandidate: []
+            page: 0,
+            rowsPerPage: 2,
+          
         }
         this.sortCandidatebyName = this.sortCandidatebyName.bind(this);    
+        this.handleChangePage = this.handleChangePage.bind(this); 
+        this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this); 
       }
       
     componentWillMount() {
@@ -38,12 +40,14 @@ class Candidate extends Component {
     }
 
     
-    onChangePage(pageOfItems) {
-        this.setState({ 
-            ...this.state,
-            pageOfcandidate: this.state.pageOfcandidate
-        });
-    }
+    handleChangePage = (event, page) => {
+        this.setState({
+             page });
+      };
+    
+      handleChangeRowsPerPage = event => {
+        this.setState({ rowsPerPage: event.target.value });
+      };
  
     deleteCandidateAction =(id)=>{
           deleteCandidate(id)
@@ -61,7 +65,8 @@ class Candidate extends Component {
     render() {
 
         if (this.props.profiles.length === 0) return null;
-       
+        const emptyRows = this.state.rowsPerPage - Math.min
+        (this.state.rowsPerPage, this.props.profiles.length - this.state.page * this.state.rowsPerPage);
       
         const listcandidate =() =>{
             return(
@@ -81,7 +86,8 @@ class Candidate extends Component {
                     </TableHead>
                     <TableBody>
                     {
-                    this.props.profiles.map((profile)=>{
+                    this.props.profiles.slice(this.state.page * this.state.rowsPerPage,
+                         this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map((profile)=>{
                        return(
                        <CandidateList
                         key={profile._id}
@@ -94,8 +100,22 @@ class Candidate extends Component {
                         />)
                     })  
                     }
+                    {emptyRows > 0 && (
+                        <TableRow style={{ height: 48 * emptyRows }}>
+                        <TableCell colSpan={6} />
+                        </TableRow>
+              )}
               </TableBody>
               <TableFooter> 
+              <TablePagination
+                  colSpan={3}
+                  count={this.props.profiles.length}
+                  rowsPerPage={this.state.rowsPerPage}
+                  page={this.state.page}
+                  onChangePage={this.handleChangePage}
+                  onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                  Actions={Pagination}
+                />
               </TableFooter>
             </Table>
             </Paper>
