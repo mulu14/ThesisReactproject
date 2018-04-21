@@ -6,7 +6,7 @@ import {requestCompany,
          deleteCompany 
       } from './createAction/createcompanyaction'
 import fetch from 'cross-fetch' 
-import { receiveProfile } from './createAction/createactions';
+//import { receiveProfile } from './createAction/createactions';
 
 
 var httpHeaders = { 'Content-Type' : 'application/json', 'Accept-Charset' : 'utf-8'};

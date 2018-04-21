@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { withStyles } from 'material-ui/styles';
-import {feachSingleCandidate} from './../../action/action'
+import {feachSingleCandidate, deleteCandidate} from './../../action/candidateaction'
 import List, { ListItem } from 'material-ui/List'
 import { bindActionCreators } from 'redux'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
@@ -25,6 +25,10 @@ class ViewCandidate extends Component{
       this.props.feachSingleCandidate(id); 
     } 
   }
+
+  deleteCandidateAction =(id)=>{
+    deleteCandidate(id)
+}
 
   render(){
     if (this.props.singleProfile.length === 0) return null;
@@ -150,6 +154,7 @@ class ViewCandidate extends Component{
 
         <CardActions>
           <Button size="small" color="primary">Edit</Button>
+          <Button onClick={() =>this.props.deleteCandidateAction(this.props.singleProfile._id)} size="small" color="primary">Delete</Button>
         </CardActions>
       </Card>
       </Grid>
@@ -170,8 +175,18 @@ const mapStateToProps = (state) => {
   }
 const mapDispatchToProps = (dispatch) => {
       return {
-        feachSingleCandidate: (id)=>dispatch(feachSingleCandidate(id))
+        feachSingleCandidate: (id)=>dispatch(feachSingleCandidate(id)), 
+        deleteCandidateAction:(id) => dispatch(deleteCandidate(id))
       }
   }
 
   export default connect(mapStateToProps, mapDispatchToProps)(ViewCandidate);  
+
+
+  /*
+ <TableCell><Link to={`/candidate/edit/${props.id}`} ><Button>{<Edit/>} </Button></Link></TableCell>
+                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)} size="small" color="primary"></Button>{<Add/>}</TableCell>
+                <TableCell> <Link to={`/candidate/view/${props.id}`} ><Button>{<ViewModule/>} </Button></Link></TableCell>
+                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)} size="small" color="secondary">{<Delete/>}</Button></TableCell>
+
+*/

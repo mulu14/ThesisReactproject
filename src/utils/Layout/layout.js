@@ -39,6 +39,11 @@ class Layout extends Component {
   };
 
 
+  handelExapndCandidate =() =>{
+    this.setState({
+      closedCandidates: !this.state.closedCandidates
+    })
+  }
   
 logout =() => {
   localStorage.removeItem('user');
@@ -49,6 +54,11 @@ logout =() => {
 
     const user = localStorage.getItem('user'); 
    
+    const iscloseCandidate = this.state.closedCandidates? <KeyboardArrowRight/> : <KeyboardArrowDown/> 
+    const showCandidate = iscloseCandidate? null: 
+    <List> 
+    <ListItem> Link to page </ListItem>
+  </List> 
 
     const isclosed = this.state.closedDashbord
      
@@ -86,10 +96,6 @@ logout =() => {
             </ul>
             </div>
             <div className="layoutheader">
-            <ul className="search">
-            <li><input type="text" name="search" placeholder="Search...." className="searchInput"/>
-            <button className="material-icons">search</button></li>
-            </ul>
             </div>
             <div className="layoutheader">
            <ul className="notification"> 

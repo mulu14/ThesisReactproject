@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import classnames from 'classnames'; 
 import { withRouter, Route } from 'react-router-dom';
-import {createNewCandidate,feachSingleCandidate,  updateCandidate} from './../../action/action'
+import {createNewCandidate,feachSingleCandidate,  updateCandidate} from './../../action/candidateaction'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';

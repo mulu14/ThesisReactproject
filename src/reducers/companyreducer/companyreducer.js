@@ -1,7 +1,7 @@
 import {REQUEST_COMPANY, RECEIVE_COMPANY,
     FETCH_SINGLE_COMPANY, 
     CREATE_NEW_COMPANY,
-    UPDATE_COMPANY, DELETE_COMPANY, DELETE_CANDIDATE} from './../../action/actionTypes'
+    UPDATE_COMPANY, DELETE_COMPANY} from './../../action/actionTypes'
 
 
     const reduceCompany = (state ={}, action) =>{
@@ -29,12 +29,12 @@ import {REQUEST_COMPANY, RECEIVE_COMPANY,
             case UPDATE_COMPANY:
               return{
                   ...state,
-                  companies: state.companies.map(company => company.id === action.newCompany.id ? company : action.newCompany)  
+                  companies: state.companies.map(company => company._id === action.newCompany._id ? company : action.newCompany)  
               }
-            case DELETE_CANDIDATE:
+            case DELETE_COMPANY:
               return {
                   ...state, 
-                  companies: state.companies.filter(company => company.id !==action.data.id)
+                  companies: state.companies.filter(company => company._id !==action.data._id)
               }
             default:
               return state

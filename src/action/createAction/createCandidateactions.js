@@ -1,5 +1,7 @@
 
-import {REQUEST_PROFILE,DELETE_CANDIDATE, RECEIVE_PROFILE, FETCH_POSTS_FAILURE, FETCH_SINGLE_PROFILE, CREATE_NEW_CANDIDATE, UPDATE_CANDIDATE}  from './../actionTypes'
+import {REQUEST_PROFILE,DELETE_CANDIDATE,
+     RECEIVE_PROFILE, FETCH_POSTS_FAILURE, FETCH_SINGLE_PROFILE,
+      CREATE_NEW_CANDIDATE, UPDATE_CANDIDATE, SORT_CANDIDATE, FILTER_CANDIDATE}  from './../actionTypes'
 
 
 
@@ -43,5 +45,18 @@ export const requestProfile =()=>{
      return {
          type: DELETE_CANDIDATE, 
          id: data
+     }
+ }
+ 
+ export const sorteCandidate =(data) =>{
+     return{
+         type: SORT_CANDIDATE,
+         data: data
+     }
+ }
+ export const filterCandidate =(data) =>{
+     return {
+        type: FILTER_CANDIDATE, 
+        data: data
      }
  }

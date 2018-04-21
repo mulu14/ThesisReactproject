@@ -20,7 +20,7 @@ const persitantState = loadeState();
 export default function configureStore() {  
   const store  = createStore(
     rootReducer,
-    persitantState,
+   // persitantState,
     composeWithDevTools(applyMiddleware(thunkMiddleware,middleware,
       loggerMiddleware))
   );

@@ -14,11 +14,10 @@ import {Delete, Add, Edit, ViewModule} from 'material-ui-icons'
 function CandidateList(props) {
   return (
               <TableRow>
-                <TableCell>{props.firstname}</TableCell>
-                <TableCell><Link to={`/candidate/edit/${props.id}`} ><Button>{<Edit/>} </Button></Link></TableCell>
-                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)} size="small" color="primary"></Button>{<Add/>}</TableCell>
-                <TableCell> <Link to={`/candidate/view/${props.id}`} ><Button>{<ViewModule/>} </Button></Link></TableCell>
-                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)} size="small" color="secondary">{<Delete/>}</Button></TableCell>
+                <TableCell> <Link to={`/candidate/view/${props.id}`}>{props.firstname}</Link></TableCell>
+                <TableCell><Link to={`/candidate/view/${props.id}`}>{props.city}</Link></TableCell>
+                <TableCell> <Link to={`/candidate/view/${props.id}`}>{props.publishStatus[0].status}</Link></TableCell>
+                <TableCell> <Link to={`/candidate/view/${props.id}`}>{props.date}</Link></TableCell>
               </TableRow>
   );
 }
@@ -26,3 +25,11 @@ function CandidateList(props) {
 export default  withRouter(CandidateList);
 
 
+
+/*
+ <TableCell><Link to={`/candidate/edit/${props.id}`} ><Button>{<Edit/>} </Button></Link></TableCell>
+                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)} size="small" color="primary"></Button>{<Add/>}</TableCell>
+                <TableCell> <Link to={`/candidate/view/${props.id}`} ><Button>{<ViewModule/>} </Button></Link></TableCell>
+                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)} size="small" color="secondary">{<Delete/>}</Button></TableCell>
+
+*/
