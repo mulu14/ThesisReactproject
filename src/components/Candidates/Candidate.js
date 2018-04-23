@@ -7,10 +7,10 @@ import List,{ ListItem} from 'material-ui/List';
 import {feachProfiles, deleteCandidate, feachSingleCandidate} from './../../action/candidateaction'
 import CandidateList from './CandidateList'
 import './style/candidate.css'
-import Table, { TableBody, TableCell, TableHead, TableRow, TablePagination,  TableFooter,TableSortLabel } from 'material-ui/Table';
+import Table, { TableBody, TableCell, TableHead, TableRow, TablePagination,
+    TableSortLabel,  TableFooter } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import { withRouter, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import DeleteIcon from 'material-ui';
 import {FilterList} from 'material-ui-icons'
 import IconButton from 'material-ui/IconButton';
@@ -34,6 +34,10 @@ class Candidate extends Component {
         this.handleChangePage = this.handleChangePage.bind(this); 
         this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this); 
       }
+
+      createSortHandler = property => event => {
+        this.props.onRequestSort(event, property);
+      };
       
     componentWillMount() {
         this.props.feachProfiles(); 

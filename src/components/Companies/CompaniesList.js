@@ -15,12 +15,19 @@ function CompaniesList(props){
         return (
             <TableRow>
             <TableCell>{props.companyname}</TableCell>
-            <TableCell><Link to="" ><Button>{<Edit/>} </Button></Link></TableCell>
-            <TableCell><Button size="small" color="primary"></Button>{<Add/>}</TableCell>
-            <TableCell> <Link to={`/company/view/${props.id}`} ><Button>{<ViewModule/>} </Button></Link></TableCell>
-            <TableCell><Button size="small" color="secondary">{<Delete/>}</Button></TableCell>
+            <TableCell>{props.publishedStatus}</TableCell>
+            <TableCell>{props.createdDate}</TableCell>
           </TableRow>
             
         );
 }
 export default withRouter(CompaniesList); 
+/*
+
+  <TableCell><Link to="" ><Button>{<Edit/>} </Button></Link></TableCell>
+            <TableCell><Button size="small" color="primary"></Button>{<Add/>}</TableCell>
+            <TableCell> <Link to={`/company/view/${props.id}`} ><Button>{<ViewModule/>} </Button></Link></TableCell>
+            <TableCell><Button size="small" color="secondary">{<Delete/>}</Button></TableCell>
+
+
+*/
