@@ -9,16 +9,21 @@ import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import  Pagination from './../../services/pagination'
 import JwPagination from 'jw-react-pagination';
+import { Link } from 'react-router-dom';
+import {FilterList} from 'material-ui-icons'
+import IconButton from 'material-ui/IconButton';
 
 class Company extends Component {
     constructor(props){
         super(props); 
         this.state ={
+            sorted: false,
             page: 0,
             rowsPerPage: 2,
         }   
         this.handleChangePage = this.handleChangePage.bind(this); 
         this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this); 
+    
     }
     componentWillMount() {
         this.props.getCompanies(); 
@@ -34,10 +39,19 @@ class Company extends Component {
       };
 
 
+      sortCompanyByStatus =() =>{
+        if (this.props.companies.length === 0) return null;
+       this.props.companies.sort((a,b) =>{return (a.publishStatus > b.publishStatus) ? 1 : ((b.publishStatus > a.publishStatus) ? -1 : 0);} );
+       this.setState({
+           ...this.state,
+           sorted: !this.state.sorted,
+       })
+    }
 
 
     render() {
         if (this.props.companies.length === 0) return null;
+        console.log(this.props.companies)
          const emptyRows = this.state.rowsPerPage - Math.min
         (this.state.rowsPerPage, this.props.companies.length - this.state.page * this.state.rowsPerPage);
         const listCompany =() =>{
@@ -47,7 +61,12 @@ class Company extends Component {
                     <TableHead>
                     <TableRow>
                         <TableCell variant="head">Company Name</TableCell>
-                        <TableCell variant="head"> Published Status </TableCell>
+                        <TableCell variant="head"> Published Status
+                        <IconButton
+                        onClick={this.sortCompanyByStatus}><FilterList/>
+                        </IconButton>
+                        
+                         </TableCell>
                         <TableCell variant="head"> Created Date </TableCell>
                         </TableRow>
                      </TableHead>

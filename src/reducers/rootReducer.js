@@ -8,6 +8,7 @@ import {authentication} from './logreducer/loginReducer'
 import {alert} from './alertReducer/alertreducer'
 import {users} from './registerReducer/registerreducer'
 import reduceCompany from './companyreducer/companyreducer'
+import offerReducer from './offerReducer/offerreducer'
 
 
 
@@ -19,7 +20,8 @@ const rootReducer =  combineReducers({
   router: routerReducer,
   form: FormReducer, 
   companydata: reduceCompany, 
-  auth: authentication
+  auth: authentication, 
+  offers: offerReducer
 })
 
 
