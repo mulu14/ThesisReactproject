@@ -3,6 +3,7 @@ import { Link} from 'react-router-dom';
 import List, { ListItem, ListItemIcon, ListItemText} from 'material-ui/List'
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
+import { connect } from 'react-redux'
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Button from 'material-ui/Button';
@@ -10,7 +11,6 @@ import Footer from './../../footer/Footer'
 import ConfigRoute from './../Routing/Routing'
 import Divider from 'material-ui/Divider';
 import Badge from 'material-ui/Badge';
-import {history} from './../../helper/history'
 import {Add, Home, Dashboard, Notifications, AccountCircle, LocalOffer, InsertInvitation, 
   People, Business, Payment, KeyboardArrowRight, Search, KeyboardArrowDown, Email} from 'material-ui-icons'; 
 import './layout.css'
@@ -30,8 +30,9 @@ class Layout extends Component {
     emailnotification: 5, 
     notificationUrgent : 4, 
   
+  
   };
-  this.logout = this.logout.bind(this);
+
   }
 
   handleExpandClick = () => {
@@ -44,14 +45,9 @@ class Layout extends Component {
       closedCandidates: !this.state.closedCandidates
     })
   }
-  
-logout =() => {
-  localStorage.removeItem('user');
-  history.push('/'); 
-}
+
 
   render(){
-
     const user = localStorage.getItem('user'); 
    
     const iscloseCandidate = this.state.closedCandidates? <KeyboardArrowRight/> : <KeyboardArrowDown/> 
@@ -73,7 +69,7 @@ logout =() => {
 
     const isopenDialog = this.state.opendialog; 
 
-    const islogin = user != null? <Button onClick={this.logout}> Logout </Button>: <Button component={Link} to='/login'>Login</Button> 
+    const islogin = user != null? <Button component={Link} to="/logout"> Logout </Button>: <Button component={Link} to='/login'>Login</Button> 
     const isloginTrue = user != null? '':  <Button component={Link} to='/signin'>Sign in</Button> 
     
   return (
@@ -170,4 +166,4 @@ logout =() => {
 }
 
 
-export default Layout;
+export default Layout

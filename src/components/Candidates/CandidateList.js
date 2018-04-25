@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import List,{ ListItem} from 'material-ui/List';
 import Button from 'material-ui/Button';
-import './style/profile.css'
 import {TableCell,TableRow } from 'material-ui/Table';
-import { withRouter } from 'react-router-dom'
-import {Delete, Add, Edit, ViewModule} from 'material-ui-icons'
+
+
 
 
 
@@ -13,7 +11,7 @@ import {Delete, Add, Edit, ViewModule} from 'material-ui-icons'
 
 function CandidateList(props) {
   return (
-              <TableRow>
+              <TableRow key={props.id}>
                 <TableCell> <Link to={`/candidate/view/${props.id}`}>{props.firstname}</Link></TableCell>
                 <TableCell><Link to={`/candidate/view/${props.id}`}>{props.city}</Link></TableCell>
                 <TableCell> <Link to={`/candidate/view/${props.id}`}>{props.publishStatus[0].status}</Link></TableCell>
@@ -22,8 +20,8 @@ function CandidateList(props) {
   );
 }
 
-export default  withRouter(CandidateList);
-
+export default  CandidateList;
+//export default  withRouter(CandidateList);
 
 
 /*

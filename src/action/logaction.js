@@ -1,9 +1,11 @@
+
 import { loginrequest,  loginsuccess, loginfailure } from './createAction/createloginaction'
 import {signinrequest,  signinsuccess, signinfailure } from './createAction/signinaction'
 import {messagesuccess, messaageerror, messageclear}  from './createAction/alertaction'
 import {userService}  from './../services/logservice'
-import {history} from './../helper/history'
 import {saveState} from './../store/localstorage'
+
+
 
 
 
@@ -16,9 +18,6 @@ export function login(email, password) {
                 user => {
                     dispatch(loginsuccess(user));
                     saveState(user.token); 
-                    history.push('/'); 
-            
-                  // console.log(user.token); 
                 },
                 error => {
                     dispatch(loginfailure(error));

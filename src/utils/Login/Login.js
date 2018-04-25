@@ -5,10 +5,7 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import { Field, reduxForm } from 'redux-form';
 import {login} from './../../action/logaction'
 import './login.css'
-
-
-
-
+import { Redirect } from 'react-router';
 
 class Login extends Component {
     constructor(props){
@@ -18,17 +15,16 @@ class Login extends Component {
           user:{
             email: '', 
             password: ''
-          }
-         
+          },
+          isLogin: false
         }
 
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.handleChange = this.handleChange.bind(this); 
+    
     }
 
-    submit = (values) => {
-        console.log(values);
-      }
+
 
       handleChange(e) {
         let inputName = e.target.name;
@@ -41,11 +37,10 @@ class Login extends Component {
       
       handleSubmit(e) {
         e.preventDefault();
-       // console.log(this.state.user); 
-      
         if (this.state.user.email && this.state.user.password) {
-           this.props.login(this.state.user.email, this.state.user.password); 
+           this.props.login(this.state.user.email, this.state.user.password);
         }
+      
     }
 
     errorMessage() {
@@ -59,6 +54,7 @@ class Login extends Component {
       }
 
     render() {
+        const isLoginTrue = this.props.isLogin? <Redirect to="/"/>: null
         return(
             <div className="root">
     
@@ -100,7 +96,7 @@ class Login extends Component {
            </Card>
            <Card  className="placeholder"> </Card>
            </div>
-    
+      
            <div className="footerlogin"> 
            </div>
            </div>
@@ -111,7 +107,8 @@ class Login extends Component {
 }
 const mapStateToProps = (state)=>{
     return { 
-      errorMessage: state.alertNotification.error 
+      errorMessage: state.alertNotification.error,
+      isLogin : state.auth.loggedIn
     };
   }
 

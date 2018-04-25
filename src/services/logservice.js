@@ -3,6 +3,7 @@ export const userService = {
     login,
     getById,
     register,
+    logout
 };
 
 const URL_SIGNIN = 'http://localhost:8080/users/signup'; 
@@ -27,7 +28,7 @@ function login(email, password) {
             if (user && user.token) {
               
                 localStorage.setItem('user', user.token);
-                console.log(user.token); 
+                //console.log(user.token); 
              }
             
             return user;
@@ -35,7 +36,9 @@ function login(email, password) {
 }
 
 
-
+function logout() {
+    localStorage.removeItem('user');
+}
 
 
 function getById(id) {

@@ -1,5 +1,4 @@
 
-import initialState from './../../state/initialState'
 import {FETCH_SINGLE_PROFILE} from './../../action/actionTypes'
 
 export default function singleCandidateReducer(state = {}, action) {  

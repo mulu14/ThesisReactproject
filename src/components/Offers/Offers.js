@@ -54,7 +54,7 @@ handleChangePage = (event, page) => {
 render() {
     if (this.props.offers.length === 0) return null;
       console.log(this.props.offers)
-      console.log(this.props.offers[0].candidate.account.firstname); 
+     // console.log(this.props.offers[0].candidate.account.firstname); 
      const emptyRows = this.state.rowsPerPage - Math.min
     (this.state.rowsPerPage, this.props.offers.length - this.state.page * this.state.rowsPerPage);
 
@@ -70,7 +70,6 @@ render() {
                     <IconButton
                     onClick={this.sortOfferStatus }><FilterList/>
                     </IconButton>
-                    
                      </TableCell>
                     <TableCell variant="head">Candidate Name </TableCell>
                     </TableRow>
@@ -82,7 +81,7 @@ render() {
             this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map((offer)=>{
                    return(
                    <OfferList
-                   id={offer._id}
+                   key={offer._id}
                    candidate = {offer.candidate.account.firstname}
                    offerstatus= {offer.offerstatus}
                    company = {offer.company.nameOfCompany}

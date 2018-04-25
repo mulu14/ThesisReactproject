@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import {feachSingleCandidate, deleteCandidate} from './../../action/candidateaction'
 import List, { ListItem } from 'material-ui/List'
@@ -32,7 +33,7 @@ class ViewCandidate extends Component{
 
   render(){
     if (this.props.singleProfile.length === 0) return null;
-    console.log(this.props.singleProfile)
+    //console.log(this.props.singleProfile)
   return (
       <Grid container space={8}>
         <Grid item xs={4}>
@@ -153,7 +154,7 @@ class ViewCandidate extends Component{
         <Card>
 
         <CardActions>
-          <Button size="small" color="primary">Edit</Button>
+          <Button size="small" color="primary"><Link to={`/candidate/edit/${this.props.singleProfile._id}`}>Edit</Link></Button>
           <Button onClick={() =>this.props.deleteCandidateAction(this.props.singleProfile._id)} size="small" color="primary">Delete</Button>
         </CardActions>
       </Card>

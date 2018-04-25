@@ -1,5 +1,5 @@
 import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT }  from  './../../action/actionTypes'
-import initialState from './../../state/initialState'
+
 
 
 
@@ -8,7 +8,7 @@ export function authentication(state = {}, action) {
       case LOGIN_REQUEST:
         return {
           ...state,
-          loggingIn: true,
+          loggingIn: false,
           user: action.user.message
         };
       case LOGIN_SUCCESS:
@@ -24,10 +24,7 @@ export function authentication(state = {}, action) {
           error: action.error
         };
       case LOGOUT:
-        return {
-            ...state,
-            loggedIn: false,
-        };
+        return {};
       default:
         return state
     }

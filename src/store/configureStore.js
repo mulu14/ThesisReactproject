@@ -1,7 +1,6 @@
 
 import {createStore, applyMiddleware, compose} from 'redux';  
 import thunk from 'redux-thunk';
-import initialState from './../state/initialState'
 import rootReducer from './../reducers/rootReducer'
 import promise from 'redux-promise';
 import thunkMiddleware from 'redux-thunk'

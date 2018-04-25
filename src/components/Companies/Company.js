@@ -78,6 +78,7 @@ class Company extends Component {
                        return(
                        <CompaniesList
                        id={company._id}
+                       key={company._id}
                        companyname = {company.nameOfCompany}
                        publishedStatus= {company.publishStatus}
                        createdDate = {company.date}
@@ -92,6 +93,7 @@ class Company extends Component {
               )}
               </TableBody>
               <TableFooter> 
+              <TableRow>
               <TablePagination
                   colSpan={3}
                   count={this.props.companies.length}
@@ -101,6 +103,7 @@ class Company extends Component {
                   onChangeRowsPerPage={this.handleChangeRowsPerPage}
                   Actions={Pagination}
                 />
+                </TableRow>
               </TableFooter>
             </Table>
             </Paper>
