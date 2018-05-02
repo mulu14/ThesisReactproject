@@ -15,7 +15,7 @@ function CompaniesList(props){
         return (
         <TableRow >
             <TableCell><Link to={`/company/view/${props.id}`}>{props.companyname}</Link></TableCell>
-            <TableCell><Link to={`/company/view/${props.id}`}>{props.publishedStatus}</Link></TableCell>
+            <TableCell><Link to={`/company/view/${props.id}`}>{props.convertNumbertoStatus(props.publishedStatus)}</Link></TableCell>
             <TableCell><Link to={`/company/view/${props.id}`}>{props.createdDate}</Link></TableCell>
           </TableRow>
             

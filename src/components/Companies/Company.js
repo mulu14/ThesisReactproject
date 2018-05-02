@@ -12,6 +12,9 @@ import JwPagination from 'jw-react-pagination';
 import { Link } from 'react-router-dom';
 import {FilterList} from 'material-ui-icons'
 import IconButton from 'material-ui/IconButton';
+import {ArrowDownward, ArrowUpward} from 'material-ui-icons'
+import Toolbar from 'material-ui/Toolbar';
+import Tooltip from 'material-ui/Tooltip';
 
 class Company extends Component {
     constructor(props){
@@ -19,10 +22,13 @@ class Company extends Component {
         this.state ={
             sorted: false,
             page: 0,
-            rowsPerPage: 2,
+            rowsPerPage: 10,
         }   
         this.handleChangePage = this.handleChangePage.bind(this); 
         this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this); 
+        this.sortAscending = this.sortAscending.bind(this); 
+        this.sortDescending = this.sortDescending.bind(this)
+        this.convertNumbertoStatus = this.convertNumbertoStatus.bind(this); 
     
     }
     componentWillMount() {
@@ -34,9 +40,42 @@ class Company extends Component {
              page });
       };
     
+ 
+      convertNumbertoStatus =(parm) =>{
+        if(parm ===1){
+            return "Not Published"
+        }
+        if(parm ===2 ){
+            return "Waiting"
+        }
+        if(parm === 3){
+            return "Approved"
+        }
+    }
+
       handleChangeRowsPerPage = event => {
         this.setState({ rowsPerPage: event.target.value });
       };
+
+      sortAscending =() =>{
+        if (this.props.companies.length === 0) return null;
+       this.props.companies.sort((a,b) =>{return (a.publishStatus > b.publishStatus) ? 1 : ((b.publishStatus > a.publishStatus) ? -1 : 0);} );
+       this.setState({
+        ...this.state,
+        sorted: !this.state.sorted,
+    })
+    }
+  // sort array in decinding order
+// params: the api response 
+// setState sored false
+    sortDescending =() =>{
+        if (this.props.companies.length === 0) return null;
+       this.props.companies.sort((a,b) =>{return (b.publishStatus > a.publishStatus) ? 1 : ((a.publishStatus > b.publishStatus) ? -1 : 0);} );
+       this.setState({
+        ...this.state,
+        sorted: !this.state.sorted,
+    })
+    }
 
 
       sortCompanyByStatus =() =>{
@@ -51,9 +90,10 @@ class Company extends Component {
 
     render() {
         if (this.props.companies.length === 0) return null;
-        console.log(this.props.companies)
+        //console.log(this.props.companies)
          const emptyRows = this.state.rowsPerPage - Math.min
         (this.state.rowsPerPage, this.props.companies.length - this.state.page * this.state.rowsPerPage);
+        const issort  = this.state.sorted? <ArrowUpward/> : <ArrowDownward/>
         const listCompany =() =>{
             return(
                 <Paper className="root">
@@ -61,11 +101,9 @@ class Company extends Component {
                     <TableHead>
                     <TableRow>
                         <TableCell variant="head">Company Name</TableCell>
-                        <TableCell variant="head"> Published Status
-                        <IconButton
-                        onClick={this.sortCompanyByStatus}><FilterList/>
-                        </IconButton>
-                        
+                        <TableCell onClick={this.state.sorted? this.sortAscending: this.sortDescending}> 
+                        {issort}
+                        Published Status
                          </TableCell>
                         <TableCell variant="head"> Created Date </TableCell>
                         </TableRow>
@@ -82,6 +120,7 @@ class Company extends Component {
                        companyname = {company.nameOfCompany}
                        publishedStatus= {company.publishStatus}
                        createdDate = {company.date}
+                       convertNumbertoStatus = {this.convertNumbertoStatus}
                         />)
                     })  
                     }

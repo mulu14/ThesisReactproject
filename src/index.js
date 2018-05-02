@@ -8,7 +8,10 @@ import createHistory from 'history/createBrowserHistory'
 import App from './components/App';
 import configureStore from './store/configureStore'
 import registerServiceWorker from './registerServiceWorker';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'react-rpm';
+
+var {registerObserver} = require('react-perf-devtool')
+registerObserver()
 
 const history = createHistory()
 const store = configureStore(); 

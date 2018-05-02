@@ -31,6 +31,15 @@ class ViewCandidate extends Component{
     deleteCandidate(id)
 }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.props.profiles.length !== nextProps.profiles.length) {
+          return true;
+        }
+    
+        return false;
+      }
+ 
+
   render(){
     if (this.props.singleProfile.length === 0) return null;
     //console.log(this.props.singleProfile)
@@ -155,7 +164,8 @@ class ViewCandidate extends Component{
 
         <CardActions>
           <Button size="small" color="primary"><Link to={`/candidate/edit/${this.props.singleProfile._id}`}>Edit</Link></Button>
-          <Button onClick={() =>this.props.deleteCandidateAction(this.props.singleProfile._id)} size="small" color="primary">Delete</Button>
+          <Button onClick={() =>this.props.deleteCandidateAction(this.props.singleProfile._id)} size="small" color="secondary">Delete</Button>
+          <Button color="primary">< Link to="/offers"> Offer Page </Link></Button>
         </CardActions>
       </Card>
       </Grid>
@@ -171,7 +181,8 @@ class ViewCandidate extends Component{
 
 const mapStateToProps = (state) => {
   return {
-    singleProfile: state.singleProfile.singleCandidate || []
+    singleProfile: state.singleProfile.singleCandidate || [],
+    profiles: state.profiles.candidates || []
     }
   }
 const mapDispatchToProps = (dispatch) => {
@@ -182,12 +193,3 @@ const mapDispatchToProps = (dispatch) => {
   }
 
   export default connect(mapStateToProps, mapDispatchToProps)(ViewCandidate);  
-
-
-  /*
- <TableCell><Link to={`/candidate/edit/${props.id}`} ><Button>{<Edit/>} </Button></Link></TableCell>
-                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)} size="small" color="primary"></Button>{<Add/>}</TableCell>
-                <TableCell> <Link to={`/candidate/view/${props.id}`} ><Button>{<ViewModule/>} </Button></Link></TableCell>
-                <TableCell><Button onClick={() =>props.deleteCandidateAction(props.id)} size="small" color="secondary">{<Delete/>}</Button></TableCell>
-
-*/

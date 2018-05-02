@@ -21,6 +21,7 @@ import Tooltip from 'material-ui/Tooltip';
 import {ArrowDownward, ArrowUpward} from 'material-ui-icons'
 
 
+
 class Candidate extends Component {
     constructor (props){
         super (props)
@@ -36,6 +37,7 @@ class Candidate extends Component {
         this.sortDescending = this.sortDescending.bind(this); 
         this.handleChangePage = this.handleChangePage.bind(this); 
         this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this); 
+        this.convertNumbertoStatus = this.convertNumbertoStatus.bind(this); 
       }
 
      
@@ -45,6 +47,14 @@ class Candidate extends Component {
         this.setState({copyprofile: this.props.profiles})
     }
 
+    /*
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.props.profiles !== nextProps.profiles) {
+          return true;
+        }
+    
+        return false;
+      }*/
      
     
     handleChangePage = (event, page) => {
@@ -52,33 +62,44 @@ class Candidate extends Component {
              page });
       };
     
-      //
       handleChangeRowsPerPage = event => {
         this.setState({ rowsPerPage: event.target.value });
       };
- // delete function
- //parsms id
-
+ 
     deleteCandidateAction =(id)=>{
           deleteCandidate(id)
       }
+
+    convertNumbertoStatus =(parm) =>{
+        if(parm ===1){
+            return "Not Published"
+        }
+        if(parm ===2 ){
+            return "Waiting"
+        }
+        if(parm === 3){
+            return "Approved"
+        }
+    }
 // sort array in decinding order
 // params: the api response 
 // setState sored true
      sortAscending =() =>{
         if (this.props.profiles.length === 0) return null;
-       this.props.profiles.sort((a,b) =>{return (a.account.firstname > b.account.firstname) ? 1 : ((b.account.firstname > a.account.firstname) ? -1 : 0);} );
+       this.props.profiles.sort((a,b) =>{return (a.publishStatus[0].status > b.publishStatus[0].status) 
+        ? 1 : ((b.publishStatus[0].status > a.publishStatus[0].status) ? -1 : 0);} );
        this.setState({
         ...this.state,
         sorted: !this.state.sorted,
     })
     }
-  // sort array in decinding order
+ // sort array in decinding order
 // params: the api response 
-// setState sored false
+// setState sored true
     sortDescending =() =>{
         if (this.props.profiles.length === 0) return null;
-       this.props.profiles.sort((a,b) =>{return (b.account.firstname > a.account.firstname) ? 1 : ((a.account.firstname > b.account.firstname) ? -1 : 0);} );
+       this.props.profiles.sort((a,b) =>{return (b.publishStatus[0].status > a.publishStatus[0].status)
+         ? 1 : ((a.publishStatus[0].status > b.publishStatus[0].status) ? -1 : 0);} );
        this.setState({
         ...this.state,
         sorted: !this.state.sorted,
@@ -90,26 +111,20 @@ class Candidate extends Component {
         if (this.props.profiles.length === 0) return null;
         const emptyRows = this.state.rowsPerPage - Math.min
         (this.state.rowsPerPage, this.props.profiles.length - this.state.page * this.state.rowsPerPage);
-        console.log(this.state.copyprofile); 
+        console.log(this.props.profiles[0].publishStatus); 
+        console.log(this.props.profiles[0].publishStatus[0].status); 
         const issort  = this.state.sorted? <ArrowUpward/> : <ArrowDownward/>
 
         const listcandidate =() =>{
             return(
-                <Paper className="root">
+                <Paper className="root"> 
 
-                <Toolbar>
-                     <Tooltip title="Filter list">
-                        <IconButton aria-label="Filter list">
-                           <FilterList/>
-                        </IconButton>
-                    </Tooltip>
-                     </Toolbar>
                 <Table className="table">
                     <TableHead>
                         <TableRow>
                         <TableCell>First Name</TableCell>
                         <TableCell>City</TableCell>
-                        <TableCell onClick={this.state.sorted? this.sortAscending: this.sortDescending}>
+                        <TableCell onClick={this.state.sorted? this.sortAscending: this.sortDescending}> 
                         {issort}
                         Publish Status
                         </TableCell>
@@ -131,7 +146,7 @@ class Candidate extends Component {
                         publishStatus={profile.publishStatus}
                         date={profile.date}
                         id= {profile._id}
-                        deleteCandidateAction={this.props.deleteCandidateAction}
+                        convertNumbertoStatus = {this.convertNumbertoStatus}
                         />)
                     })  
                     }

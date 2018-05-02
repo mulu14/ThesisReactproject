@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
-import {CandidateModel} from './../../model/candifateModel'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import classnames from 'classnames'; 

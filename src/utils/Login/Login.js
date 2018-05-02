@@ -21,10 +21,13 @@ class Login extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this); 
         this.handleChange = this.handleChange.bind(this); 
+        this.updateAfterLogin = this.updateAfterLogin.bind(this); 
     
     }
 
-
+  updateAfterLogin =() =>{
+    this.props.isLogin
+  }
 
       handleChange(e) {
         let inputName = e.target.name;
@@ -85,7 +88,7 @@ class Login extends Component {
                 </div>
                 <CardActions>
                 <div className="loginButton"> 
-                <button type="submit" className="blue">Login</button>
+                <button type="submit"  className="blue">Login</button>
                 <button type="submit" className="red">Cancel</button>
                 </div>
                 </CardActions>

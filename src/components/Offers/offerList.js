@@ -7,8 +7,9 @@ const OfferList =(props) =>{
     return(
         <TableRow> 
          <TableCell>{props.company} </TableCell>
-         <TableCell>{props.offerstatus} </TableCell>
+         <TableCell>{props.converNumberTostatus(props.offerstatus)} </TableCell>
          <TableCell> {props.candidate}</TableCell>
+         <TableCell> {props.createdDate}</TableCell>
         </TableRow>
         
 
