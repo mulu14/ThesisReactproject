@@ -14,7 +14,8 @@ import {REQUEST_COMPANY, RECEIVE_COMPANY,
             case RECEIVE_COMPANY:
               return {
                 ...state,
-                companies: action.companies.companies
+                companies: action.companies.companies, 
+                bonses:  action.companies.companies.map(company =>{ return company.benefitsList.filter(data => data.code !== 0)})
               };
             case FETCH_SINGLE_COMPANY:
               return {

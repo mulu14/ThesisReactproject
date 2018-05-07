@@ -22,6 +22,8 @@ import {ArrowDownward, ArrowUpward} from 'material-ui-icons'
 
 
 
+
+
 class Candidate extends Component {
     constructor (props){
         super (props)
@@ -47,15 +49,15 @@ class Candidate extends Component {
         this.setState({copyprofile: this.props.profiles})
     }
 
-    /*
+/*
     shouldComponentUpdate(nextProps, nextState) {
         if (this.props.profiles !== nextProps.profiles) {
           return true;
         }
     
         return false;
-      }*/
-     
+      }
+     */
     
     handleChangePage = (event, page) => {
         this.setState({
@@ -111,8 +113,8 @@ class Candidate extends Component {
         if (this.props.profiles.length === 0) return null;
         const emptyRows = this.state.rowsPerPage - Math.min
         (this.state.rowsPerPage, this.props.profiles.length - this.state.page * this.state.rowsPerPage);
-        console.log(this.props.profiles[0].publishStatus); 
-        console.log(this.props.profiles[0].publishStatus[0].status); 
+       // console.log(this.props.profiles[0].publishStatus); 
+       // console.log(this.props.profiles[0].publishStatus[0].status); 
         const issort  = this.state.sorted? <ArrowUpward/> : <ArrowDownward/>
 
         const listcandidate =() =>{

@@ -15,46 +15,32 @@ import Paper from 'material-ui/Paper'
         this.state={
 
         }
-        this.filterbenifitList =  this.filterbenifitList.bind();
+    
     }
 
     componentWillMount() {
         this.props.getCompanies(); 
     } 
 
-    filterbenifitList =()=>{
-        this.props.companies.map(company =>{
-           // console.log(company.benefitsList.filter(data => data.code !== 0))
-         })  
-    }
+
 
     render(){
         if (this.props.companies.length === 0) return null;
-
-       const filterData =  this.props.companies.map(company =>{
-           return company.benefitsList.filter(data => data.code !== 0)
-         })  
-
-        filterData.map(item =>{
-            item.map(i =>{
-               //console.log(i.title); 
-            })
-        })
-
+        
         const bonseList = () =>{
             return(
               <Card>
-                  <CardContent>
+                 
                 { this.props.companies.map(company =>{
                             return(
                             <ListBonses
                             key={company._id}
-                            data={company.benefitsList.filter(data => data.code !== 0)}
+                            name={company.nameOfCompany}
+                            bonses={company.benefitsList}
                             /> 
                          )
                         })
                  }
-                 </CardContent>
              </Card>
 
             )
@@ -81,7 +67,7 @@ import Paper from 'material-ui/Paper'
 
 const mapStateToProps = state => {
     return {
-       companies: state.companydata.companies || []
+       companies: state.companydata.companies || [], 
       }
     }
 const mapDispatchToProps = (dispatch) => {

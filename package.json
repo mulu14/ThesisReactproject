@@ -11,6 +11,8 @@
     "history": "^4.7.2",
     "jw-react-pagination": "^1.0.4",
     "lodash": "^4.17.5",
+    "logrocket": "^0.6.11",
+    "logrocket-react": "^1.0.0",
     "material-ui": "^1.0.0-beta.38",
     "material-ui-icons": "^1.0.0-beta.36",
     "material-ui-image": "^2.1.1",
@@ -43,7 +45,6 @@
   },
   "devDependencies": {
     "jest": "^22.4.3",
-    "react-addons-perf": "^15.4.2",
     "react-rpm": "^1.0.1",
     "redux-devtools-extension": "^2.13.2"
   }

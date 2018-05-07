@@ -2,17 +2,40 @@ import React from 'react'
 import {TableCell,TableRow } from 'material-ui/Table';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Typography from 'material-ui/Typography';
 
+const ListData = (props) =>{
+    return(
+        <div> 
+         {
+             <List>
+                {
+                    props.bonses.map(item =>{
+                       return <ListItem key={item._id}> {item.title} </ListItem>
+                    })
+                }
+             </List>
+             
+         }
+        </div>
 
+    )
+}
 const ListBonses =(props)=>{
     return(
         <div> 
-                <List>
-                  <ListItem>
-                      {console.log(props.data)}
-                </ListItem>
-                </List>
-
+            {
+                <Card> 
+                <CardContent>
+                 <Typography color="textSecondary">
+                 {props.name}
+                 </Typography>
+                 <ListData  bonses = {props.bonses}/>
+                </CardContent>
+                </Card>
+            }
+    
+                  
         </div>
 
     )
