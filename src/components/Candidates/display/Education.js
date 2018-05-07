@@ -9,8 +9,8 @@ const ListData = (props) =>{
          {
              <List>
                 {
-                    props.bonses.map(item =>{
-                       return <ListItem key={item._id}> {item.title} </ListItem>
+                    props.educations.map(education =>{
+                       return <ListItem key={education._id}> {eduaction.title} </ListItem>
                     })
                 }
              </List>
@@ -20,16 +20,16 @@ const ListData = (props) =>{
 
     )
 }
-const ListBonses =(props)=>{
+const EduactionList =(props)=>{
     return(
         <div> 
             {
                 <Card> 
                 <CardContent>
-                 <Typography color="textSecondary">
-                 {props.name}
+                 <Typography color="textSecondary" component="h1">
+                    Eduaction
                  </Typography>
-                 <ListData  bonses = {props.bonses}/>
+                 <ListData  educations = {props.educations}/>
                 </CardContent>
                 </Card>
             }
@@ -40,4 +40,4 @@ const ListBonses =(props)=>{
     )
 }
 
-export default ListBonses
+export default EducationList

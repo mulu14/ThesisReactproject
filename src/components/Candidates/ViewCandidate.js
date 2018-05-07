@@ -11,6 +11,12 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
+import Displayskills from './display/Displayskills'
+import BasicInfo from './display/BasicInfo'
+import BenefitList from './display/Benefit'
+import  WorkExperiences from './display/WorkExperiences'
+import SkillsList from './display/Skill'
+import ProjectExperiences from './display/Projectexperiance'
 import './style/view.css'
 
 
@@ -42,7 +48,7 @@ class ViewCandidate extends Component{
 
   render(){
     if (this.props.singleProfile.length === 0) return null;
-    //console.log(this.props.singleProfile)
+    console.log(this.props.singleProfile.topSkills)
   return (
       <Grid container space={8}>
         <Grid item xs={4}>
@@ -65,95 +71,25 @@ class ViewCandidate extends Component{
           </CardContent>
           </Card>
         <Divider/>
-        <Card className="card">
-        <CardContent>
-        <Typography gutterBottom variant="headline" component="h1">
-            Basic Information
-          </Typography>  
-         <List>
-        <ListItem>{this.props.singleProfile.account.firstname}</ListItem>  
-        <ListItem>{this.props.singleProfile.account.lastname}</ListItem>  
-        <ListItem>{this.props.singleProfile.account.email}</ListItem>  
-        <ListItem>{this.props.singleProfile.account.phone}</ListItem> 
-      </List>
-        </CardContent>
-        </Card>
+        <BasicInfo basicInformation={this.props.singleProfile.account }/> 
       </Grid>
+
       <Grid item xs={4}>
-      <Card className="card">
-        <CardContent>
-          <Typography gutterBottom variant="headline" component="h1">
-          Top skills
-          </Typography>  
-         <List>
-        <ListItem>Experience: {this.props.singleProfile.topSkills[0].experience}</ListItem>  
-        <ListItem> Title: {this.props.singleProfile.topSkills[0].title}</ListItem>  
-      </List>
-        </CardContent>
-        </Card>
+        <Displayskills topskills={this.props.singleProfile.topSkills}/>
         <Divider/>
-        <Card className="card">
-        <CardContent>
-          <Typography gutterBottom variant="headline" component="h1">
-           Benefits
-          </Typography>  
-         <List>
-        <ListItem>{this.props.singleProfile.benefits[0].title}</ListItem>  
-        
-      </List>
-        </CardContent>
-        </Card>
+        <BenefitList benefits = {this.props.singleProfile.benefits}/>
       </Grid>
       <Grid item xs={4}>
-      <Card className="card">
-        <CardContent>
-          <Typography gutterBottom variant="headline" component="h1">
-          Skills
-          </Typography>  
-         <List>
-        <ListItem>{this.props.singleProfile.skills[0].title}</ListItem>
-  
-      </List>
-        </CardContent>
-        </Card>
+      <SkillsList skills={this.props.singleProfile.skills}/>
+
         <Divider/>
-        <Card className="card">
-        <CardContent>
-          <Typography gutterBottom variant="headline" component="h1">
-          Work Experience
-          </Typography>  
-         <List>
-        <ListItem>{this.props.singleProfile.workExperiences[0].experience}</ListItem>  
-        
-      </List>
-        </CardContent>
-        </Card>
+        <WorkExperiences workexperiences={this.props.singleProfile.workExperiences}/>
       </Grid>
       <Grid item xs={4}>
-      <Card className="card">
-        <CardContent>
-          <Typography gutterBottom variant="headline" component="h1">
-          Work Experience
-          </Typography>  
-         <List>
-        <ListItem>{this.props.singleProfile.workExperiences[0].experience}</ListItem>  
-        
-      </List>
-        </CardContent>
-        </Card>
+      
       </Grid>
       <Grid item xs={4}>
-      <Card className="card">
-        <CardContent>
-          <Typography gutterBottom variant="headline" component="h1">
-           Project Experience
-          </Typography>  
-         <List>
-        <ListItem>{this.props.singleProfile.projectExperiences[0].title}</ListItem>  
-        
-      </List>
-        </CardContent>
-        </Card>
+      <ProjectExperiences projectExperiences={this.props.singleProfile.projectExperiences}/>
       </Grid>
       <Grid item xs={4}>
      
