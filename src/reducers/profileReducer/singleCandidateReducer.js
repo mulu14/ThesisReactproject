@@ -1,15 +1,14 @@
+import { FETCH_SINGLE_PROFILE } from './../../action/actionTypes';
 
-import {FETCH_SINGLE_PROFILE} from './../../action/actionTypes'
-
-export default function singleCandidateReducer(state = {}, action) {  
-    switch(action.type) {
-      case  FETCH_SINGLE_PROFILE:
+export default function singleCandidateReducer(state = {}, action) {
+  switch (action.type) {
+    case FETCH_SINGLE_PROFILE:
       return {
-        ...state, 
+        ...state,
         singleCandidate: action.profile.profile
-      }
+      };
 
-      default: 
-        return state;
-    }
+    default:
+      return state;
   }
+}

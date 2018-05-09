@@ -1,91 +1,85 @@
-
-
-.wrapper{
-    margin: 2em;
+.wrapper {
+  margin: 2em;
 }
 
 .form input {
-    width: 50%; 
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px; 
-    resize: vertical 
-  }
-
-.container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
 }
 
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
 
-.colm-1 li{
- list-style: none;
- padding: 0.5em;
+.colm-1 li {
+  list-style: none;
+  padding: 0.5em;
 }
 
 .colm-1 label {
-margin-left: .5em;
-padding-left: 2em;
+  margin-left: 0.5em;
+  padding-left: 2em;
 }
 
-.benifits div{
-    display: inline-block; 
-    width: 33%; 
+.benifits div {
+  display: inline-block;
+  width: 33%;
 }
 
-.benifits li{
-    width: 300px; 
+.benifits li {
+  width: 300px;
 }
 
-
-.colm-2 li{
-    list-style: none;
-    padding: 0.5em;
-   }
-
+.colm-2 li {
+  list-style: none;
+  padding: 0.5em;
+}
 
 .colm-2 label {
-    margin-left: .5em;
-    padding-left: 2em;
+  margin-left: 0.5em;
+  padding-left: 2em;
 }
 
-
-.colm-3 li{
-    list-style: none;
-    padding: 0.5em;
-   }
+.colm-3 li {
+  list-style: none;
+  padding: 0.5em;
+}
 
 .colm-3 label {
-    margin-left: .5em;
-    padding-left: 2em;
+  margin-left: 0.5em;
+  padding-left: 2em;
 }
 
-.officeLayout li{
-    list-style: none; 
-    width: 300px; 
+.officeLayout li {
+  list-style: none;
+  width: 300px;
 }
-.officeLayout div{
-    display: inline-block; 
-    
+.officeLayout div {
+  display: inline-block;
 }
-.officeLayout img{
-    height: 150px;
-    width: 150px; 
+.officeLayout img {
+  height: 150px;
+  width: 150px;
 }
 
 .organizationInfo div {
-    display: inline-block; 
-    width: 33%; 
+  display: inline-block;
+  width: 33%;
 }
 
-.organizationInfo label, input {
-    display: block
+.organizationInfo label,
+input {
+  display: block;
 }
 
-.marginfromLeft{
-    margin-left: 11px; 
+.marginfromLeft {
+  margin-left: 11px;
 }

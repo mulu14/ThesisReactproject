@@ -1,45 +1,42 @@
-.root{
-    height: 100%;
-    position: relative;
+.root {
+  height: 100%;
+  position: relative;
 }
 
-.body{
-    height: 100%;
-    position: relative;
+.body {
+  height: 100%;
+  position: relative;
 }
 
-
-
-.formlogin li{
-    list-style: none; 
-    width: 150px; 
+.formlogin li {
+  list-style: none;
+  width: 150px;
 }
-.formlogin input{
- width: 200px; 
- border-radius: 1em; 
+.formlogin input {
+  width: 200px;
+  border-radius: 1em;
 }
 
-.footerlogin{
- position: absolute;;
- bottom: 0;
- width: 100%;
-
+.footerlogin {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
-.loginButton{
-    margin-top: 10em
+.loginButton {
+  margin-top: 10em;
 }
-.loginButton button{
-    margin-left: 1em; 
-    border-radius: 0.5em; 
+.loginButton button {
+  margin-left: 1em;
+  border-radius: 0.5em;
 }
 
-.placeholder{
-   height: 500px; 
+.placeholder {
+  height: 500px;
 }
-.blue{
-    color: blue
+.blue {
+  color: blue;
 }
-.red{
-    color: red; 
+.red {
+  color: red;
 }

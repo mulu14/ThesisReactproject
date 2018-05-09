@@ -1,95 +1,100 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import {FirstPage, LastPage, KeyboardArrowLeft, KeyboardArrowRight} from 'material-ui-icons'
+import {
+  FirstPage,
+  LastPage,
+  KeyboardArrowLeft,
+  KeyboardArrowRight
+} from 'material-ui-icons';
 import { withStyles } from 'material-ui/styles';
- 
+
 const actionsStyles = theme => ({
-    root: {
-      flexShrink: 0,
-      color: theme.palette.text.secondary,
-      marginLeft: theme.spacing.unit * 2.5,
-    },
-  });
+  root: {
+    flexShrink: 0,
+    color: theme.palette.text.secondary,
+    marginLeft: theme.spacing.unit * 2.5
+  }
+});
 
- 
 class Pagination extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { pager: {} };
-    }
-      
+  constructor(props) {
+    super(props);
+    this.state = { pager: {} };
+  }
 
-    handleFirstPageButtonClick = event => {
-        this.props.onChangePage(event, 0);
-      };
-    
-      handleBackButtonClick = event => {
-        this.props.onChangePage(event, this.props.page - 1);
-      };
-    
-      handleNextButtonClick = event => {
-        this.props.onChangePage(event, this.props.page + 1);
-      };
-    
-      handleLastPageButtonClick = event => {
-        this.props.onChangePage(
-          event,
-          Math.max(0, Math.ceil(this.props.count / this.props.rowsPerPage) - 1),
-        );
-      };
-   
- 
-    render() {
-        const { classes, count, page, rowsPerPage, theme } = this.props;
- 
-        return (
-
-<div className={classes.root}>
-                    <IconButton
-                    onClick={this.handleFirstPageButtonClick}
-                    disabled={page === 0}
-                    aria-label="First Page"
-                    >
-                    {theme.direction === 'rtl' ? <LastPage /> : <FirstPage/>}
-                    </IconButton>
-                    <IconButton
-                    onClick={this.handleBackButtonClick}
-                    disabled={page === 0}
-                    aria-label="Previous Page"
-                    >
-                    {theme.direction === 'rtl' ? <KeyboardArrowRight/> : <KeyboardArrowLeft />}
-                    </IconButton>
-                    <IconButton
-                    onClick={this.handleNextButtonClick}
-                    disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-                    aria-label="Next Page"
-                    >
-                    {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                    </IconButton>
-                    <IconButton
-                    onClick={this.handleLastPageButtonClick}
-                    disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-                    aria-label="Last Page"
-                    >
-                    {theme.direction === 'rtl' ? <FirstPage /> : <LastPage/>}
-        </IconButton>
-      </div>
-                
-          
-        );
-    }
-}
-
-    Pagination.propTypes = {
-    classes: PropTypes.object.isRequired,
-    count: PropTypes.number.isRequired,
-    onChangePage: PropTypes.func.isRequired,
-    page: PropTypes.number.isRequired,
-    rowsPerPage: PropTypes.number.isRequired,
-    theme: PropTypes.object.isRequired,
+  handleFirstPageButtonClick = event => {
+    this.props.onChangePage(event, 0);
   };
 
- 
+  handleBackButtonClick = event => {
+    this.props.onChangePage(event, this.props.page - 1);
+  };
 
-  export default withStyles(actionsStyles, { withTheme: true })(Pagination);
+  handleNextButtonClick = event => {
+    this.props.onChangePage(event, this.props.page + 1);
+  };
+
+  handleLastPageButtonClick = event => {
+    this.props.onChangePage(
+      event,
+      Math.max(0, Math.ceil(this.props.count / this.props.rowsPerPage) - 1)
+    );
+  };
+
+  render() {
+    const { classes, count, page, rowsPerPage, theme } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <IconButton
+          onClick={this.handleFirstPageButtonClick}
+          disabled={page === 0}
+          aria-label="First Page"
+        >
+          {theme.direction === 'rtl' ? <LastPage /> : <FirstPage />}
+        </IconButton>
+        <IconButton
+          onClick={this.handleBackButtonClick}
+          disabled={page === 0}
+          aria-label="Previous Page"
+        >
+          {theme.direction === 'rtl' ? (
+            <KeyboardArrowRight />
+          ) : (
+            <KeyboardArrowLeft />
+          )}
+        </IconButton>
+        <IconButton
+          onClick={this.handleNextButtonClick}
+          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+          aria-label="Next Page"
+        >
+          {theme.direction === 'rtl' ? (
+            <KeyboardArrowLeft />
+          ) : (
+            <KeyboardArrowRight />
+          )}
+        </IconButton>
+        <IconButton
+          onClick={this.handleLastPageButtonClick}
+          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+          aria-label="Last Page"
+        >
+          {theme.direction === 'rtl' ? <FirstPage /> : <LastPage />}
+        </IconButton>
+      </div>
+    );
+  }
+}
+
+Pagination.propTypes = {
+  classes: PropTypes.object.isRequired,
+  count: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  theme: PropTypes.object.isRequired
+};
+
+export default withStyles(actionsStyles, { withTheme: true })(Pagination);

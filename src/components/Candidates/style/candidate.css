@@ -1,27 +1,26 @@
 .root {
-    width: 100%;
-    padding: 1.2em;
-    margin-top: 2em; 
-    overflow: hidden; 
+  width: 100%;
+  padding: 1.2em;
+  margin-top: 2em;
+  overflow: hidden;
 }
 
-.table{
-    max-width: 700px;
-    border-top: 0; 
+.table {
+  max-width: 700px;
+  border-top: 0;
 }
-
 
 .formprofile input {
-    width: 50%; 
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px; 
-    resize: vertical 
-  }
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
 
-  .tableTop{
-      border: 0; 
-  }
+.tableTop {
+  border: 0;
+}
