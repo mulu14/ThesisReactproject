@@ -6,7 +6,6 @@ import Table, {
   TableHead,
   TableRow,
   TablePagination,
-  TableSortLabel,
   TableFooter
 } from 'material-ui/Table';
 import Grid from 'material-ui/Grid';

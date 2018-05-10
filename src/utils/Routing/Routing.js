@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Profile from './../../components/Candidates/Profile';
@@ -15,23 +16,98 @@ import ViewOffer from './../../components/Offers/offerView';
 import CreateCandidate from './../../components/Candidates/CreateCandidate';
 import RegisterUser from './../../utils/RegisterUser/userRegister';
 import { PrivateRoute } from './privateRoute';
+import asyncComponent from './AsyncComponent'
+*/
+import { PrivateRoute } from './privateRoute';
+import asyncComponent from './AsyncComponent';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Loadable from 'react-loadable';
+
+const Loading = () => <div>Loading...</div>;
+const AsyncProfile = Loadable({
+  loader: () => import('./../../components/Candidates/Profile'),
+  loading: Loading
+});
+const AsyncCandidate = Loadable({
+  loader: () => import('./../../components/Candidates/Candidate'),
+  loading: Loading
+});
+
+const AsyncOffers = Loadable({
+  loader: () => import('./../../components/Offers/Offers'),
+  loading: Loading
+});
+
+const AsyncInvitation = Loadable({
+  loader: () => import('./../../components/Invitations/Invitations'),
+  loading: Loading
+});
+
+const AsyncBonses = Loadable({
+  loader: () => import('./../../components/Boneses/Bonses'),
+  loading: Loading
+});
+
+const AsyncCompany = Loadable({
+  loader: () => import('./../../components/Companies/Company'),
+  loading: Loading
+});
+const AsyncLogin = Loadable({
+  loader: () => import('./../Login/Login'),
+  loading: Loading
+});
+const AsyncLogout = Loadable({
+  loader: () => import('./../Logout/logout'),
+  loading: Loading
+});
+const AsyncHome = Loadable({
+  loader: () => import('./../../components/Home'),
+  loading: Loading
+});
+
+const AsyncViewCompany = Loadable({
+  loader: () => import('./../../components/Companies/ViewCompany'),
+  loading: Loading
+});
+const AsyncViewCandidate = Loadable({
+  loader: () => import('./../../components/Candidates/ViewCandidate'),
+  loading: Loading
+});
+
+const AsyncViewOffer = Loadable({
+  loader: () => import('./../../components/Offers/offerView'),
+  loading: Loading
+});
+const AsyncCreateCandidate = Loadable({
+  loader: () => import('./../../components/Candidates/CreateCandidate'),
+  loading: Loading
+});
+
+const AsyncRegisterUser = Loadable({
+  loader: () => import('./../../utils/RegisterUser/userRegister'),
+  loading: Loading
+});
 
 const ConfigRoute = props => {
   return (
     <Switch>
-      <PrivateRoute exact={true} path="/" component={Profile} />
-      <PrivateRoute exact path="/company" component={Company} />
-      <PrivateRoute path="/company/view/:id" component={ViewCompany} />
-      <PrivateRoute exact path="/candidate" component={Candidate} />
-      <PrivateRoute path="/candidate/view/:id" component={ViewCandidate} />
-      <PrivateRoute path="/candidate/edit/:id" component={CreateCandidate} />
-      <PrivateRoute path="/offers" component={Offers} />
-      <PrivateRoute path="/offers/view/:id" component={ViewOffer} />
-      <PrivateRoute path="/bones" component={Bonses} />
-      <Route path="/login" component={Login} />
-      <Route path="/logout" component={Logout} />
-      <Route path="/signin" component={RegisterUser} />
-      <PrivateRoute path="/invitation" component={Invitations} />
+      <PrivateRoute exact={true} path="/" component={AsyncProfile} />
+      <PrivateRoute exact path="/company" component={AsyncCompany} />
+      <PrivateRoute path="/company/view/:id" component={AsyncViewCompany} />
+      <PrivateRoute exact path="/candidate" component={AsyncCandidate} />
+      <PrivateRoute path="/candidate/view/:id" component={AsyncViewCandidate} />
+      <PrivateRoute
+        path="/candidate/edit/:id"
+        component={AsyncCreateCandidate}
+      />
+      <PrivateRoute path="/offers" component={AsyncOffers} />
+      <PrivateRoute path="/offers/view/:id" component={AsyncViewOffer} />
+      <PrivateRoute path="/bones" component={AsyncBonses} />
+      <Route path="/login" component={AsyncLogin} />
+      <Route path="/logout" component={AsyncLogout} />
+      <Route path="/signin" component={AsyncRegisterUser} />
+      <PrivateRoute path="/invitation" component={AsyncInvitation} />
     </Switch>
   );
 };

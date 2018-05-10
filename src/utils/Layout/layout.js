@@ -108,7 +108,7 @@ class Layout extends Component {
       );
 
     return (
-      <div className="root">
+      <div>
         <div className="header">
           <Grid container spacing={8}>
             <Grid item xs={2} />
