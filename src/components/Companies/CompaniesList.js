@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
-import CreateCompany from './CreateCompany';
 import { Link } from 'react-router-dom';
 import List, { ListItem } from 'material-ui/List';
 import Button from 'material-ui/Button';

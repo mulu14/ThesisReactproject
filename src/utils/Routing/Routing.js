@@ -18,11 +18,13 @@ import RegisterUser from './../../utils/RegisterUser/userRegister';
 import { PrivateRoute } from './privateRoute';
 import asyncComponent from './AsyncComponent'
 */
+
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { PrivateRoute } from './privateRoute';
 import asyncComponent from './AsyncComponent';
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
+import { withRouter } from 'react-router';
 
 const Loading = () => <div>Loading...</div>;
 const AsyncProfile = Loadable({
@@ -53,6 +55,12 @@ const AsyncCompany = Loadable({
   loader: () => import('./../../components/Companies/Company'),
   loading: Loading
 });
+
+const AsyncEditCompany = Loadable({
+  loader: () => import('./../../components/Companies/EditCompany'),
+  loading: Loading
+});
+
 const AsyncLogin = Loadable({
   loader: () => import('./../Login/Login'),
   loading: Loading
@@ -79,8 +87,8 @@ const AsyncViewOffer = Loadable({
   loader: () => import('./../../components/Offers/offerView'),
   loading: Loading
 });
-const AsyncCreateCandidate = Loadable({
-  loader: () => import('./../../components/Candidates/CreateCandidate'),
+const AsyncEditCandidate = Loadable({
+  loader: () => import('./../../components/Candidates/EditCandidate'),
   loading: Loading
 });
 
@@ -89,27 +97,33 @@ const AsyncRegisterUser = Loadable({
   loading: Loading
 });
 
-const ConfigRoute = props => {
-  return (
-    <Switch>
-      <PrivateRoute exact={true} path="/" component={AsyncProfile} />
-      <PrivateRoute exact path="/company" component={AsyncCompany} />
-      <PrivateRoute path="/company/view/:id" component={AsyncViewCompany} />
-      <PrivateRoute exact path="/candidate" component={AsyncCandidate} />
-      <PrivateRoute path="/candidate/view/:id" component={AsyncViewCandidate} />
-      <PrivateRoute
-        path="/candidate/edit/:id"
-        component={AsyncCreateCandidate}
-      />
-      <PrivateRoute path="/offers" component={AsyncOffers} />
-      <PrivateRoute path="/offers/view/:id" component={AsyncViewOffer} />
-      <PrivateRoute path="/bones" component={AsyncBonses} />
-      <Route path="/login" component={AsyncLogin} />
-      <Route path="/logout" component={AsyncLogout} />
-      <Route path="/signin" component={AsyncRegisterUser} />
-      <PrivateRoute path="/invitation" component={AsyncInvitation} />
-    </Switch>
-  );
-};
+class ConfigRoute extends Component {
+  render() {
+    return (
+      <Switch>
+        <PrivateRoute exact={true} path="/" component={AsyncProfile} />
+        <PrivateRoute exact path="/company" component={AsyncCompany} />
+        <PrivateRoute path="/company/view/:id" component={AsyncViewCompany} />
+        <PrivateRoute path="/company/edit/:id" component={AsyncEditCompany} />
+        <PrivateRoute exact path="/candidate" component={AsyncCandidate} />
+        <PrivateRoute
+          path="/candidate/view/:id"
+          component={AsyncViewCandidate}
+        />
+        <PrivateRoute
+          path="/candidate/edit/:id"
+          component={AsyncEditCandidate}
+        />
+        <PrivateRoute path="/offers" component={AsyncOffers} />
+        <PrivateRoute path="/offers/view/:id" component={AsyncViewOffer} />
+        <PrivateRoute path="/bones" component={AsyncBonses} />
+        <Route path="/login" component={AsyncLogin} />
+        <Route path="/logout" component={AsyncLogout} />
+        <Route path="/signin" component={AsyncRegisterUser} />
+        <PrivateRoute path="/invitation" component={AsyncInvitation} />
+      </Switch>
+    );
+  }
+}
 
 export default ConfigRoute;

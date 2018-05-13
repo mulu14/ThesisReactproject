@@ -20,13 +20,13 @@ import { Field, reduxForm, initialize } from 'redux-form';
 import Divider from 'material-ui/Divider';
 import './style/create.css';
 
-class CreateCandidate extends Component {
+class EditCandidate extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      copyCandidate: {},
-      profile: {
+      //copyCandidate: {},
+      copyCandidate: {
         account: {
           firstname: '',
           lastname: '',
@@ -40,64 +40,80 @@ class CreateCandidate extends Component {
 
         topSkills: [
           {
-            experience1: '',
-            title1: ''
+            experience: '',
+            title: ''
           },
           {
-            experience2: '',
-            title2: ''
+            experience: '',
+            title: ''
           },
           {
-            experience3: '',
-            title3: ''
+            experience: '',
+            title: ''
           },
           {
-            experience4: '',
-            title4: ''
+            experience: '',
+            title: ''
           },
           {
-            experience5: '',
-            title5: ''
+            experience: '',
+            title: ''
           }
         ],
         skills: [
           {
-            title1: ''
+            title: ''
           },
           {
-            title1: ''
+            title: ''
           }
         ],
         benefits: [
           {
-            title1: ''
+            title: ''
           },
           {
-            title2: ''
+            title: ''
           },
           {
-            title3: ''
+            title: ''
           },
           {
-            title4: ''
+            title: ''
           },
           {
-            title5: ''
+            title: ''
           }
         ],
         workExperiences: [
           {
-            title1: '',
-            experience2: ''
+            title: '',
+            experience: ''
           },
           {
-            title2: '',
-            experience2: ''
+            title: '',
+            experience: ''
           }
         ],
 
-        projectExperiences: [{}, {}],
+        projectExperiences: [
+          {
+            title: ''
+          },
+          {
+            title: ''
+          },
+          {
+            title: ''
+          }
+        ],
         educations: [
+          {
+            fieldOfStudy: ''
+          },
+          {
+            fieldOfStudy: ''
+          },
           {
             fieldOfStudy: ''
           }
@@ -126,11 +142,12 @@ class CreateCandidate extends Component {
 
   handleChange = e => {
     const candidateClone = Object.assign({}, this.state.copyCandidate);
-    const accountClone = Object.assign({}, this.state.copyCandidate.account); // Deep clone.
+    const accountClone = Object.assign({}, this.state.copyCandidate.account);
     const topSkillsClone = Object.assign(
       {},
       this.state.copyCandidate.topSkills
-    ); // Deep clone.
+    );
+    const salaryClone = Object.assign({}, this.state.copyCandidate.salary);
     let firstName = candidateClone.account.firstname;
     let lastName = candidateClone.account.lastname;
     let phone = candidateClone.account.phone;
@@ -157,7 +174,7 @@ class CreateCandidate extends Component {
       case 'salaryInput':
         salary: e.target.value;
         break;
-      case 'headline':
+      case 'headlineInput':
         headline: e.target.value;
         break;
       case 'experience1':
@@ -169,72 +186,19 @@ class CreateCandidate extends Component {
       default:
         console.log('Error');
     }
-    candidateClone.account.firstname = firstName;
-    candidateClone.account.lastname = lastName;
-    candidateClone.account.email = email;
-    candidateClone.account.phone = phone;
-    candidateClone.salary = salary;
-    candidateClone.headline = headline;
+
+    accountClone.firstname = firstName;
+    accountClone.lastname = lastName;
+    accountClone.email = email;
+    accountClone.phone = phone;
     topSkillsClone[0].experience = experinecOne;
     topSkillsClone[0].title = titleOne;
     candidateClone['account'] = accountClone;
+    candidateClone['salary'] = salary;
+    candidateClone['headline'] = headline;
     candidateClone['topSkills'] = topSkillsClone;
     this.setState({ copyCandidate: candidateClone });
   };
-
-  /*
-  handleChange = e => {
-    const profileClone = Object.assign({}, this.state.profile);// Shallow clone.
-    const testClone = Object.assign({}, this.state.test);
-    const accountClone = Object.assign({}, this.state.profile.account);// Deep clone.
-    const topSkillsClone = Object.assign({}, this.state.profile.topSkills);// Deep clone.
-    // below (let): Persists the last entered value (required).
-    let myHeadline = profileClone.headline;
-    //let myFirstName = profileClone.account.firstName;
-    let myFirstName = testClone.account.firstname;
-    let myLastName = profileClone.account.lastName;
-    let myEmail = profileClone.account.email;
-    let myphone = profileClone.account.phone; 
-    let mySalary = profileClone.salary;
-    let myTopSkillsTitle = profileClone.topSkills[0].title;
-    switch (e.target.name) {
-        
-        case "firstNameInput":
-            myFirstName = e.target.value;
-            break;
-        case "lastNameInput": 
-             myLastName = e.target.value; 
-             break;
-        case "emailInput": 
-              myEmail = e.target.value; 
-              break;
-        case "phoneInput": 
-             myphone = e.target.value; 
-             break;
-        case "headlineInput":
-            myHeadline = e.target.value;
-            break;
-        case "salaryInput":
-            mySalary = e.target.value;
-            break;
-        case "topSkillsTitleInput":
-            myTopSkillsTitle = e.target.value;
-            break;
-        default:
-            console.log("Switch statement error");
-    }
-    accountClone.firstName = myFirstName;// Place the property value inside the deep cloned embedded object.
-    accountClone.lastName = myLastName; 
-    accountClone.email = myEmail; 
-    accountClone.phone = myphone; 
-    topSkillsClone[0].title = myTopSkillsTitle;// Place the property value inside the deep cloned embedded array.
-    profileClone["account"] = accountClone;// Place the deep cloned embedded object inside the shallow cloned main object.
-    profileClone["salary"] = mySalary;// Place the property inside the shallow cloned main object.
-    profileClone["headline"] = myHeadline;// Place the property inside the shallow cloned main object.
-    profileClone["topSkills"] = topSkillsClone;// Place the deep cloned embedded array inside the shallow cloned main object.
-    this.setState({profile:profileClone});
-};
-*/
 
   handleSubmit(e) {
     e.preventDefault();
@@ -250,7 +214,8 @@ class CreateCandidate extends Component {
   }
   render() {
     if (this.props.candidate.length === 0) return null;
-    console.log(this.state.copyCandidate);
+    //console.log(this.state.copyCandidate);
+    console.log(this.state.copyCandidate.topSkills);
     return (
       <div className="container">
         <form className="formprofile" onSubmit={this.handleSubmit}>
@@ -356,87 +321,92 @@ class CreateCandidate extends Component {
               </Grid>
               <Grid item xs={12}>
                 <Card className="card">
-                  <CardContent className="cardcontent">
+                  <CardContent className="cardcontent1">
                     <h4> Top skills</h4>
                     <div className="field">
-                      <input
-                        name="titleone"
-                        type="text"
-                        value={
-                          this.state.copyCandidate.topSkills[0].title || ''
-                        }
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                      <input
-                        name="experience1"
-                        type="number"
-                        value={
-                          this.state.copyCandidate.topSkills[0].experience || ''
-                        }
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="field">
-                      <input
-                        name="experience2"
-                        type="text"
-                        value={this.state.profile.topSkills[1].title || ''}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="field">
-                      <input
-                        name="experience3"
-                        type="text"
-                        value={this.state.profile.topSkills[2].title || ''}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="field">
-                      <input
-                        name="experience4"
-                        type="text"
-                        value={this.state.profile.topSkills[3].title || ''}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="field">
-                      <input
-                        name="experience5"
-                        type="text"
-                        value={this.state.profile.topSkills.title || ''}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
+                      <div>
+                        <label>Job title: </label>
+
+                        <input
+                          name="topskillonetitle"
+                          type="text"
+                          value={
+                            this.state.copyCandidate.topSkills[0].title || ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                        <label>Year of Experiance: </label>
+                        <input
+                          name="topskilloneexperience"
+                          type="text"
+                          value={
+                            this.state.copyCandidate.topSkills[0].experience ||
+                            ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                      <div>
+                        <label>Job title: </label>
+                        <input
+                          name="topskilltwotitle"
+                          type="text"
+                          value={
+                            this.state.copyCandidate.topSkills[1].title || ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                        <label>Year of Experiance: </label>
+                        <input
+                          name="topskilltwoexperience"
+                          type="text"
+                          value={
+                            this.state.copyCandidate.topSkills[1].experience ||
+                            ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                      <div>
+                        <label>Job title: </label>
+                        <input
+                          name="topskillthreetitle"
+                          type="text"
+                          value={
+                            this.state.copyCandidate.topSkills[2].title || ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                        <label>Year of Experiance: </label>
+                        <input
+                          name="topskillthreeexperience"
+                          type="text"
+                          value={
+                            this.state.copyCandidate.topSkills[2].experience ||
+                            ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
               </Grid>
               <Grid item xs={12}>
                 <Card className="card">
-                  <CardContent className="cardcontent">
+                  <CardContent className="cardcontent1">
                     <h4> Skills</h4>
                     <div className="field">
-                      <input
-                        name="title1"
-                        type="text"
-                        //  value={this.state.profile.skills.title1}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="field">
-                      <input
-                        name="title2"
-                        type="text"
-                        //    value={this.state.profile.skills.title2}
-                        onChange={this.handleChange}
-                      />
+                      <div>
+                        <label>Year of Experiance: </label>
+                        <input
+                          name="skillone"
+                          type="text"
+                          value={this.state.copyCandidate.skills[0].title || ''}
+                          onChange={this.handleChange}
+                        />
+                      </div>
+
                       <span> </span>
                     </div>
                   </CardContent>
@@ -445,25 +415,22 @@ class CreateCandidate extends Component {
 
               <Grid item xs={12}>
                 <Card className="card">
-                  <CardContent className="cardcontent">
+                  <CardContent className="cardcontent1">
                     <h4> Project Experiences</h4>
                     <div className="field">
-                      <input
-                        name="headline"
-                        type="text"
-                        // value={this.state.profile.projectExperiences.title1}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
+                      <div>
+                        <label>Name of the Project: </label>
+                        <input
+                          name="projectone"
+                          type="text"
+                          value={
+                            this.state.copyCandidate.projectExperiences[0]
+                              .title || ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                      </div>
 
-                    <div className="">
-                      <input
-                        name="headline"
-                        type="text"
-                        //       value={this.state.profile.projectExperiences.title2}
-                        onChange={this.handleChange}
-                      />
                       <span> </span>
                     </div>
                   </CardContent>
@@ -471,24 +438,22 @@ class CreateCandidate extends Component {
               </Grid>
               <Grid item xs={12}>
                 <Card className="card">
-                  <CardContent className="cardcontent">
+                  <CardContent className="cardcontent1">
                     <h4> Educations</h4>
                     <div className="field">
-                      <input
-                        name="headline"
-                        type="text"
-                        //      value={this.state.profile.educations.title2}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="">
-                      <input
-                        name="headline"
-                        type="text"
-                        //   value={this.state.profile.educations.title2}
-                        onChange={this.handleChange}
-                      />
+                      <div>
+                        <label>Field of Study: </label>
+                        <input
+                          name="studyfield"
+                          type="text"
+                          value={
+                            this.state.copyCandidate.educations[0]
+                              .fieldofstudy || ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                      </div>
+
                       <span> </span>
                     </div>
                   </CardContent>
@@ -497,24 +462,34 @@ class CreateCandidate extends Component {
 
               <Grid item xs={12}>
                 <Card className="card">
-                  <CardContent className="cardcontent">
+                  <CardContent className="cardcontent2">
                     <h4> Work Experiance</h4>
                     <div className="field">
-                      <input
-                        name="title1"
-                        type="text"
-                        //     value={this.state.profile.workExperiences.title1}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="">
-                      <input
-                        name="title2"
-                        type="text"
-                        //   value={this.state.profile.workExperiences.title2}
-                        onChange={this.handleChange}
-                      />
+                      <div>
+                        <label>Job title: </label>
+                        <input
+                          name="workexp1title"
+                          type="number"
+                          value={
+                            this.state.copyCandidate.workExperiences[0].title ||
+                            ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                      <div>
+                        <label>Year of experiance: </label>
+                        <input
+                          name="workexp1"
+                          type="number"
+                          value={
+                            this.state.copyCandidate.workExperiences[0]
+                              .experience || ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                      </div>
+
                       <span> </span>
                     </div>
                   </CardContent>
@@ -522,51 +497,21 @@ class CreateCandidate extends Component {
               </Grid>
               <Grid item xs={12}>
                 <Card className="card">
-                  <CardContent className="cardcontent">
+                  <CardContent className="cardcontent1">
                     <h4> Benefits</h4>
                     <div className="field">
-                      <input
-                        name="title1"
-                        type="text"
-                        //   value={this.state.profile.benefits.title1}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="field">
-                      <input
-                        name="title2"
-                        type="text"
-                        //    value={this.state.profile.benefits.title2}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="field">
-                      <input
-                        name="title3"
-                        type="text"
-                        //   value={this.state.profile.benefits.title3}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="field">
-                      <input
-                        name="title4"
-                        type="text"
-                        //   value={this.state.profile.benefits.title4}
-                        onChange={this.handleChange}
-                      />
-                      <span> </span>
-                    </div>
-                    <div className="field">
-                      <input
-                        name="title5"
-                        type="text"
-                        //   value={this.state.profile.workExperiences.title5}
-                        onChange={this.handleChange}
-                      />
+                      <div>
+                        <label>Benefit One: </label>
+                        <input
+                          name="benefitone"
+                          type="text"
+                          value={
+                            this.state.copyCandidate.benefits[0].title || ''
+                          }
+                          onChange={this.handleChange}
+                        />
+                      </div>
+
                       <span> </span>
                     </div>
                   </CardContent>
@@ -607,5 +552,5 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps, null, {
   pure: false
-})(CreateCandidate);
+})(EditCandidate);
 //export default withRouter(connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(CreateCandidate));

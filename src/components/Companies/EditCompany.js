@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 import { FileUpload } from 'material-ui-icons';
+import { connect } from 'react-redux';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import { getSingleCompany } from './../../action/companyaction';
 import Chip from 'material-ui/Chip';
 import Avatar from 'material-ui/Avatar';
 
@@ -11,20 +13,91 @@ import image2 from './../../images/image2.jpg';
 import image3 from './../../images/image3.jpg';
 import image4 from './../../images/image4.jpg';
 
-class CreateCompany extends Component {
+class EditCompany extends Component {
   constructor(props) {
     super(props);
     this.state = {
       company: {
-        firstname: '',
-        lastname: '',
-        email: '',
-        phone: ''
+        nameOfCompany: '',
+        numberOfEmployee: '',
+
+        benefitsList: [
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          },
+          {
+            code: ''
+          }
+        ],
+        intrestfromCandidates: '',
+        companylogo: '',
+        includedInStack: [
+          {
+            title: ''
+          },
+          {
+            title: ''
+          },
+          {
+            title: ''
+          }
+        ]
       }
     };
   }
+  componentWillMount() {
+    if (this.props.match.params) {
+      const { id } = this.props.match.params;
+      this.props.getSingleCompany(id);
+      this.setState({ company: this.props.companyprofile });
+    }
+  }
+  handelChange = e => {};
 
   render() {
+    if (this.props.companyprofile === 0) return null;
     return (
       <div className="wrapper">
         <div className="header">
@@ -37,24 +110,23 @@ class CreateCompany extends Component {
                 <div className="form">
                   <div>
                     <div>
-                      <label>Company name</label>
-                      <input type="email" name="companyname" />
+                      <label>Name of Company</label>
+                      <input
+                        type="email"
+                        name="companyname"
+                        value={this.state.company.nameOfCompany || ''}
+                        onChange={this.handelChange}
+                      />
                     </div>
-                    <label> First name</label>
-                    <input type="text" name="firstname" />
+                    <label>Nameber of Employees</label>
+                    <input
+                      type="text"
+                      name="numberOfEmployee"
+                      value={this.state.company.numberOfEmployee || ''}
+                      onChange={this.handelChange}
+                    />
                   </div>
-                  <div>
-                    <label>Last name</label>
-                    <input type="text" name="lastname" />
-                  </div>
-                  <div>
-                    <label>Email</label>
-                    <input type="email" name="email" />
-                  </div>
-                  <div>
-                    <label>Phone</label>
-                    <input type="number" name="phonennumber" />
-                  </div>
+
                   <div />
                 </div>
 
@@ -63,7 +135,12 @@ class CreateCompany extends Component {
                   <div>
                     <ul className="colm-1">
                       <li>
-                        <input type="checkbox" name="balance" value="balance" />
+                        <input
+                          type="checkbox"
+                          name="balance"
+                          // value={this.state.company.benefitsList[0].code === 1? true: false}
+                          // checked={this.state.company.benefitsList[0].code === 1? true: false}
+                        />
                         <label> Balance</label>{' '}
                       </li>
                       <li>
@@ -259,43 +336,6 @@ class CreateCompany extends Component {
                     </p>
                     <textarea rows="10" cols="152" />
                   </div>
-                  <div className="officeLayout">
-                    <div>
-                      <Card>
-                        <img src={image1} alt="Working enviroment" />
-                        <li>
-                          {' '}
-                          <FileUpload />
-                        </li>
-                      </Card>
-                    </div>
-                    <div className="marginfromLeft">
-                      <Card>
-                        <img src={image2} alt="Working enviroment" />
-                        <li>
-                          {' '}
-                          <FileUpload />
-                        </li>
-                      </Card>
-                    </div>
-                    <div className="marginfromLeft">
-                      <Card>
-                        <img src={image3} alt="Working enviroment" />
-                        <li>
-                          {' '}
-                          <FileUpload />
-                        </li>
-                      </Card>
-                    </div>
-                    <div className="marginfromLeft">
-                      <Card>
-                        <img src={image4} alt="Working enviroment" />
-                        <li>
-                          <FileUpload />{' '}
-                        </li>
-                      </Card>
-                    </div>
-                  </div>
                   <br />
                   <div>
                     <Card>
@@ -355,4 +395,16 @@ class CreateCompany extends Component {
     );
   }
 }
-export default CreateCompany;
+
+const mapStateToProps = state => {
+  return {
+    companyprofile: state.companydata.company || []
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    getSingleCompany: id => dispatch(getSingleCompany(id))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditCompany);

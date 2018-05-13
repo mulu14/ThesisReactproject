@@ -1,3 +1,46 @@
 .cardcontent {
-  margin-left: 200px;
+  margin-left: 100px;
+}
+
+.cardcontent label {
+  display: block;
+  width: 100px;
+  float: left;
+}
+.cardcontent input {
+  display: block;
+  width: 200px;
+  margin: 5px;
+  border-radius: 0.5em;
+}
+.cardcontent1 {
+  margin-left: 100px;
+}
+
+.cardcontent1 label {
+  position: relative;
+  width: 50px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.cardcontent1 input {
+  width: 150px;
+  margin: 5px;
+  border-radius: 0.5em;
+}
+.cardcontent2 {
+  margin-left: 100px;
+}
+.cardcontent2 label {
+  position: relative;
+  width: 100px;
+  margin-right: 20px;
+}
+.cardcontent2 input {
+  width: 150px;
+  margin-left: 50px;
+  margin-top: 5px;
+  border-radius: 0.5em;
+  display: block;
 }

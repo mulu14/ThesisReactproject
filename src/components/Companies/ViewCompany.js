@@ -10,6 +10,7 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
+import { Link } from 'react-router-dom';
 
 class ViewCompany extends Component {
   constructor(props) {
@@ -127,7 +128,9 @@ class ViewCompany extends Component {
           <Card>
             <CardActions>
               <Button size="small" color="primary">
-                Edit
+                <Link to={`/company/edit/${this.props.companyprofile._id}`}>
+                  Edit
+                </Link>
               </Button>
             </CardActions>
           </Card>
