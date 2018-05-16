@@ -20,55 +20,77 @@ class EditCompany extends Component {
       company: {
         nameOfCompany: '',
         numberOfEmployee: '',
+        phone: '',
 
         benefitsList: [
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
           },
           {
-            code: ''
+            code: false
+          },
+          {
+            code: false
+          },
+          {
+            code: false
+          },
+          {
+            code: false
+          },
+          {
+            code: false
+          },
+          {
+            code: false
+          },
+          {
+            code: false
+          },
+          {
+            code: false
           }
         ],
         intrestfromCandidates: '',
@@ -86,7 +108,10 @@ class EditCompany extends Component {
         ]
       }
     };
+    this.handelChange = this.handelChange.bind(this);
+    this.handelChangebenefit = this.handelChangebenefit.bind(this);
   }
+
   componentWillMount() {
     if (this.props.match.params) {
       const { id } = this.props.match.params;
@@ -94,10 +119,75 @@ class EditCompany extends Component {
       this.setState({ company: this.props.companyprofile });
     }
   }
-  handelChange = e => {};
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.companyprofile._id != nextProps.companyprofile._id) {
+      this.setState({ company: nextProps.companyprofile });
+    }
+  }
+
+  handelChangebenefit = (e, item) => {
+    const cloneBenefit = this.state.company.benefitsList.map(benefit => {
+      return benefit.title === item
+        ? { ...benefit, code: e.target.checked }
+        : benefit;
+    });
+
+    this.setState({ company: { benefitsList: cloneBenefit } });
+  };
+
+  handelChange = e => {
+    const companyClone = Object.assign({}, this.state.company);
+    const benefitClone = Object.assign({}, this.state.company.benefitsList);
+    const includedInStackClone = Object.assign(
+      {},
+      this.state.company.includedInStack
+    );
+    let balance = companyClone.benefitsList[0].code;
+    let nameofCompany = companyClone.nameOfCompany;
+    let phone = companyClone.phone;
+    let numberOfEmployee = companyClone.numberOfEmployee;
+    let companylogo = companyClone.companylogo;
+
+    switch (e.target.name) {
+      case 'companyname':
+        nameofCompany = e.target.value;
+        break;
+      case 'phonenumber':
+        phone = e.target.lastname;
+        break;
+      case 'numberOfEmployee':
+        numberOfEmployee = e.target.value;
+        break;
+      case 'logo':
+        companylogo = e.target.value;
+        break;
+      case 'balance':
+        this.setState({ balance: !balance });
+        break;
+      case 'headlineInput':
+        break;
+      case 'experience1':
+        break;
+      case 'titleone':
+        titleOne: e.target.value;
+        break;
+      default:
+        console.log('Error');
+    }
+    benefitClone[0].code = balance;
+    companyClone['nameOfCompany'] = nameofCompany;
+    companyClone['phone'] = phone;
+    companyClone['numberOfEmployee'] = numberOfEmployee;
+    companyClone['companylogo'] = companylogo;
+    companyClone['benefitsList'] = benefitClone;
+
+    this.setState({ company: companyClone });
+  };
 
   render() {
-    if (this.props.companyprofile === 0) return null;
+    if (this.props.companyprofile.length === 0) return null;
+    console.log(this.props.companyprofile.benefitsList[0].title);
     return (
       <div className="wrapper">
         <div className="header">
@@ -112,19 +202,12 @@ class EditCompany extends Component {
                     <div>
                       <label>Name of Company</label>
                       <input
-                        type="email"
+                        type="text"
                         name="companyname"
                         value={this.state.company.nameOfCompany || ''}
                         onChange={this.handelChange}
                       />
                     </div>
-                    <label>Nameber of Employees</label>
-                    <input
-                      type="text"
-                      name="numberOfEmployee"
-                      value={this.state.company.numberOfEmployee || ''}
-                      onChange={this.handelChange}
-                    />
                   </div>
 
                   <div />
@@ -137,61 +220,120 @@ class EditCompany extends Component {
                       <li>
                         <input
                           type="checkbox"
-                          name="balance"
-                          // value={this.state.company.benefitsList[0].code === 1? true: false}
-                          // checked={this.state.company.benefitsList[0].code === 1? true: false}
+                          name={this.state.company.benefitsList[0].title}
+                          value={this.state.company.benefitsList[0].code}
+                          checked={this.state.company.benefitsList[0].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[0].title
+                            )
+                          }
                         />
                         <label> Balance</label>{' '}
                       </li>
                       <li>
-                        <input type="checkbox" name="car" value="car" />
+                        <input
+                          type="checkbox"
+                          name={this.state.company.benefitsList[1].title}
+                          value={this.state.company.benefitsList[1].code}
+                          checked={this.state.company.benefitsList[1].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[1].title
+                            )
+                          }
+                        />
                         <label>Car</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="bonsemodel"
-                          value="bonsemodel"
+                          name={this.state.company.benefitsList[2].title}
+                          value={this.state.company.benefitsList[2].code}
+                          checked={this.state.company.benefitsList[2].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[2].title
+                            )
+                          }
                         />
                         <label>Bonse Model</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="centraloffice"
-                          value="centraloffice"
+                          name={this.state.company.benefitsList[3].title}
+                          value={this.state.company.benefitsList[3].code}
+                          checked={this.state.company.benefitsList[3].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[3].title
+                            )
+                          }
                         />
                         <label>Central Office</label>
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="ownership"
-                          value="ownership"
+                          name={this.state.company.benefitsList[4].title}
+                          value={this.state.company.benefitsList[4].code}
+                          checked={this.state.company.benefitsList[4].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[4].title
+                            )
+                          }
                         />{' '}
                         <label>Ownership</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="ownresponsiblity"
-                          value="ownresponsiblity"
+                          name={this.state.company.benefitsList[5].title}
+                          value={this.state.company.benefitsList[5].code}
+                          checked={this.state.company.benefitsList[5].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[5].title
+                            )
+                          }
                         />
                         <label>Own responsiblity</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="monthlysalary"
-                          value="monthleysalary"
+                          name={this.state.company.benefitsList[6].title}
+                          value={this.state.company.benefitsList[6].code}
+                          checked={this.state.company.benefitsList[6].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[6].title
+                            )
+                          }
                         />
                         <label>Monthely salary</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="flexiableworkingtime"
-                          value="flexiableworkingtime"
+                          name={this.state.company.benefitsList[7].title}
+                          value={this.state.company.benefitsList[7].code}
+                          checked={this.state.company.benefitsList[7].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[7].title
+                            )
+                          }
                         />
                         <label>Flexiable working </label>{' '}
                       </li>
@@ -200,62 +342,122 @@ class EditCompany extends Component {
                   <div>
                     <ul className="colm-2">
                       <li>
-                        <input type="checkbox" name="freedom" value="freedom" />
+                        <input
+                          type="checkbox"
+                          name={this.state.company.benefitsList[8].title}
+                          value={this.state.company.benefitsList[8].code}
+                          checked={this.state.company.benefitsList[8].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[8].title
+                            )
+                          }
+                        />
                         <label> Freedom</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="medicalallowance"
-                          value="medicalallowance"
+                          name={this.state.company.benefitsList[9].title}
+                          value={this.state.company.benefitsList[9].code}
+                          checked={this.state.company.benefitsList[9].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[9].title
+                            )
+                          }
                         />
                         <label>Medical allowance</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="careergrowth"
-                          value="careergrowth"
+                          name={this.state.company.benefitsList[10].title}
+                          value={this.state.company.benefitsList[10].code}
+                          checked={this.state.company.benefitsList[10].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[10].title
+                            )
+                          }
                         />
                         <label>Career growth</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="codedays"
-                          value="codedays"
+                          name={this.state.company.benefitsList[11].title}
+                          value={this.state.company.benefitsList[11].code}
+                          checked={this.state.company.benefitsList[11].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[11].title
+                            )
+                          }
                         />
                         <label>Code days</label>
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="competitivesalary"
-                          value="competitivesalary"
+                          name={this.state.company.benefitsList[12].title}
+                          value={this.state.company.benefitsList[12].code}
+                          checked={this.state.company.benefitsList[12].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[12].title
+                            )
+                          }
                         />{' '}
                         <label>Competitive salary</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="morethan25daysholidays"
-                          value="morethan25daysholidays"
+                          name={this.state.company.benefitsList[13].title}
+                          value={this.state.company.benefitsList[13].code}
+                          checked={this.state.company.benefitsList[13].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[13].title
+                            )
+                          }
                         />
                         <label> more than 25 days holidays</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="workfromhome"
-                          value="workfromhome"
+                          name={this.state.company.benefitsList[14].title}
+                          value={this.state.company.benefitsList[14].code}
+                          checked={this.state.company.benefitsList[14].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[14].title
+                            )
+                          }
                         />
                         <label>Possiblity work from home</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="workindistance"
-                          value="workindistance"
+                          name={this.state.company.benefitsList[15].title}
+                          value={this.state.company.benefitsList[15].code}
+                          checked={this.state.company.benefitsList[15].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[15].title
+                            )
+                          }
                         />
                         <label>Possiblity to work in distance</label>{' '}
                       </li>
@@ -266,62 +468,107 @@ class EditCompany extends Component {
                       <li>
                         <input
                           type="checkbox"
-                          name="newtechnique"
-                          value="newtechnique"
+                          name={this.state.company.benefitsList[16].title}
+                          value={this.state.company.benefitsList[16].code}
+                          checked={this.state.company.benefitsList[16].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[16].title
+                            )
+                          }
                         />
                         <label>New technique</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="Healthinsurance"
-                          value="Healthinsurance"
+                          name={this.state.company.benefitsList[17].title}
+                          value={this.state.company.benefitsList[17].code}
+                          checked={this.state.company.benefitsList[17].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[17].title
+                            )
+                          }
                         />
                         <label>Health Insurance</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="stableworlingsituation"
-                          value="stableworlingsituation"
+                          name={this.state.company.benefitsList[18].title}
+                          value={this.state.company.benefitsList[18].code}
+                          checked={this.state.company.benefitsList[18].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[18].title
+                            )
+                          }
                         />
                         <label>Stable worling situation</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="toothInsurance"
-                          value="toothInsurance"
+                          name={this.state.company.benefitsList[19].title}
+                          value={this.state.company.benefitsList[19].code}
+                          checked={this.state.company.benefitsList[19].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[19].title
+                            )
+                          }
                         />
                         <label>Tooth Insurance</label>
                       </li>
                       <li>
-                        <input type="checkbox" name="pension" value="pension" />{' '}
+                        <input
+                          type="checkbox"
+                          name={this.state.company.benefitsList[20].title}
+                          value={this.state.company.benefitsList[20].code}
+                          checked={this.state.company.benefitsList[20].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[20].title
+                            )
+                          }
+                        />{' '}
                         <label> Pension</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="supportsystem"
-                          value=">supportsystem"
+                          name={this.state.company.benefitsList[21].title}
+                          value={this.state.company.benefitsList[21].code}
+                          checked={this.state.company.benefitsList[21].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[21].title
+                            )
+                          }
                         />
                         <label>Support system</label>{' '}
                       </li>
                       <li>
                         <input
                           type="checkbox"
-                          name="developementpossiblity"
-                          value="developementpossiblity"
+                          name={this.state.company.benefitsList[22].title}
+                          value={this.state.company.benefitsList[22].code}
+                          checked={this.state.company.benefitsList[22].code}
+                          onChange={e =>
+                            this.handelChangebenefit(
+                              e,
+                              this.state.company.benefitsList[22].title
+                            )
+                          }
                         />
                         <label>Developement Possiblity</label>{' '}
-                      </li>
-                      <li>
-                        <input
-                          type="checkbox"
-                          name="flexiableworkingtime"
-                          value="flexiableworkingtime"
-                        />
-                        <label>Place holder</label>{' '}
                       </li>
                     </ul>
                   </div>
@@ -342,16 +589,31 @@ class EditCompany extends Component {
                       <CardContent>
                         <ul className="organizationInfo">
                           <div className="infoline">
-                            <label> Organization nummber </label>
-                            <input type="text" />
+                            <label> Phone number </label>
+                            <input
+                              type="text"
+                              name="phonenumber"
+                              value={this.state.company.phone || ''}
+                              onChange={this.handelChange}
+                            />
                           </div>
                           <div className="infoline">
-                            <label> Number of Employee</label>
-                            <input type="number" />
+                            <label>Number of Employees</label>
+                            <input
+                              type="text"
+                              name="numberOfEmployee"
+                              value={this.state.company.numberOfEmployee || ''}
+                              onChange={this.handelChange}
+                            />
                           </div>
                           <div>
                             <label> Company Official web </label>
-                            <input type="url" />
+                            <input
+                              type="url"
+                              name="officialpage"
+                              value=""
+                              onChange={this.handelChange}
+                            />
                           </div>
                         </ul>
                       </CardContent>
@@ -362,23 +624,34 @@ class EditCompany extends Component {
                     <Card>
                       <CardContent>
                         <label> Company Logo</label>
-                        <input type="text" />
+                        <input
+                          type="text"
+                          name="logo"
+                          value={this.state.company.companylogo || ''}
+                          onChange={this.handelChange}
+                        />
                       </CardContent>
                     </Card>
                   </div>
 
                   <div>
                     <p> Company Description</p>
-                    <textarea rows="10" cols="152" />
+                    <textarea
+                      rows="10"
+                      cols="152"
+                      value={this.state.company.intrestfromCandidates || ''}
+                      onChange={this.handelChange}
+                    />
                   </div>
                   <br />
                   <div>
                     <p> What is included in teck Stack</p>
-                    <Chip label={'Angular 2'} />
-                    <Chip label={'Java'} />
-                    <Chip label={'C'} />
-                    <Chip label={'React'} />
-                    <Chip label={'PHP'} />
+                    <Chip /*label={this.state.company.includedInStack[0].title} */
+                    />
+                    <Chip /*label={this.state.company.includedInStack[1].title} */
+                    />
+                    <Chip /*label={this.state.company.includedInStack[2].title} */
+                    />
                   </div>
 
                   <div>

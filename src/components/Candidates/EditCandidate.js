@@ -169,19 +169,13 @@ class EditCandidate extends Component {
         email = e.target.value;
         break;
       case 'phoneInput':
-        phone: e.target.value;
+        phone = e.target.value;
         break;
-      case 'salaryInput':
-        salary: e.target.value;
+      case 'salary':
+        salary = e.target.value;
         break;
-      case 'headlineInput':
-        headline: e.target.value;
-        break;
-      case 'experience1':
-        experinecOne: e.target.value;
-        break;
-      case 'titleone':
-        titleOne: e.target.value;
+      case 'headline':
+        headline = e.target.value;
         break;
       default:
         console.log('Error');
@@ -191,12 +185,9 @@ class EditCandidate extends Component {
     accountClone.lastname = lastName;
     accountClone.email = email;
     accountClone.phone = phone;
-    topSkillsClone[0].experience = experinecOne;
-    topSkillsClone[0].title = titleOne;
     candidateClone['account'] = accountClone;
     candidateClone['salary'] = salary;
     candidateClone['headline'] = headline;
-    candidateClone['topSkills'] = topSkillsClone;
     this.setState({ copyCandidate: candidateClone });
   };
 
@@ -292,7 +283,7 @@ class EditCandidate extends Component {
                       })}
                     >
                       <input
-                        name="salaryInput"
+                        name="salary"
                         type="number"
                         value={this.state.copyCandidate.salary || ''}
                         onChange={this.handleChange}
@@ -309,7 +300,7 @@ class EditCandidate extends Component {
                       })}
                     >
                       <input
-                        name="headlineInput"
+                        name="headline"
                         type="text"
                         value={this.state.copyCandidate.headline || ''}
                         onChange={this.handleChange}

@@ -29,6 +29,11 @@
   padding-left: 2em;
 }
 
+.colm-1 label,
+.colm-1 input {
+  display: inline-block;
+}
+
 .benifits div {
   display: inline-block;
   width: 33%;
@@ -46,11 +51,21 @@
 .colm-2 label {
   margin-left: 0.5em;
   padding-left: 2em;
+  margin-top: none;
+}
+.colm-2 label,
+.colm-2 input {
+  display: inline-block;
 }
 
 .colm-3 li {
   list-style: none;
   padding: 0.5em;
+}
+
+.colm-3 label,
+.colm-3 input {
+  display: inline-block;
 }
 
 .colm-3 label {

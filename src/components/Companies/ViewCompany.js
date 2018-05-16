@@ -27,7 +27,6 @@ class ViewCompany extends Component {
 
   render() {
     if (this.props.companyprofile === 0) return null;
-    console.log(this.props.companyprofile);
     return (
       <Grid container space={8}>
         <Grid item xs={4}>

@@ -25,8 +25,14 @@ import { PrivateRoute } from './privateRoute';
 import asyncComponent from './AsyncComponent';
 import Loadable from 'react-loadable';
 import { withRouter } from 'react-router';
+import { CircularProgress } from 'material-ui/Progress';
 
-const Loading = () => <div>Loading...</div>;
+const Loading = () => (
+  <div>
+    {' '}
+    <CircularProgress />
+  </div>
+);
 const AsyncProfile = Loadable({
   loader: () => import('./../../components/Candidates/Profile'),
   loading: Loading

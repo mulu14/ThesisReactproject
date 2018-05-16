@@ -19,7 +19,7 @@ const reduceCompany = (state = {}, action) => {
         ...state,
         companies: action.companies.companies,
         bonses: action.companies.companies.map(company => {
-          return company.benefitsList.filter(data => data.code !== 0);
+          return company.benefitsList.filter(data => data.code !== false);
         })
       };
     case FETCH_SINGLE_COMPANY:
