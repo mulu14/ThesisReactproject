@@ -127,13 +127,14 @@ class EditCompany extends Component {
   }
 
   handelChangebenefit = (e, item) => {
+    const company = Object.assign({}, this.state.company);
     const cloneBenefit = this.state.company.benefitsList.map(benefit => {
       return benefit.title === item
         ? { ...benefit, code: e.target.checked }
         : benefit;
     });
 
-    this.setState({ company: { benefitsList: cloneBenefit } });
+    this.setState({ company: { ...company, benefitsList: cloneBenefit } });
   };
 
   handelChange = e => {
@@ -187,7 +188,7 @@ class EditCompany extends Component {
 
   render() {
     if (this.props.companyprofile.length === 0) return null;
-    console.log(this.props.companyprofile.benefitsList[0].title);
+    console.log(this.state.company);
     return (
       <div className="wrapper">
         <div className="header">
@@ -646,12 +647,9 @@ class EditCompany extends Component {
                   <br />
                   <div>
                     <p> What is included in teck Stack</p>
-                    <Chip /*label={this.state.company.includedInStack[0].title} */
-                    />
-                    <Chip /*label={this.state.company.includedInStack[1].title} */
-                    />
-                    <Chip /*label={this.state.company.includedInStack[2].title} */
-                    />
+                    <Chip label={this.state.company.includedInStack[0].title} />
+                    <Chip label={this.state.company.includedInStack[1].title} />
+                    <Chip label={this.state.company.includedInStack[2].title} />
                   </div>
 
                   <div>
