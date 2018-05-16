@@ -1,4 +1,4 @@
-<h1>Project description <h1>
+<h1>Project description </h1>
 <p>This is recat-redux project and developing the administrative portale of the company. </p>
 
 
