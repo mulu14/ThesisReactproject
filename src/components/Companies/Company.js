@@ -16,11 +16,8 @@ import Paper from 'material-ui/Paper';
 import Pagination from './../../services/pagination';
 import JwPagination from 'jw-react-pagination';
 import { Link } from 'react-router-dom';
-import { FilterList } from 'material-ui-icons';
-import IconButton from 'material-ui/IconButton';
 import { ArrowDownward, ArrowUpward } from 'material-ui-icons';
-import Toolbar from 'material-ui/Toolbar';
-import Tooltip from 'material-ui/Tooltip';
+import ReactPerformance from 'react-performance';
 
 class Company extends Component {
   constructor(props) {
@@ -119,6 +116,9 @@ class Company extends Component {
         this.props.companies.length - this.state.page * this.state.rowsPerPage
       );
     const issort = this.state.sorted ? <ArrowUpward /> : <ArrowDownward />;
+    ReactPerformance.startRecording();
+    ReactPerformance.printRecording();
+
     const listCompany = () => {
       return (
         <Paper className="root">
@@ -199,6 +199,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-  pure: false
-})(Company);
+export default ReactPerformance.connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  pure: false,
+  getId: 'id_company',
+  Component: Company
+});

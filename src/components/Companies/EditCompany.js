@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
-import { FileUpload } from 'material-ui-icons';
 import { connect } from 'react-redux';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Card, { CardContent } from 'material-ui/Card';
 import { getSingleCompany } from './../../action/companyaction';
 import Chip from 'material-ui/Chip';
-import Avatar from 'material-ui/Avatar';
-
 import './style/create.css';
-import image1 from './../../images/image1.jpg';
-import image2 from './../../images/image2.jpg';
-import image3 from './../../images/image3.jpg';
-import image4 from './../../images/image4.jpg';
+import { Button } from 'material-ui';
+import ReactPerformance from 'react-performance';
 
 class EditCompany extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      visible: false,
       company: {
         nameOfCompany: '',
         numberOfEmployee: '',
@@ -110,6 +106,7 @@ class EditCompany extends Component {
     };
     this.handelChange = this.handelChange.bind(this);
     this.handelChangebenefit = this.handelChangebenefit.bind(this);
+    this.onClickStack = this.onClickStack.bind(this);
   }
 
   componentWillMount() {
@@ -126,6 +123,20 @@ class EditCompany extends Component {
     }
   }
 
+  /*
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.props.companyprofile.length !== nextProps.companyprofile.length) {
+          return true;
+        }
+    
+        return false;
+      }
+      */
+
+  onClickStack = () => {
+    this.setState({ visible: !this.state.visible });
+  };
+
   handelChangebenefit = (e, item) => {
     const company = Object.assign({}, this.state.company);
     const cloneBenefit = this.state.company.benefitsList.map(benefit => {
@@ -133,7 +144,6 @@ class EditCompany extends Component {
         ? { ...benefit, code: e.target.checked }
         : benefit;
     });
-
     this.setState({ company: { ...company, benefitsList: cloneBenefit } });
   };
 
@@ -188,7 +198,10 @@ class EditCompany extends Component {
 
   render() {
     if (this.props.companyprofile.length === 0) return null;
-    console.log(this.state.company);
+    const isvisibale = this.state.visible;
+    const visiblity = this.isvisibale ? null : <input type="text" />;
+    ReactPerformance.startRecording();
+    ReactPerformance.printRecording();
     return (
       <div className="wrapper">
         <div className="header">
@@ -647,9 +660,22 @@ class EditCompany extends Component {
                   <br />
                   <div>
                     <p> What is included in teck Stack</p>
-                    <Chip label={this.state.company.includedInStack[0].title} />
-                    <Chip label={this.state.company.includedInStack[1].title} />
-                    <Chip label={this.state.company.includedInStack[2].title} />
+                    <Chip
+                      label={this.state.company.includedInStack[0].title}
+                      clickable="true"
+                      onClick={this.onClickStack}
+                    />
+                    <Chip
+                      label={this.state.company.includedInStack[1].title}
+                      clickable="true"
+                      onClick={this.onClickStack}
+                    />
+
+                    <Chip
+                      label={this.state.company.includedInStack[2].title}
+                      clickable="true"
+                      onClick={this.onClickStack}
+                    />
                   </div>
 
                   <div>
@@ -678,4 +704,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCompany);
+export default ReactPerformance.connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  getId: 'id_EditCompany',
+  Component: EditCompany
+});

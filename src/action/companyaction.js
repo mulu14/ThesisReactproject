@@ -1,5 +1,4 @@
 import {
-  requestCompany,
   receiveCompany,
   getsingleCompany,
   createCompnay,

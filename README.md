@@ -13,6 +13,7 @@
 <p>The project structure under</p>
 <p>Components: where teh main functionality of the projec carried out. Each componets have sub components that carries some specific functionality <p/> 
 <p>Action: the redux action create </p>
+<p> utility: layout design, login functionality, sign in functionality  <p> 
 
 
 

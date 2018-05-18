@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { withStyles } from 'material-ui/styles';
 import {
   feachSingleCandidate,
   deleteCandidate
@@ -21,7 +19,7 @@ import WorkExperiences from './display/WorkExperiences';
 import SkillsList from './display/Skill';
 import ProjectExperiences from './display/Projectexperiance';
 import './style/view.css';
-
+import ReactPerformance from 'react-performance';
 class ViewCandidate extends Component {
   constructor(props) {
     super(props);
@@ -139,4 +137,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewCandidate);
+export default ReactPerformance.connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  getId: 'id_viewCadidate',
+  Component: ViewCandidate
+});

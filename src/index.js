@@ -10,8 +10,6 @@ import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import 'react-rpm';
 /*
-Please note that 
-run source map to see the size of the bundle.js
 
 */
 var { registerObserver } = require('react-perf-devtool');

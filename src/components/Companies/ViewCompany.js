@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withStyles } from 'material-ui/styles';
 import { getSingleCompany } from './../../action/companyaction';
 import List, { ListItem } from 'material-ui/List';
-import { bindActionCreators } from 'redux';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
 import { Link } from 'react-router-dom';
+import ReactPerformance from 'react-performance';
 
 class ViewCompany extends Component {
   constructor(props) {
@@ -27,6 +25,8 @@ class ViewCompany extends Component {
 
   render() {
     if (this.props.companyprofile === 0) return null;
+    ReactPerformance.startRecording();
+    ReactPerformance.printRecording();
     return (
       <Grid container space={8}>
         <Grid item xs={4}>
@@ -153,4 +153,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewCompany);
+export default ReactPerformance.connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  getId: 'id_viewComponent',
+  Component: ViewCompany
+});

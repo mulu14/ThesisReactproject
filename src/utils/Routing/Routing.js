@@ -22,9 +22,7 @@ import asyncComponent from './AsyncComponent'
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PrivateRoute } from './privateRoute';
-import asyncComponent from './AsyncComponent';
 import Loadable from 'react-loadable';
-import { withRouter } from 'react-router';
 import { CircularProgress } from 'material-ui/Progress';
 
 const Loading = () => (
@@ -73,10 +71,6 @@ const AsyncLogin = Loadable({
 });
 const AsyncLogout = Loadable({
   loader: () => import('./../Logout/logout'),
-  loading: Loading
-});
-const AsyncHome = Loadable({
-  loader: () => import('./../../components/Home'),
   loading: Loading
 });
 

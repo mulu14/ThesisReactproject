@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Layout from './../utils/Layout/layout';
-import Grid from 'material-ui/Grid';
 
 class Home extends Component {
   constructor(props) {
@@ -9,7 +8,6 @@ class Home extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     return (
       <div>
         <Layout />

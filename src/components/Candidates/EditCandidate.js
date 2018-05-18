@@ -10,15 +10,14 @@ import {
   updateCandidate
 } from './../../action/candidateaction';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
-import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Button from 'material-ui/Button';
 import './style/create.css';
 import Typography from 'material-ui/Typography';
 import { Field, reduxForm, initialize } from 'redux-form';
 import Divider from 'material-ui/Divider';
 import './style/create.css';
+import ReactPerformance from 'react-performance';
 
 class EditCandidate extends Component {
   constructor(props) {
@@ -541,7 +540,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-  pure: false
-})(EditCandidate);
-//export default withRouter(connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(CreateCandidate));
+export default ReactPerformance.connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  getId: 'id_EditCompany',
+  pure: false,
+  Component: EditCandidate
+});

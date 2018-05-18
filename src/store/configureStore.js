@@ -1,30 +1,24 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './../reducers/rootReducer';
-import promise from 'redux-promise';
 import thunkMiddleware from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
-import { loadeState, saveState } from './localstorage';
+import ReactPerformance from 'react-performance';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
-//const composeEnhanser = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__||compose;
 const loggerMiddleware = createLogger();
-const persitantState = loadeState();
+const performance = ReactPerformance.createNotifier();
 
 export default function configureStore() {
   const store = createStore(
     rootReducer,
-    // persitantState,
     composeWithDevTools(
-      applyMiddleware(thunkMiddleware, middleware, loggerMiddleware)
+      applyMiddleware(thunkMiddleware, middleware, loggerMiddleware),
+      performance
     )
   );
-  store.subscribe(() => {
-    //saveState();
-  });
   return store;
 }

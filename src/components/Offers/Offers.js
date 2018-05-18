@@ -10,17 +10,10 @@ import Table, {
 } from 'material-ui/Table';
 import Grid from 'material-ui/Grid';
 import { connect } from 'react-redux';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import Pagination from './../../services/pagination';
-import JwPagination from 'jw-react-pagination';
-import { Link } from 'react-router-dom';
-import { FilterList } from 'material-ui-icons';
-import IconButton from 'material-ui/IconButton';
 import OfferList from './offerList';
 import { ArrowDownward, ArrowUpward } from 'material-ui-icons';
-import Toolbar from 'material-ui/Toolbar';
-import Tooltip from 'material-ui/Tooltip';
 
 class Offeres extends Component {
   constructor(props) {

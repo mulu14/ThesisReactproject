@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import ViewCandidate from './ViewCandidate';
 import { connect } from 'react-redux';
 import Grid from 'material-ui/Grid';
-import List, { ListItem } from 'material-ui/List';
 import {
   feachProfiles,
   deleteCandidate,
