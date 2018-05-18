@@ -45,11 +45,6 @@ const AsyncOffers = Loadable({
   loading: Loading
 });
 
-const AsyncInvitation = Loadable({
-  loader: () => import('./../../components/Invitations/Invitations'),
-  loading: Loading
-});
-
 const AsyncBonses = Loadable({
   loader: () => import('./../../components/Boneses/Bonses'),
   loading: Loading
@@ -120,7 +115,6 @@ class ConfigRoute extends Component {
         <Route path="/login" component={AsyncLogin} />
         <Route path="/logout" component={AsyncLogout} />
         <Route path="/signin" component={AsyncRegisterUser} />
-        <PrivateRoute path="/invitation" component={AsyncInvitation} />
       </Switch>
     );
   }

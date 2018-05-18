@@ -47,7 +47,8 @@ class ViewCandidate extends Component {
 
   render() {
     if (this.props.singleProfile.length === 0) return null;
-    console.log(this.props.singleProfile.topSkills.length);
+    ReactPerformance.startRecording();
+    ReactPerformance.printRecording();
     return (
       <Grid container space={8}>
         <Grid item xs={4}>

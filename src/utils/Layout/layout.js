@@ -117,60 +117,8 @@ class Layout extends Component {
                 <Toolbar>
                   <div className="layoutheader">
                     <ul className="styleHeader">
-                      <li>
-                        {' '}
-                        <Button component={Link} to="/profile">
-                          {<AccountCircle />} Account
-                        </Button>{' '}
-                      </li>
                       <li>{islogin}</li>
                       <li> {isloginTrue} </li>
-                    </ul>
-                  </div>
-                  <div className="layoutheader" />
-                  <div className="layoutheader">
-                    <ul className="notification">
-                      <li>
-                        {' '}
-                        <Button
-                          disableFocusRipple
-                          className="notificationButton"
-                          size="small"
-                        >
-                          {' '}
-                          <Badge
-                            badgeContent={this.state.notificationUrgent}
-                            color="secondary"
-                          >
-                            {' '}
-                            {<Notifications />}{' '}
-                          </Badge>
-                        </Button>
-                      </li>
-                      <li>
-                        {' '}
-                        <Button size="small">
-                          <Badge
-                            badgeContent={this.state.notification}
-                            color="error"
-                          >
-                            {' '}
-                            {<Notifications />}{' '}
-                          </Badge>
-                        </Button>
-                      </li>
-                      <li>
-                        {' '}
-                        <Button size="small">
-                          <Badge
-                            badgeContent={this.state.emailnotification}
-                            color="secondary"
-                          >
-                            {' '}
-                            {<Email />}{' '}
-                          </Badge>
-                        </Button>
-                      </li>
                     </ul>
                   </div>
                 </Toolbar>
@@ -219,11 +167,6 @@ class Layout extends Component {
                 <ListItem button component={Link} to="/bones">
                   <ListItemIcon>{<Payment />}</ListItemIcon>
                   <ListItemText primary="Boneses" />
-                  {<KeyboardArrowRight />}
-                </ListItem>
-                <ListItem button component={Link} to="/invitation">
-                  <ListItemIcon>{<InsertInvitation />}</ListItemIcon>
-                  <ListItemText primary="Invitations" />
                   {<KeyboardArrowRight />}
                 </ListItem>
               </List>
