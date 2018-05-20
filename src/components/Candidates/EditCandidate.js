@@ -136,19 +136,12 @@ class EditCandidate extends Component {
   handleChange = e => {
     const candidateClone = Object.assign({}, this.state.copyCandidate);
     const accountClone = Object.assign({}, this.state.copyCandidate.account);
-    const topSkillsClone = Object.assign(
-      {},
-      this.state.copyCandidate.topSkills
-    );
-    const salaryClone = Object.assign({}, this.state.copyCandidate.salary);
     let firstName = candidateClone.account.firstname;
     let lastName = candidateClone.account.lastname;
     let phone = candidateClone.account.phone;
     let email = candidateClone.account.email;
     let salary = candidateClone.salary;
     let headline = candidateClone.headline;
-    let experinecOne = candidateClone.topSkills[0].experience;
-    let titleOne = candidateClone.topSkills[0].title;
 
     switch (e.target.name) {
       case 'firstNameInput':
@@ -185,8 +178,6 @@ class EditCandidate extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    let errors = {};
     /*
     if(this.state.account.firstName =='')errors.firstName ="Title can not to be empty"; 
     if(this.state.account.lastName =='')errors.lastName ="userId can not to be empty"; 
@@ -197,8 +188,8 @@ class EditCandidate extends Component {
   }
   render() {
     if (this.props.candidate.length === 0) return null;
-    //console.log(this.state.copyCandidate);
-    console.log(this.state.copyCandidate.topSkills);
+    ReactPerformance.startRecording();
+    ReactPerformance.printRecording();
     return (
       <div className="container">
         <form className="formprofile" onSubmit={this.handleSubmit}>

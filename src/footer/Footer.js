@@ -1,5 +1,7 @@
 import React from 'react';
-import BottomNavigation from 'material-ui/BottomNavigation';
+import BottomNavigation, {
+  BottomNavigationAction
+} from 'material-ui/BottomNavigation';
 import Grid from 'material-ui/Grid';
 
 const Footer = props => {
@@ -11,7 +13,9 @@ const Footer = props => {
           marginBottom: 0,
           height: 180
         }}
-      />
+      >
+        <BottomNavigationAction label="Recents" />
+      </BottomNavigation>
     </Grid>
   );
 };

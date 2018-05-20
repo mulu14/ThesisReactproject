@@ -28,7 +28,7 @@ export const getallOfffers = data => {
 
 export const deletOffer = id => {
   return {
-    type: GET_OFFERS,
+    type: DELETE_OFFERS,
     id: id
   };
 };

@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import { login } from './../../action/logaction';
 import './login.css';
-import { Redirect } from 'react-router';
 
 class Login extends Component {
   constructor(props) {
@@ -97,8 +96,7 @@ class Login extends Component {
     );
   }
 }
-{
-}
+
 const mapStateToProps = state => {
   return {
     errorMessage: state.alertNotification.error,

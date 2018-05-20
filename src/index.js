@@ -16,7 +16,6 @@ registerObserver();
 
 const history = createHistory();
 const store = configureStore();
-console.log(store.getState());
 
 const app = (
   <Provider store={store}>

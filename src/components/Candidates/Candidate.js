@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Grid from 'material-ui/Grid';
 import { feachProfiles, deleteCandidate } from './../../action/candidateaction';
 import CandidateList from './CandidateList';
@@ -14,6 +13,7 @@ import Table, {
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import Pagination from './../../services/pagination';
+import ReactPerformance from 'react-performance';
 
 import { ArrowDownward, ArrowUpward } from 'material-ui-icons';
 
@@ -118,8 +118,8 @@ class Candidate extends Component {
         this.state.rowsPerPage,
         this.props.profiles.length - this.state.page * this.state.rowsPerPage
       );
-    // console.log(this.props.profiles[0].publishStatus);
-    // console.log(this.props.profiles[0].publishStatus[0].status);
+    ReactPerformance.startRecording();
+    ReactPerformance.printRecording();
     const issort = this.state.sorted ? <ArrowUpward /> : <ArrowDownward />;
 
     const listcandidate = () => {
@@ -205,9 +205,12 @@ const mapDispatchToProps = dispatch => {
     deleteCandidateAction: id => dispatch(deleteCandidate(id))
   };
 };
-
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-  pure: false
-})(Candidate);
+export default ReactPerformance.connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  getId: 'id_Candidate',
+  pure: false,
+  Component: Candidate
+});
 
 //export default withRouter(connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(Candidate));

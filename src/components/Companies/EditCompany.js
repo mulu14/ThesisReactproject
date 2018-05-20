@@ -148,10 +148,10 @@ class EditCompany extends Component {
   handelChange = e => {
     const companyClone = Object.assign({}, this.state.company);
     const benefitClone = Object.assign({}, this.state.company.benefitsList);
-    const includedInStackClone = Object.assign(
+    /*const includedInStackClone = Object.assign(
       {},
       this.state.company.includedInStack
-    );
+    );*/
     let balance = companyClone.benefitsList[0].code;
     let nameofCompany = companyClone.nameOfCompany;
     let phone = companyClone.phone;
@@ -186,8 +186,6 @@ class EditCompany extends Component {
 
   render() {
     if (this.props.companyprofile.length === 0) return null;
-    const isvisibale = this.state.visible;
-    const visiblity = this.isvisibale ? null : <input type="text" />;
     ReactPerformance.startRecording();
     ReactPerformance.printRecording();
     return (
