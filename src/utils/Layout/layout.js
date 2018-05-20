@@ -1,31 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
-import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Button from 'material-ui/Button';
 import Footer from './../../footer/Footer';
 import ConfigRoute from './../Routing/Routing';
 import Divider from 'material-ui/Divider';
-import Badge from 'material-ui/Badge';
 import {
-  Add,
   Home,
   Dashboard,
-  Notifications,
-  AccountCircle,
   LocalOffer,
-  InsertInvitation,
   People,
   Business,
   Payment,
   KeyboardArrowRight,
-  Search,
-  KeyboardArrowDown,
-  Email
+  KeyboardArrowDown
 } from 'material-ui-icons';
 import './layout.css';
 class Layout extends Component {
@@ -58,17 +49,6 @@ class Layout extends Component {
   render() {
     const user = localStorage.getItem('user');
 
-    const iscloseCandidate = this.state.closedCandidates ? (
-      <KeyboardArrowRight />
-    ) : (
-      <KeyboardArrowDown />
-    );
-    const showCandidate = iscloseCandidate ? null : (
-      <List>
-        <ListItem> Link to page </ListItem>
-      </List>
-    );
-
     const isclosed = this.state.closedDashbord;
 
     const buttonExpand = isclosed ? (
@@ -84,8 +64,6 @@ class Layout extends Component {
         <ListItem> Link to Service </ListItem>
       </List>
     );
-
-    const isopenDialog = this.state.opendialog;
 
     const islogin =
       user != null ? (

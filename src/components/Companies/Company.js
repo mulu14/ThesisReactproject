@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { getCompanies } from './../../action/companyaction';
-import { connect } from 'react-redux';
 import CompaniesList from './CompaniesList';
 import Table, {
   TableBody,
@@ -8,14 +7,11 @@ import Table, {
   TableHead,
   TableRow,
   TablePagination,
-  TableSortLabel,
   TableFooter
 } from 'material-ui/Table';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Pagination from './../../services/pagination';
-import JwPagination from 'jw-react-pagination';
-import { Link } from 'react-router-dom';
 import { ArrowDownward, ArrowUpward } from 'material-ui-icons';
 import ReactPerformance from 'react-performance';
 

@@ -1,7 +1,5 @@
 import React from 'react';
-import BottomNavigation, {
-  BottomNavigationAction
-} from 'material-ui/BottomNavigation';
+import BottomNavigation from 'material-ui/BottomNavigation';
 import Grid from 'material-ui/Grid';
 
 const Footer = props => {

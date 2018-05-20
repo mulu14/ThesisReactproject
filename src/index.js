@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import App from './components/App';

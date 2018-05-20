@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
-import { connect } from 'react-redux';
 import Card, { CardContent } from 'material-ui/Card';
 import { getSingleCompany } from './../../action/companyaction';
 import Chip from 'material-ui/Chip';
 import './style/create.css';
-import { Button } from 'material-ui';
 import ReactPerformance from 'react-performance';
 
 class EditCompany extends Component {
@@ -118,7 +116,7 @@ class EditCompany extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.companyprofile._id != nextProps.companyprofile._id) {
+    if (this.props.companyprofile._id !== nextProps.companyprofile._id) {
       this.setState({ company: nextProps.companyprofile });
     }
   }
@@ -172,16 +170,6 @@ class EditCompany extends Component {
         break;
       case 'logo':
         companylogo = e.target.value;
-        break;
-      case 'balance':
-        this.setState({ balance: !balance });
-        break;
-      case 'headlineInput':
-        break;
-      case 'experience1':
-        break;
-      case 'titleone':
-        titleOne: e.target.value;
         break;
       default:
         console.log('Error');

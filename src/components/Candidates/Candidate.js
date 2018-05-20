@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Grid from 'material-ui/Grid';
-import {
-  feachProfiles,
-  deleteCandidate,
-  feachSingleCandidate
-} from './../../action/candidateaction';
+import { feachProfiles, deleteCandidate } from './../../action/candidateaction';
 import CandidateList from './CandidateList';
 import './style/candidate.css';
 import Table, {
@@ -14,18 +10,11 @@ import Table, {
   TableHead,
   TableRow,
   TablePagination,
-  TableSortLabel,
   TableFooter
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
-import { withRouter, Route } from 'react-router-dom';
-import DeleteIcon from 'material-ui';
-import { FilterList } from 'material-ui-icons';
-import IconButton from 'material-ui/IconButton';
-import JwPagination from 'jw-react-pagination';
 import Pagination from './../../services/pagination';
-import Toolbar from 'material-ui/Toolbar';
-import Tooltip from 'material-ui/Tooltip';
+
 import { ArrowDownward, ArrowUpward } from 'material-ui-icons';
 
 class Candidate extends Component {
@@ -169,7 +158,6 @@ class Candidate extends Component {
                       city={profile.city}
                       publishStatus={profile.publishStatus}
                       date={profile.date}
-                      id={profile._id}
                       convertNumbertoStatus={this.convertNumbertoStatus}
                     />
                   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from 'material-ui/Button';
 import { TableCell, TableRow } from 'material-ui/Table';
 
 function CandidateList(props) {

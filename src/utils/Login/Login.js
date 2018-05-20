@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
-import { Field, reduxForm } from 'redux-form';
 import { login } from './../../action/logaction';
 import './login.css';
 import { Redirect } from 'react-router';
@@ -25,7 +24,7 @@ class Login extends Component {
   }
 
   updateAfterLogin = () => {
-    this.props.isLogin;
+    this.props.isLogin();
   };
 
   handleChange(e) {
@@ -50,7 +49,6 @@ class Login extends Component {
   }
 
   render() {
-    const isLoginTrue = this.props.isLogin ? <Redirect to="/" /> : null;
     return (
       <div className="root">
         <div className="head" />

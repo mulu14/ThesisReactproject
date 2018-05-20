@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { userService } from './../../services/logservice';
 import { Redirect } from 'react-router';
 

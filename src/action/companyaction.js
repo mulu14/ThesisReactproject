@@ -5,6 +5,7 @@ import {
   updateCompany,
   deleteCompany
 } from './createAction/createcompanyaction';
+import 'isomorphic-fetch';
 import fetch from 'cross-fetch';
 //import { receiveProfile } from './createAction/createactions';
 

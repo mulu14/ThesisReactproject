@@ -7,6 +7,7 @@ import {
   deleteCandidateAction
 } from './../action/createAction/createCandidateactions';
 import fetch from 'cross-fetch';
+import 'isomorphic-fetch';
 const API_URL = 'http://localhost:8080/candidates';
 
 var httpHeaders = {

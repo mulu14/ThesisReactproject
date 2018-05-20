@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
-import { withRouter, Route } from 'react-router-dom';
 import {
-  createNewCandidate,
   feachSingleCandidate,
   updateCandidate
 } from './../../action/candidateaction';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
-import TextField from 'material-ui/TextField';
+import Card, { CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import './style/create.css';
-import Typography from 'material-ui/Typography';
-import { Field, reduxForm, initialize } from 'redux-form';
 import Divider from 'material-ui/Divider';
 import './style/create.css';
 import ReactPerformance from 'react-performance';
@@ -134,7 +128,7 @@ class EditCandidate extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.candidate._id != nextProps.candidate._id) {
+    if (this.props.candidate._id !== nextProps.candidate._id) {
       this.setState({ copyCandidate: nextProps.candidate });
     }
   }
@@ -163,7 +157,6 @@ class EditCandidate extends Component {
       case 'lastNameInput':
         lastName = e.target.lastname;
         break;
-        lastName = e.target.value;
       case 'emailInput':
         email = e.target.value;
         break;

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Home from './Home';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import createPalette from 'material-ui/styles/createPalette';
 import createMuiTheme from 'material-ui/styles/createMuiTheme';
-import ConfigRoute from '../utils/Routing/Routing';
 
 const muiTheme = createMuiTheme({
   palette: {

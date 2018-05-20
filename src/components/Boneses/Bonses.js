@@ -3,16 +3,6 @@ import Card from 'material-ui/Card';
 import { getCompanies } from './../../action/companyaction';
 import { connect } from 'react-redux';
 import ListBonses from './bonseList';
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TablePagination,
-  TableSortLabel,
-  TableFooter
-} from 'material-ui/Table';
-import Paper from 'material-ui/Paper';
 
 class Bonses extends Component {
   constructor(props) {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { getSingleCompany } from './../../action/companyaction';
 import List, { ListItem } from 'material-ui/List';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
