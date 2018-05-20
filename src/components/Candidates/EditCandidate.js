@@ -527,7 +527,7 @@ const mapDispatchToProps = dispatch => {
 export default ReactPerformance.connect({
   mapStateToProps,
   mapDispatchToProps,
-  getId: 'id_EditCompany',
+  getId: 'id_EditCandidate',
   pure: false,
   Component: EditCandidate
 });

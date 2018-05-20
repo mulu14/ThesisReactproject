@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Card from 'material-ui/Card';
 import { getCompanies } from './../../action/companyaction';
-import { connect } from 'react-redux';
 import ListBonses from './bonseList';
+import ReactPerformance from 'react-performance';
 
 class Bonses extends Component {
   constructor(props) {
@@ -16,6 +16,8 @@ class Bonses extends Component {
 
   render() {
     if (this.props.companies.length === 0) return null;
+    ReactPerformance.startRecording();
+    ReactPerformance.printRecording();
 
     const bonseList = () => {
       return (
@@ -55,6 +57,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-  pure: false
-})(Bonses);
+export default ReactPerformance.connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  getId: 'id_Bonses',
+  Component: Bonses
+});

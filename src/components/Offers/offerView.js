@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { getSingleOffer } from './../../action/offeraction';
 import List, { ListItem } from 'material-ui/List';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
@@ -7,6 +6,7 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
+import ReactPerformance from 'react-performance';
 
 class ViewOffer extends Component {
   constructor(props) {
@@ -23,7 +23,8 @@ class ViewOffer extends Component {
 
   render() {
     if (this.props.singleOffer === 0) return null;
-    console.log(this.props.singleOffer);
+    ReactPerformance.startRecording();
+    ReactPerformance.printRecording();
     return (
       <Grid container space={8}>
         <Grid item xs={4}>
@@ -146,4 +147,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewOffer);
+export default ReactPerformance.connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  getId: 'id_Offerview',
+  Component: ViewOffer
+});

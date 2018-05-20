@@ -9,11 +9,11 @@ import Table, {
   TableFooter
 } from 'material-ui/Table';
 import Grid from 'material-ui/Grid';
-import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
 import Pagination from './../../services/pagination';
 import OfferList from './offerList';
 import { ArrowDownward, ArrowUpward } from 'material-ui-icons';
+import ReactPerformance from 'react-performance';
 
 class Offeres extends Component {
   constructor(props) {
@@ -89,8 +89,8 @@ class Offeres extends Component {
 
   render() {
     if (this.props.offers.length === 0) return null;
-    // console.log(this.props.offers)
-    // console.log(this.props.offers[0].candidate.account.firstname);
+    ReactPerformance.startRecording();
+    ReactPerformance.printRecording();
     const emptyRows =
       this.state.rowsPerPage -
       Math.min(
@@ -181,6 +181,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-  pure: false
-})(Offeres);
+export default ReactPerformance.connect({
+  mapStateToProps,
+  mapDispatchToProps,
+  getId: 'id_Offer',
+  Component: Offeres
+});

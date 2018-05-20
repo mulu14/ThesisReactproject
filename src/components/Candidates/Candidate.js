@@ -40,16 +40,6 @@ class Candidate extends Component {
     this.setState({ copyprofile: this.props.profiles });
   }
 
-  /*
-    shouldComponentUpdate(nextProps, nextState) {
-        if (this.props.profiles !== nextProps.profiles) {
-          return true;
-        }
-    
-        return false;
-      }
-     */
-
   handleChangePage = (event, page) => {
     this.setState({
       page
