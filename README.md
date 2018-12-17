@@ -1,12 +1,12 @@
 <h1>Project description </h1>
-<p>This is recat-redux project and developing the administrative portale of the company. </p>
+<p>This is reactjs-redux project and developing the administrative portale of the company. </p>
 
 
 <h1>How to run this project</h1>
 <p>You need to have MongoDb install in your local machine and run</p>
 <p>You need to clone REST-API from gitbub address mulu14 and run</p>
 <p>You need to install node moulde in the respective repositories</p>
-<p>You can create your your account bu using  email & password</p>
+<p>You can create your your account by using  email & password</p>
 <p> The resources are protected by authentication, please create account  </p> 
 
 <h1> Project Structure </h1>
